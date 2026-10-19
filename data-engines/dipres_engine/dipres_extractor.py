@@ -1,4 +1,4 @@
-"""Boilerplate para conectar series oficiales del INE."""
+"""Boilerplate para conectar publicaciones fiscales oficiales de DIPRES."""
 
 from __future__ import annotations
 
@@ -6,15 +6,15 @@ import sys
 from pathlib import Path
 from typing import Any
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from engine_template import EngineTemplate  # noqa: E402
 
-engine = EngineTemplate()
+engine = EngineTemplate(source="DIPRES", output_name="dipres_snapshot.json")
 
 
 def extract_official_indicators() -> list[dict[str, Any]]:
-    """TODO: conectar fuentes INE para IPC, ENE, IAC e IPI y normalizar sus fechas."""
-    raise NotImplementedError("Implemente la adquisición documentada y la revisión de series del INE.")
+    """TODO: leer publicaciones/ficheros oficiales, preservar unidades y normalizar trimestres."""
+    raise NotImplementedError("Implemente la extracción documentada de series DIPRES.")
 
 
 def main() -> int:

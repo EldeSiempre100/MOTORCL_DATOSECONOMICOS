@@ -1,20 +1,23 @@
-"""Boilerplate para conectar fuentes del MDS y estadísticas oficiales CASEN."""
+"""Boilerplate para conectar indicadores oficiales del BCCh."""
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 from typing import Any
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from engine_template import EngineTemplate  # noqa: E402
 
-engine = EngineTemplate()
+engine = EngineTemplate(source="BCCh", output_name="bcch_snapshot.json")
 
 
 def extract_official_indicators() -> list[dict[str, Any]]:
-    """TODO: ingestar releases oficiales y, por separado, un nowcast documentado."""
-    raise NotImplementedError("Implemente la ingesta MDS/CASEN y documente ventana y metodología del nowcast.")
+    """TODO: conectar la API BCCh, revisar metadatos y devolver registros validados."""
+    if not os.environ.get("BCCH_API_TOKEN"):
+        raise RuntimeError("Configure BCCH_API_TOKEN en el entorno seguro antes de conectar la API oficial.")
+    raise NotImplementedError("Implemente la consulta, paginación y normalización de series BCCh.")
 
 
 def main() -> int:

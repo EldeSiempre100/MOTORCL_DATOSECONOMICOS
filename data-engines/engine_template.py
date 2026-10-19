@@ -1,4 +1,4 @@
-"""INE snapshot template; see README.md for the output contract."""
+"""Shared snapshot writer for the source-specific data engines."""
 
 from __future__ import annotations
 
@@ -9,15 +9,15 @@ from pathlib import Path
 from typing import Any
 
 ENGINE_DIR = Path(__file__).resolve().parent
-DATA_ENGINES = ENGINE_DIR.parent
-ROOT = DATA_ENGINES.parent
-sys.path.insert(0, str(DATA_ENGINES))
+ROOT = ENGINE_DIR.parent
+sys.path.insert(0, str(ENGINE_DIR))
 from schema_validator import validate_snapshot  # noqa: E402
 
 
 class EngineTemplate:
-    source = "INE"
-    output_name = "ine_snapshot.json"
+    def __init__(self, source: str, output_name: str) -> None:
+        self.source = source
+        self.output_name = output_name
 
     def build_snapshot(self, indicators: list[dict[str, Any]]) -> dict[str, Any]:
         return {"schemaVersion": 1, "source": self.source, "generatedAt": datetime.now(timezone.utc).isoformat(), "indicators": indicators}

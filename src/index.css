@@ -366,3 +366,52 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Compact opening layout and horizontal economic calendar. */
+.main-content { padding-top: 17px; }
+.filter-panel { padding: 0 0 14px; margin: 0; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; background: transparent; box-shadow: none; }
+.filter-panel > .filter-row { min-height: 37px; }
+.filter-row-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.filter-options--categories, .segmented-control, .filter-options--periods { gap: 2px; padding: 3px; border-radius: 8px; background: var(--surface-soft); }
+.filter-options--categories { max-width: 100%; }
+.filter-pill, .segment { min-height: 30px; padding: 6px 11px; border-radius: 6px; font-size: 11px; }
+.filter-pill--selected, .segment--selected { border-color: var(--border-strong); color: var(--text-main); background: var(--surface); box-shadow: 0 1px 3px rgba(0, 0, 0, .07); }
+.filter-secondary { display: flex; align-items: center; gap: 12px; padding-top: 8px; margin-top: 0; border-top: 0; }
+.filter-secondary .filter-row { flex: 0 0 auto; min-height: 0; }
+.filter-secondary .period-row { flex: 1 1 auto; min-width: 0; margin-top: 0; }
+.filter-secondary .share-button { margin-left: auto; }
+.custom-range { position: absolute; z-index: 2; padding: 10px; margin-top: 85px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+.timeline-section { padding: 24px 25px 19px; margin-top: 24px; border: 1px solid var(--border); border-radius: 17px; background: var(--surface); box-shadow: var(--card-shadow); }
+.timeline-section .section-heading { align-items: center; padding: 0 0 17px; margin-bottom: 0; border-bottom: 1px solid var(--border); }
+.timeline-section .section-heading h2 { font-size: 20px; }
+.timeline-section .text-link { color: var(--accent); }
+.timeline-card { padding: 0; overflow-x: auto; border: 0; border-radius: 0; background: none; box-shadow: none; scrollbar-width: thin; }
+.timeline-track { position: relative; display: flex; width: max-content; min-width: 100%; padding: 19px 0 5px; margin: 0; list-style: none; }
+.timeline-track::before { position: absolute; top: 49px; right: 0; left: 0; height: 1px; background: var(--border-strong); content: ""; }
+.timeline-tile { position: relative; display: flex; flex: 0 0 155px; min-width: 0; flex-direction: column; align-items: flex-start; padding-right: 15px; }
+.timeline-tile .timeline-date { display: block; height: 24px; color: var(--text-secondary); font-size: 10px; }
+.timeline-tile .timeline-node { width: 9px; height: 9px; margin: 2px 0 11px 1px; box-shadow: 0 0 0 4px var(--surface); }
+.timeline-tile .timeline-node--open { background: var(--surface); }
+.timeline-tile-title { display: flex; align-items: flex-start; gap: 5px; width: 100%; min-height: 39px; color: var(--text-main); font-size: 11px; line-height: 1.35; }
+.timeline-tile-title > span:last-child { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.timeline-tile .timeline-icon { flex: 0 0 auto; width: 14px; height: 14px; background: none; }
+.timeline-tile .timeline-number { min-height: 23px; font-size: 18px; font-weight: 650; letter-spacing: -.04em; }
+.timeline-number--empty { color: var(--text-muted) !important; }
+.timeline-tile-period { margin-top: 2px; overflow: hidden; max-width: 100%; color: var(--text-muted); font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.timeline-tile-source { margin-top: 3px; color: var(--text-muted); font-size: 9px; }
+.demo-disclosure { padding: 8px 3px 0; color: var(--text-muted); font-size: 9px; }
+.demo-disclosure summary { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+.demo-disclosure p { max-width: 750px; margin: 7px 0 0; line-height: 1.5; }
+@media (max-width: 980px) {
+  .filter-secondary { flex-wrap: wrap; }
+  .filter-secondary .period-row { flex-basis: 100%; }
+}
+@media (max-width: 560px) {
+  .main-content { padding-top: 13px; }
+  .filter-panel { padding-bottom: 10px; }
+  .filter-secondary .period-row { flex-wrap: wrap; }
+  .filter-secondary .share-button { margin: 4px 0 0; }
+  .timeline-section { padding: 19px 16px 14px; margin-top: 18px; }
+  .timeline-tile { flex-basis: 138px; }
+  .timeline-tile .timeline-number { font-size: 16px; }
+}

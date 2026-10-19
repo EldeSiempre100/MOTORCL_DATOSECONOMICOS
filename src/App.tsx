@@ -113,25 +113,7 @@ function MonitorDashboard({ data }: { data: DashboardData }) {
       />
 
       <main className="page-shell main-content">
-        <section className="hero-block">
-          <div className="hero-copy">
-            <p className="eyebrow hero-eyebrow"><span className="status-dot status-dot--green" />{ui.heroEyebrow}</p>
-            <h1>{ui.heroTitle}</h1>
-            <p className="hero-description">{ui.heroText}</p>
-          </div>
-          <div className="hero-side">
-            <span className="demo-pill">{ui.demoTag}</span>
-            <span className="hero-snapshot">{ui.mockSnapshot}</span>
-          </div>
-        </section>
-
-        <div className="demo-notice" role="note">
-          <span className="demo-notice-icon"><AlertTriangle size={15} /></span>
-          <p>{data.metadata.demoNotice[language]}</p>
-          <span className="demo-notice-time">{data.metadata.asOfLabel}</span>
-        </div>
-
-        <FilterBar metadata={data.metadata} ui={ui} filters={filters} onChange={updateFilters} />
+        <FilterBar metadata={data.metadata} ui={ui} language={language} filters={filters} onChange={updateFilters} />
 
         <TimelineSection
           events={data.timeline.events}
@@ -140,6 +122,11 @@ function MonitorDashboard({ data }: { data: DashboardData }) {
           language={language}
           ui={ui}
         />
+
+        <details className="demo-disclosure">
+          <summary><AlertTriangle size={12} /> {language === 'es' ? 'Datos de ejemplo · no oficiales' : 'Example data · unofficial'}</summary>
+          <p>{data.metadata.demoNotice[language]} {data.metadata.asOfLabel}</p>
+        </details>
 
         <SummaryCardsGrid
           cards={data.summaries.cards}

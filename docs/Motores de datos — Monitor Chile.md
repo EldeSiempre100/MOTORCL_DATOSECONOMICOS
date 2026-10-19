@@ -1,6 +1,6 @@
 # Motores de datos — Monitor Chile
 
-Cada fuente tiene una carpeta aislada con `engine_template.py`, su extractor de ejemplo y un README propio. Las plantillas no consultan organismos ni contienen credenciales. Para conectar una fuente, completar el extractor en un IDE y proporcionar sus credenciales como variables de entorno, nunca dentro del código.
+Cada fuente tiene una carpeta aislada con su extractor de ejemplo. `data-engines/engine_template.py` y el validador son compartidos. Las plantillas no consultan organismos ni contienen credenciales. Para conectar una fuente, completar el extractor y proporcionar sus credenciales como variables de entorno, nunca dentro del código.
 
 ## Contrato de instantánea por fuente
 
@@ -19,6 +19,6 @@ Cada elemento de `indicators` exige `id` (string estable), `name` (string), `per
 
 Los cuatro snapshots son archivos separados para evitar que motores concurrentes sobrescriban una misma salida agregada. Una etapa de integración futura debe consolidarlos en los cuatro contratos consumidos por la web: `app_metadata.json`, `timeline_events.json`, `summary_cards.json` y `charts_series.json`. `src/services/dataService.ts` lee exclusivamente esos cuatro contratos frontend y no los snapshots de staging.
 
-Instalación del validador desde esta carpeta: `python -m pip install -r requirements.txt`. Luego valide con `python schema_validator.py` o indique rutas: `python schema_validator.py ../public/mock-data/bcch_snapshot.json`. El directorio estándar de salida es `public/mock-data/` en la raíz del proyecto.
+Instalación desde la raíz: `python -m pip install -r data-engines/requirements.txt`. Luego valide con `python data-engines/schema_validator.py public/mock-data/bcch_snapshot.json`. El directorio estándar de salida es `public/mock-data/`.
 
 Los archivos que ya vienen en `public/mock-data/` son ejemplos visuales demostrativos. No son publicaciones verificadas de BCCh, INE, DIPRES o MDS.
