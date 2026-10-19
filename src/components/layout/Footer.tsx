@@ -38,7 +38,7 @@ export function Footer({ metadata, ui, language }: FooterProps) {
       <div className="footer-bottom page-shell">
         <span>© {metadata.projectName} · {metadata.updatedAt.slice(0, 4)}</span>
         <span>{ui.footerCredits}</span>
-        <span className="footer-demo">{ui.demoTag}</span>
+        <span className="footer-demo">{metadata.status === 'mixed' ? (language === 'en' ? 'MIXED SOURCES' : 'FUENTES MIXTAS') : ui.demoTag}</span>
       </div>
     </footer>
   );

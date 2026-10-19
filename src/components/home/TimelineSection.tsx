@@ -51,10 +51,10 @@ export function TimelineSection({ events, category, search, language, ui }: Time
               <li className={`timeline-tile timeline-tile--${event.status}`} key={event.id} id={event.id === firstUpcoming ? 'timeline-upcoming' : undefined}>
                 <time className="timeline-date" dateTime={event.date}>{language === 'en' ? event.dateTextEn : event.dateText}</time>
                 <span className={`timeline-node ${event.status === 'upcoming' ? 'timeline-node--open' : ''}`} aria-hidden="true" />
-                <div className="timeline-tile-title"><span className="timeline-icon" aria-hidden="true">{iconFor(event.icon)}</span><span>{language === 'en' ? event.indicatorEn : event.indicator}</span></div>
+                <div className="timeline-tile-title"><span className="timeline-icon" aria-hidden="true">{iconFor(event.icon)}</span>{event.seriesId ? <a href={`/indicador/${event.seriesId}`}>{language === 'en' ? event.indicatorEn : event.indicator}</a> : <span>{language === 'en' ? event.indicatorEn : event.indicator}</span>}</div>
                 {event.value ? <strong className={`timeline-number tone-${event.tone}`}>{event.value}</strong> : <span className="timeline-number timeline-number--empty">—</span>}
                 <span className="timeline-tile-period">{language === 'en' ? event.periodEn : event.period}</span>
-                <span className="timeline-tile-source">{event.source}</span>
+                <span className="timeline-tile-source">{event.source} · {event.dataStatus === 'official' ? (language === 'en' ? 'official' : 'oficial') : (language === 'en' ? 'example' : 'ejemplo')}</span>
               </li>
             ))}
           </ol>

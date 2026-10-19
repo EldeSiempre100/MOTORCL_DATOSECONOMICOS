@@ -1,14 +1,16 @@
 # Motores de datos
 
-Cada carpeta de fuente contiene un extractor independiente. Por ahora son plantillas: no descargan datos oficiales y no requieren credenciales para abrir la página.
+El motor activo es `ine_engine/simel.mjs`. Consulta directamente la API SDMX de INE/SIMEL con código `CL01:DF_TDES_SEXO(1.0)/M.TDES._T.AS` y obtiene la tasa de desocupación nacional para trimestres móviles mensuales. No se copió código de los repositorios técnicos examinados.
 
-| Carpeta | Fuente | Snapshot previsto |
-| --- | --- | --- |
-| `bcch_engine/` | Banco Central de Chile | `bcch_snapshot.json` |
-| `ine_engine/` | INE | `ine_snapshot.json` |
-| `dipres_engine/` | DIPRES | `dipres_snapshot.json` |
-| `mds_nowcast_engine/` | MDS/CASEN | `mds_nowcast_snapshot.json` |
+`update.mjs` coordina la descarga, validación, fusión con la historia en `data/series/`, detección de revisiones y generación de los cuatro contratos que React ya consume. Los datos publicados en `public/series/` sirven la ficha del indicador. `publications.json` contiene únicamente fechas y enlaces documentales comprobados. Los demás registros conservan `publishedAt: null`.
 
-`engine_template.py` valida y escribe cada snapshot en `public/mock-data/` con su fuente y nombre propios. `schema_validator.py` aplica el contrato `engine_snapshot.schema.json`. Estos snapshots son archivos de preparación; la página consume únicamente `app_metadata.json`, `timeline_events.json`, `summary_cards.json` y `charts_series.json`. Falta implementar la consolidación entre ambos niveles.
+La primera ejecución descarga la historia completa. Las siguientes consultan una ventana reciente de 14 meses para detectar publicaciones nuevas o revisiones sin perder observaciones anteriores. La consulta fallida no reemplaza los archivos. El historial guarda `firstSeenAt`, `lastChangedAt` y la secuencia de revisiones detectadas; no afirma representar revisiones anteriores a la primera ingestión.
 
-Desde la raíz del proyecto, las dependencias del validador se instalan con `python -m pip install -r data-engines/requirements.txt`. Para validar un snapshot: `python data-engines/schema_validator.py public/mock-data/bcch_snapshot.json`.
+```bash
+npm run update:data
+npm run test:data
+```
+
+Las carpetas `bcch_engine/`, `dipres_engine/` y los scripts Python previos son plantillas. No producen datos oficiales en esta fase. CMF también queda pendiente. Los accesos de BCCh/CMF que exijan credenciales deberán usarse sólo en el proceso de adquisición mediante variables de entorno o GitHub Secrets.
+
+Las comprobaciones del pipeline rechazan dimensiones, frecuencia, unidad, valor, duplicados y períodos inesperados del CSV. La fusión valida también el contrato de la serie, su cronología y sus revisiones. Los contratos JSON son estáticos para preservar la arquitectura del frontend. La investigación y los bloqueos están en [../docs/fuentes-fase2.md](../docs/fuentes-fase2.md).

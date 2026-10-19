@@ -9,10 +9,17 @@ import { TopNavbar } from './components/layout/TopNavbar';
 import { DelayedSeriesModal } from './components/modals/DelayedSeriesModal';
 import { useMonitorFilters } from './hooks/useMonitorFilters';
 import { loadDashboardData } from './services/dataService';
+import { IndicatorDetail } from './components/home/IndicatorDetail';
 import type { DashboardData, Language } from './types/monitor.types';
 import './index.css';
 
 export default function App() {
+  const detailId = window.location.pathname.match(/^\/indicador\/([a-z0-9.-]+)\/?$/)?.[1];
+  if (detailId) return <IndicatorDetail id={detailId} />;
+  return <HomeApp />;
+}
+
+function HomeApp() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [error, setError] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -124,7 +131,7 @@ function MonitorDashboard({ data }: { data: DashboardData }) {
         />
 
         <details className="demo-disclosure">
-          <summary><AlertTriangle size={12} /> {language === 'es' ? 'Datos de ejemplo · no oficiales' : 'Example data · unofficial'}</summary>
+          <summary><AlertTriangle size={12} /> {data.metadata.status === 'mixed' ? (language === 'es' ? 'Datos oficiales y de ejemplo · revisar cada etiqueta' : 'Official and example data · check each label') : (language === 'es' ? 'Datos de ejemplo · no oficiales' : 'Example data · unofficial')}</summary>
           <p>{data.metadata.demoNotice[language]} {data.metadata.asOfLabel}</p>
         </details>
 
@@ -154,7 +161,7 @@ function MonitorDashboard({ data }: { data: DashboardData }) {
         />
       </main>
 
-      <Footer metadata={data.metadata} ui={ui} />
+      <Footer metadata={data.metadata} ui={ui} language={language} />
       {showDelayed ? <DelayedSeriesModal metadata={data.metadata} ui={ui} language={language} onClose={() => setShowDelayed(false)} /> : null}
     </div>
   );

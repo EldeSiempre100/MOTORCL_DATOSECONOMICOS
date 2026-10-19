@@ -2,6 +2,14 @@ export type Language = 'es' | 'en';
 export type Variation = 'mensual' | 'interanual';
 export type PeriodId = 'ultimo' | 'ultimo-mes' | 'anio' | '12-meses' | 'personalizado';
 export type Tone = 'positive' | 'negative' | 'neutral';
+export type DataStatus = 'official' | 'demo' | 'unavailable';
+export interface Traceable {
+  dataStatus?: DataStatus;
+  seriesId?: string;
+  sourceUrl?: string;
+  documentUrl?: string;
+  publishedAt?: string | null;
+}
 
 export interface FilterOption { id: string; label: string; }
 
@@ -104,7 +112,7 @@ export interface AppMetadata {
   ui: Record<Language, UIStrings>;
 }
 
-export interface TimelineEvent {
+export interface TimelineEvent extends Traceable {
   id: string; status: 'published' | 'upcoming'; date: string; dateText: string; dateTextEn: string; category: string;
   indicator: string; indicatorEn: string; period: string; periodEn: string; value?: string; source: string; tone: Tone; icon: string;
 }
@@ -117,7 +125,7 @@ export interface MainIndicator {
 export interface SubIndicator {
   name: string; nameEn: string; period: string; periodEn: string; values: Record<Variation, string>; toneByVariation: Record<Variation, Tone>;
 }
-export interface SummaryCard {
+export interface SummaryCard extends Traceable {
   id: string; category: string; title: string; titleEn: string; icon: string; main: MainIndicator; subIndicators: SubIndicator[]; sources: string[];
 }
 export interface SummaryCardsData { schemaVersion: number; cards: SummaryCard[]; }
@@ -126,7 +134,7 @@ export interface ChartSeries {
   stackId?: string; valuesByVariation: Record<Variation, string>;
 }
 export interface ChartPoint { period: string; label: string; labelEn: string; [key: string]: string | number | null; }
-export interface ChartDefinition {
+export interface ChartDefinition extends Traceable {
   id: string; category: string; title: string; titleEn: string; subtitle: string; subtitleEn: string; unit: string;
   sourceIds: string[]; reference: string; referenceEn: string; footnote: string; footnoteEn: string;
   axes: { left: string; leftEn: string; right: string; rightEn: string; }; series: ChartSeries[]; data: ChartPoint[];

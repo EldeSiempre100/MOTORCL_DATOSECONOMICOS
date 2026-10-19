@@ -1,0 +1,35 @@
+name: Update official data
+
+on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Refresh INE/SIMEL series
+        run: npm run update:data
+      - name: Check data transformations
+        run: npm run test:data
+      - name: Check React build
+        run: npm run build
+      - name: Package generated data for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: motorcl-data
+          path: |
+            data/
+            public/mock-data/
+            public/series/

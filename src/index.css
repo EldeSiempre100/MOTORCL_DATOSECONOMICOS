@@ -415,3 +415,28 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .timeline-tile { flex-basis: 138px; }
   .timeline-tile .timeline-number { font-size: 16px; }
 }
+
+.data-origin { display: inline-block; width: fit-content; padding: 2px 6px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-muted); background: var(--surface-soft); font-size: 8px; font-weight: 650; vertical-align: middle; white-space: nowrap; }
+.data-origin--official { border-color: #b7d5c1; color: var(--positive); background: var(--accent-soft); }
+.summary-card > .data-origin { margin: 7px 0 0; }
+.chart-card-title .data-origin { margin-left: 5px; }
+.indicator-detail-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; color: var(--accent); font-size: 10px; }
+.timeline-tile-title a:hover, .indicator-detail-link:hover { text-decoration: underline; }
+.indicator-page { padding-top: 30px; }
+.indicator-page h1 { margin: 9px 0; font-size: clamp(28px, 3vw, 38px); letter-spacing: -.04em; }
+.indicator-lead { color: var(--text-secondary); font-size: 12px; line-height: 1.6; }
+.indicator-lead code { color: var(--text-main); }
+.indicator-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+.indicator-facts--changes { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 10px; }
+.indicator-facts > div { display: flex; flex-direction: column; gap: 9px; min-width: 0; padding: 17px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); }
+.indicator-facts span { color: var(--text-muted); font-size: 10px; }
+.indicator-facts strong { font-size: 16px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.indicator-chart { padding: 16px; }
+.indicator-table-wrap { max-height: 430px; overflow: auto; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); }
+.indicator-table { width: 100%; border-collapse: collapse; font-size: 11px; text-align: left; }
+.indicator-table th, .indicator-table td { padding: 10px 13px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.indicator-table th { position: sticky; top: 0; color: var(--text-secondary); background: var(--surface-soft); font-weight: 650; }
+.indicator-sources { display: flex; gap: 18px; margin-top: 24px; }
+.indicator-sources a { display: inline-flex; align-items: center; gap: 4px; color: var(--accent); font-size: 11px; }
+@media (max-width: 800px) { .indicator-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 540px) { .indicator-facts, .indicator-facts--changes { grid-template-columns: 1fr; } .indicator-sources { flex-direction: column; } }

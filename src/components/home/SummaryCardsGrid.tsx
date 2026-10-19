@@ -59,6 +59,7 @@ export function SummaryCardsGrid({ cards, metadata, language, variation, period,
                   <span>{language === 'en' ? card.titleEn : card.title}</span>
                   <ArrowRight className="category-arrow" size={14} />
                 </button>
+                <span className={`data-origin data-origin--${card.dataStatus ?? 'demo'}`}>{card.dataStatus === 'official' ? 'INE · oficial' : language === 'en' ? 'Example' : 'Ejemplo'}</span>
                 <div className="card-main-label">
                   <span className="main-name">{language === 'en' ? card.main.nameEn : card.main.name}</span>
                   <span className="main-description">{language === 'en' ? card.main.descriptionEn : card.main.description}</span>
@@ -87,11 +88,12 @@ export function SummaryCardsGrid({ cards, metadata, language, variation, period,
                     return (
                       <span className="source-link-wrap" key={sourceId}>
                         {index > 0 ? <span className="source-divider">·</span> : null}
-                        {source ? <a href={source.url} target="_blank" rel="noreferrer">{sourceId}<span aria-hidden="true"> ↗</span></a> : <span>{sourceId}</span>}
+                        {source && card.dataStatus === 'official' ? <a href={card.documentUrl ?? source.url} target="_blank" rel="noreferrer">{sourceId}<span aria-hidden="true"> ↗</span></a> : <span>{sourceId}</span>}
                       </span>
                     );
                   })}
                 </div>
+                {card.seriesId ? <a className="indicator-detail-link" href={`/indicador/${card.seriesId}`}>{language === 'en' ? 'View series and observations' : 'Ver ficha y observaciones'} <ArrowRight size={13} /></a> : null}
               </article>
             );
           })}

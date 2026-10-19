@@ -53,10 +53,10 @@ export function TopNavbar({
         </div>
 
         <div className="header-actions">
-          <button className="delayed-link" type="button" onClick={onShowDelayed}>
+          {metadata.delayedSeriesCount > 0 ? <button className="delayed-link" type="button" onClick={onShowDelayed}>
             <span className="status-dot status-dot--delayed" />
             <span>{metadata.delayedSeriesCount} {countLabel}</span>
-          </button>
+          </button> : null}
           <nav className="main-nav" aria-label={ui.footerLinksTitle}>
             <a className="nav-link nav-link--active" href="#monitor-top">{ui.navMonitor}</a>
             <a className="nav-link" href="#series">{ui.navData}</a>

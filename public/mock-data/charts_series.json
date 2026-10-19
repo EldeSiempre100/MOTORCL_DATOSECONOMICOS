@@ -9,31 +9,194 @@
       "subtitle": "Imacec y actividad sectorial · variación porcentual",
       "subtitleEn": "Imacec and sector activity · percentage change",
       "unit": "%",
-      "sourceIds": ["BCCh", "INE"],
+      "sourceIds": [
+        "BCCh",
+        "INE"
+      ],
       "reference": "Oct 2025 — sep 2026",
       "referenceEn": "Oct 2025 — Sep 2026",
       "footnote": "Series mensuales simuladas para diseño. No son valores oficiales del BCCh o el INE.",
       "footnoteEn": "Illustrative monthly series for layout. Not official BCCh or INE values.",
-      "axes": { "left": "% mensual", "leftEn": "Monthly %", "right": "% interanual", "rightEn": "Year-on-year %" },
+      "axes": {
+        "left": "% mensual",
+        "leftEn": "Monthly %",
+        "right": "% interanual",
+        "rightEn": "Year-on-year %"
+      },
       "series": [
-        { "id": "imacec", "label": "Imacec desest.", "labelEn": "Imacec s.a.", "type": "bar", "axis": "left", "color": "#426f5d", "stackId": "activity", "valuesByVariation": { "mensual": "imacecMoM", "interanual": "imacecYoY" } },
-        { "id": "ipi", "label": "Industria (IPI)", "labelEn": "Industry (IPI)", "type": "line", "axis": "right", "color": "#b57947", "valuesByVariation": { "mensual": "ipiMoM", "interanual": "ipiYoY" } },
-        { "id": "iac", "label": "Comercio (IAC)", "labelEn": "Retail trade (IAC)", "type": "line", "axis": "right", "color": "#788394", "valuesByVariation": { "mensual": "iacMoM", "interanual": "iacYoY" } }
+        {
+          "id": "imacec",
+          "label": "Imacec desest.",
+          "labelEn": "Imacec s.a.",
+          "type": "bar",
+          "axis": "left",
+          "color": "#426f5d",
+          "stackId": "activity",
+          "valuesByVariation": {
+            "mensual": "imacecMoM",
+            "interanual": "imacecYoY"
+          }
+        },
+        {
+          "id": "ipi",
+          "label": "Industria (IPI)",
+          "labelEn": "Industry (IPI)",
+          "type": "line",
+          "axis": "right",
+          "color": "#b57947",
+          "valuesByVariation": {
+            "mensual": "ipiMoM",
+            "interanual": "ipiYoY"
+          }
+        },
+        {
+          "id": "iac",
+          "label": "Comercio (IAC)",
+          "labelEn": "Retail trade (IAC)",
+          "type": "line",
+          "axis": "right",
+          "color": "#788394",
+          "valuesByVariation": {
+            "mensual": "iacMoM",
+            "interanual": "iacYoY"
+          }
+        }
       ],
       "data": [
-        { "period": "2025-10", "label": "oct 25", "labelEn": "Oct 25", "imacecMoM": 0.2, "imacecYoY": 1.1, "ipiMoM": 0.4, "ipiYoY": -1.2, "iacMoM": 0.8, "iacYoY": 2.0 },
-        { "period": "2025-11", "label": "nov 25", "labelEn": "Nov 25", "imacecMoM": -0.3, "imacecYoY": 0.8, "ipiMoM": -0.7, "ipiYoY": -2.1, "iacMoM": 0.4, "iacYoY": 1.7 },
-        { "period": "2025-12", "label": "dic 25", "labelEn": "Dec 25", "imacecMoM": 0.5, "imacecYoY": 1.3, "ipiMoM": 1.1, "ipiYoY": -0.3, "iacMoM": 0.2, "iacYoY": 1.2 },
-        { "period": "2026-01", "label": "ene 26", "labelEn": "Jan 26", "imacecMoM": 0.1, "imacecYoY": 1.4, "ipiMoM": 0.3, "ipiYoY": -0.1, "iacMoM": -0.2, "iacYoY": 0.9 },
-        { "period": "2026-02", "label": "feb 26", "labelEn": "Feb 26", "imacecMoM": 0.4, "imacecYoY": 1.6, "ipiMoM": 0.7, "ipiYoY": 0.4, "iacMoM": 0.9, "iacYoY": 1.6 },
-        { "period": "2026-03", "label": "mar 26", "labelEn": "Mar 26", "imacecMoM": -0.2, "imacecYoY": 1.3, "ipiMoM": -0.4, "ipiYoY": -0.2, "iacMoM": 0.5, "iacYoY": 2.0 },
-        { "period": "2026-04", "label": "abr 26", "labelEn": "Apr 26", "imacecMoM": 0.6, "imacecYoY": 1.8, "ipiMoM": 0.9, "ipiYoY": 1.2, "iacMoM": 1.3, "iacYoY": 2.4 },
-        { "period": "2026-05", "label": "may 26", "labelEn": "May 26", "imacecMoM": -0.1, "imacecYoY": 1.5, "ipiMoM": -0.2, "ipiYoY": 0.8, "iacMoM": 0.1, "iacYoY": 2.2 },
-        { "period": "2026-06", "label": "jun 26", "labelEn": "Jun 26", "imacecMoM": 0.3, "imacecYoY": 1.9, "ipiMoM": 0.5, "ipiYoY": 1.4, "iacMoM": 1.1, "iacYoY": 2.7 },
-        { "period": "2026-07", "label": "jul 26", "labelEn": "Jul 26", "imacecMoM": -0.2, "imacecYoY": 1.7, "ipiMoM": -0.5, "ipiYoY": 0.8, "iacMoM": 0.6, "iacYoY": 2.4 },
-        { "period": "2026-08", "label": "ago 26", "labelEn": "Aug 26", "imacecMoM": 0.6, "imacecYoY": 2.1, "ipiMoM": 1.2, "ipiYoY": 1.6, "iacMoM": 2.1, "iacYoY": 3.6 },
-        { "period": "2026-09", "label": "sep 26", "labelEn": "Sep 26", "imacecMoM": null, "imacecYoY": null, "ipiMoM": null, "ipiYoY": null, "iacMoM": null, "iacYoY": null }
-      ]
+        {
+          "period": "2025-10",
+          "label": "oct 25",
+          "labelEn": "Oct 25",
+          "imacecMoM": 0.2,
+          "imacecYoY": 1.1,
+          "ipiMoM": 0.4,
+          "ipiYoY": -1.2,
+          "iacMoM": 0.8,
+          "iacYoY": 2
+        },
+        {
+          "period": "2025-11",
+          "label": "nov 25",
+          "labelEn": "Nov 25",
+          "imacecMoM": -0.3,
+          "imacecYoY": 0.8,
+          "ipiMoM": -0.7,
+          "ipiYoY": -2.1,
+          "iacMoM": 0.4,
+          "iacYoY": 1.7
+        },
+        {
+          "period": "2025-12",
+          "label": "dic 25",
+          "labelEn": "Dec 25",
+          "imacecMoM": 0.5,
+          "imacecYoY": 1.3,
+          "ipiMoM": 1.1,
+          "ipiYoY": -0.3,
+          "iacMoM": 0.2,
+          "iacYoY": 1.2
+        },
+        {
+          "period": "2026-01",
+          "label": "ene 26",
+          "labelEn": "Jan 26",
+          "imacecMoM": 0.1,
+          "imacecYoY": 1.4,
+          "ipiMoM": 0.3,
+          "ipiYoY": -0.1,
+          "iacMoM": -0.2,
+          "iacYoY": 0.9
+        },
+        {
+          "period": "2026-02",
+          "label": "feb 26",
+          "labelEn": "Feb 26",
+          "imacecMoM": 0.4,
+          "imacecYoY": 1.6,
+          "ipiMoM": 0.7,
+          "ipiYoY": 0.4,
+          "iacMoM": 0.9,
+          "iacYoY": 1.6
+        },
+        {
+          "period": "2026-03",
+          "label": "mar 26",
+          "labelEn": "Mar 26",
+          "imacecMoM": -0.2,
+          "imacecYoY": 1.3,
+          "ipiMoM": -0.4,
+          "ipiYoY": -0.2,
+          "iacMoM": 0.5,
+          "iacYoY": 2
+        },
+        {
+          "period": "2026-04",
+          "label": "abr 26",
+          "labelEn": "Apr 26",
+          "imacecMoM": 0.6,
+          "imacecYoY": 1.8,
+          "ipiMoM": 0.9,
+          "ipiYoY": 1.2,
+          "iacMoM": 1.3,
+          "iacYoY": 2.4
+        },
+        {
+          "period": "2026-05",
+          "label": "may 26",
+          "labelEn": "May 26",
+          "imacecMoM": -0.1,
+          "imacecYoY": 1.5,
+          "ipiMoM": -0.2,
+          "ipiYoY": 0.8,
+          "iacMoM": 0.1,
+          "iacYoY": 2.2
+        },
+        {
+          "period": "2026-06",
+          "label": "jun 26",
+          "labelEn": "Jun 26",
+          "imacecMoM": 0.3,
+          "imacecYoY": 1.9,
+          "ipiMoM": 0.5,
+          "ipiYoY": 1.4,
+          "iacMoM": 1.1,
+          "iacYoY": 2.7
+        },
+        {
+          "period": "2026-07",
+          "label": "jul 26",
+          "labelEn": "Jul 26",
+          "imacecMoM": -0.2,
+          "imacecYoY": 1.7,
+          "ipiMoM": -0.5,
+          "ipiYoY": 0.8,
+          "iacMoM": 0.6,
+          "iacYoY": 2.4
+        },
+        {
+          "period": "2026-08",
+          "label": "ago 26",
+          "labelEn": "Aug 26",
+          "imacecMoM": 0.6,
+          "imacecYoY": 2.1,
+          "ipiMoM": 1.2,
+          "ipiYoY": 1.6,
+          "iacMoM": 2.1,
+          "iacYoY": 3.6
+        },
+        {
+          "period": "2026-09",
+          "label": "sep 26",
+          "labelEn": "Sep 26",
+          "imacecMoM": null,
+          "imacecYoY": null,
+          "ipiMoM": null,
+          "ipiYoY": null,
+          "iacMoM": null,
+          "iacYoY": null
+        }
+      ],
+      "dataStatus": "demo"
     },
     {
       "id": "precios",
@@ -43,65 +206,452 @@
       "subtitle": "IPC general, núcleo y alimentos · variación porcentual",
       "subtitleEn": "Headline CPI, core and food · percentage change",
       "unit": "%",
-      "sourceIds": ["INE", "BCCh"],
+      "sourceIds": [
+        "INE",
+        "BCCh"
+      ],
       "reference": "oct 2025 — sep 2026",
       "referenceEn": "Oct 2025 — Sep 2026",
       "footnote": "Trayectorias ilustrativas; no sustituyen la publicación del IPC del INE ni las expectativas de la EEE.",
       "footnoteEn": "Illustrative paths; not a substitute for INE CPI releases or EEE expectations.",
-      "axes": { "left": "% mensual", "leftEn": "Monthly %", "right": "% mensual", "rightEn": "Monthly %" },
+      "axes": {
+        "left": "% mensual",
+        "leftEn": "Monthly %",
+        "right": "% mensual",
+        "rightEn": "Monthly %"
+      },
       "series": [
-        { "id": "ipc", "label": "IPC general", "labelEn": "Headline CPI", "type": "bar", "axis": "left", "color": "#426f5d", "stackId": "prices", "valuesByVariation": { "mensual": "ipcMoM", "interanual": "ipcYoY" } },
-        { "id": "core", "label": "IPC sin volátiles", "labelEn": "Core CPI", "type": "line", "axis": "right", "color": "#b57947", "valuesByVariation": { "mensual": "coreMoM", "interanual": "coreYoY" } },
-        { "id": "food", "label": "Alimentos y energía", "labelEn": "Food & energy", "type": "line", "axis": "right", "color": "#788394", "valuesByVariation": { "mensual": "foodMoM", "interanual": "foodYoY" } }
+        {
+          "id": "ipc",
+          "label": "IPC general",
+          "labelEn": "Headline CPI",
+          "type": "bar",
+          "axis": "left",
+          "color": "#426f5d",
+          "stackId": "prices",
+          "valuesByVariation": {
+            "mensual": "ipcMoM",
+            "interanual": "ipcYoY"
+          }
+        },
+        {
+          "id": "core",
+          "label": "IPC sin volátiles",
+          "labelEn": "Core CPI",
+          "type": "line",
+          "axis": "right",
+          "color": "#b57947",
+          "valuesByVariation": {
+            "mensual": "coreMoM",
+            "interanual": "coreYoY"
+          }
+        },
+        {
+          "id": "food",
+          "label": "Alimentos y energía",
+          "labelEn": "Food & energy",
+          "type": "line",
+          "axis": "right",
+          "color": "#788394",
+          "valuesByVariation": {
+            "mensual": "foodMoM",
+            "interanual": "foodYoY"
+          }
+        }
       ],
       "data": [
-        { "period": "2025-10", "label": "oct 25", "labelEn": "Oct 25", "ipcMoM": 0.4, "ipcYoY": 4.1, "coreMoM": 0.3, "coreYoY": 3.8, "foodMoM": 0.5, "foodYoY": 4.4 },
-        { "period": "2025-11", "label": "nov 25", "labelEn": "Nov 25", "ipcMoM": 0.2, "ipcYoY": 3.9, "coreMoM": 0.2, "coreYoY": 3.6, "foodMoM": 0.3, "foodYoY": 4.0 },
-        { "period": "2025-12", "label": "dic 25", "labelEn": "Dec 25", "ipcMoM": 0.3, "ipcYoY": 3.7, "coreMoM": 0.2, "coreYoY": 3.5, "foodMoM": 0.4, "foodYoY": 3.8 },
-        { "period": "2026-01", "label": "ene 26", "labelEn": "Jan 26", "ipcMoM": 0.4, "ipcYoY": 3.8, "coreMoM": 0.3, "coreYoY": 3.5, "foodMoM": 0.5, "foodYoY": 3.9 },
-        { "period": "2026-02", "label": "feb 26", "labelEn": "Feb 26", "ipcMoM": 0.2, "ipcYoY": 3.6, "coreMoM": 0.2, "coreYoY": 3.4, "foodMoM": 0.4, "foodYoY": 3.8 },
-        { "period": "2026-03", "label": "mar 26", "labelEn": "Mar 26", "ipcMoM": 0.1, "ipcYoY": 3.5, "coreMoM": 0.2, "coreYoY": 3.4, "foodMoM": 0.2, "foodYoY": 3.6 },
-        { "period": "2026-04", "label": "abr 26", "labelEn": "Apr 26", "ipcMoM": 0.4, "ipcYoY": 3.7, "coreMoM": 0.3, "coreYoY": 3.4, "foodMoM": 0.6, "foodYoY": 3.9 },
-        { "period": "2026-05", "label": "may 26", "labelEn": "May 26", "ipcMoM": 0.3, "ipcYoY": 3.6, "coreMoM": 0.2, "coreYoY": 3.3, "foodMoM": 0.4, "foodYoY": 3.7 },
-        { "period": "2026-06", "label": "jun 26", "labelEn": "Jun 26", "ipcMoM": 0.2, "ipcYoY": 3.5, "coreMoM": 0.2, "coreYoY": 3.2, "foodMoM": 0.3, "foodYoY": 3.6 },
-        { "period": "2026-07", "label": "jul 26", "labelEn": "Jul 26", "ipcMoM": 0.2, "ipcYoY": 3.5, "coreMoM": 0.1, "coreYoY": 3.1, "foodMoM": 0.4, "foodYoY": 3.6 },
-        { "period": "2026-08", "label": "ago 26", "labelEn": "Aug 26", "ipcMoM": 0.3, "ipcYoY": 3.5, "coreMoM": 0.2, "coreYoY": 3.2, "foodMoM": 0.5, "foodYoY": 3.7 },
-        { "period": "2026-09", "label": "sep 26", "labelEn": "Sep 26", "ipcMoM": 0.3, "ipcYoY": 3.4, "coreMoM": 0.2, "coreYoY": 3.1, "foodMoM": 0.5, "foodYoY": 4.0 }
-      ]
+        {
+          "period": "2025-10",
+          "label": "oct 25",
+          "labelEn": "Oct 25",
+          "ipcMoM": 0.4,
+          "ipcYoY": 4.1,
+          "coreMoM": 0.3,
+          "coreYoY": 3.8,
+          "foodMoM": 0.5,
+          "foodYoY": 4.4
+        },
+        {
+          "period": "2025-11",
+          "label": "nov 25",
+          "labelEn": "Nov 25",
+          "ipcMoM": 0.2,
+          "ipcYoY": 3.9,
+          "coreMoM": 0.2,
+          "coreYoY": 3.6,
+          "foodMoM": 0.3,
+          "foodYoY": 4
+        },
+        {
+          "period": "2025-12",
+          "label": "dic 25",
+          "labelEn": "Dec 25",
+          "ipcMoM": 0.3,
+          "ipcYoY": 3.7,
+          "coreMoM": 0.2,
+          "coreYoY": 3.5,
+          "foodMoM": 0.4,
+          "foodYoY": 3.8
+        },
+        {
+          "period": "2026-01",
+          "label": "ene 26",
+          "labelEn": "Jan 26",
+          "ipcMoM": 0.4,
+          "ipcYoY": 3.8,
+          "coreMoM": 0.3,
+          "coreYoY": 3.5,
+          "foodMoM": 0.5,
+          "foodYoY": 3.9
+        },
+        {
+          "period": "2026-02",
+          "label": "feb 26",
+          "labelEn": "Feb 26",
+          "ipcMoM": 0.2,
+          "ipcYoY": 3.6,
+          "coreMoM": 0.2,
+          "coreYoY": 3.4,
+          "foodMoM": 0.4,
+          "foodYoY": 3.8
+        },
+        {
+          "period": "2026-03",
+          "label": "mar 26",
+          "labelEn": "Mar 26",
+          "ipcMoM": 0.1,
+          "ipcYoY": 3.5,
+          "coreMoM": 0.2,
+          "coreYoY": 3.4,
+          "foodMoM": 0.2,
+          "foodYoY": 3.6
+        },
+        {
+          "period": "2026-04",
+          "label": "abr 26",
+          "labelEn": "Apr 26",
+          "ipcMoM": 0.4,
+          "ipcYoY": 3.7,
+          "coreMoM": 0.3,
+          "coreYoY": 3.4,
+          "foodMoM": 0.6,
+          "foodYoY": 3.9
+        },
+        {
+          "period": "2026-05",
+          "label": "may 26",
+          "labelEn": "May 26",
+          "ipcMoM": 0.3,
+          "ipcYoY": 3.6,
+          "coreMoM": 0.2,
+          "coreYoY": 3.3,
+          "foodMoM": 0.4,
+          "foodYoY": 3.7
+        },
+        {
+          "period": "2026-06",
+          "label": "jun 26",
+          "labelEn": "Jun 26",
+          "ipcMoM": 0.2,
+          "ipcYoY": 3.5,
+          "coreMoM": 0.2,
+          "coreYoY": 3.2,
+          "foodMoM": 0.3,
+          "foodYoY": 3.6
+        },
+        {
+          "period": "2026-07",
+          "label": "jul 26",
+          "labelEn": "Jul 26",
+          "ipcMoM": 0.2,
+          "ipcYoY": 3.5,
+          "coreMoM": 0.1,
+          "coreYoY": 3.1,
+          "foodMoM": 0.4,
+          "foodYoY": 3.6
+        },
+        {
+          "period": "2026-08",
+          "label": "ago 26",
+          "labelEn": "Aug 26",
+          "ipcMoM": 0.3,
+          "ipcYoY": 3.5,
+          "coreMoM": 0.2,
+          "coreYoY": 3.2,
+          "foodMoM": 0.5,
+          "foodYoY": 3.7
+        },
+        {
+          "period": "2026-09",
+          "label": "sep 26",
+          "labelEn": "Sep 26",
+          "ipcMoM": 0.3,
+          "ipcYoY": 3.4,
+          "coreMoM": 0.2,
+          "coreYoY": 3.1,
+          "foodMoM": 0.5,
+          "foodYoY": 4
+        }
+      ],
+      "dataStatus": "demo"
     },
     {
       "id": "empleo",
       "category": "empleo",
-      "title": "Empleo y remuneraciones",
-      "titleEn": "Employment & wages",
-      "subtitle": "Ocupación formal y tasa de desocupación",
-      "subtitleEn": "Formal employment and unemployment rate",
+      "title": "Tasa de desocupación nacional",
+      "titleEn": "National unemployment rate",
+      "subtitle": "Nivel del trimestre móvil · Encuesta Nacional de Empleo",
+      "subtitleEn": "Rolling-quarter level · National Employment Survey",
       "unit": "%",
-      "sourceIds": ["INE", "SP"],
-      "reference": "oct 2025 — sep 2026",
-      "referenceEn": "Oct 2025 — Sep 2026",
-      "footnote": "Serie laboral demostrativa con períodos mensuales equivalentes. No reemplaza la ENE ni registros administrativos.",
-      "footnoteEn": "Illustrative labor series with equivalent monthly periods. Not a replacement for ENE or administrative records.",
-      "axes": { "left": "Variación (%)", "leftEn": "Change (%)", "right": "Desocupación (%)", "rightEn": "Unemployment (%)" },
+      "sourceIds": [
+        "INE"
+      ],
+      "reference": "sep 24 — ago 26",
+      "referenceEn": "Sep 24 — Aug 26",
+      "footnote": "Fuente: INE/SIMEL, código CL01:DF_TDES_SEXO(1.0)/M.TDES._T.AS. Los puntos son niveles de tasa, no variaciones porcentuales.",
+      "footnoteEn": "Source: INE/SIMEL, code CL01:DF_TDES_SEXO(1.0)/M.TDES._T.AS. Points are rate levels, not percentage changes.",
+      "axes": {
+        "left": "Tasa (%)",
+        "leftEn": "Rate (%)",
+        "right": "",
+        "rightEn": ""
+      },
       "series": [
-        { "id": "formal", "label": "Ocupados formales", "labelEn": "Formal employment", "type": "bar", "axis": "left", "color": "#426f5d", "stackId": "labor", "valuesByVariation": { "mensual": "formalMoM", "interanual": "formalYoY" } },
-        { "id": "unemployment", "label": "Desocupación", "labelEn": "Unemployment", "type": "line", "axis": "right", "color": "#b57947", "valuesByVariation": { "mensual": "unemploymentRate", "interanual": "unemploymentRate" } },
-        { "id": "wages", "label": "Remuneraciones reales", "labelEn": "Real wages", "type": "line", "axis": "left", "color": "#788394", "valuesByVariation": { "mensual": "wagesMoM", "interanual": "wagesYoY" } }
+        {
+          "id": "ine.ene.tdes.nacional.total",
+          "label": "Desocupación",
+          "labelEn": "Unemployment",
+          "type": "line",
+          "axis": "left",
+          "color": "#b57947",
+          "valuesByVariation": {
+            "mensual": "unemploymentRate",
+            "interanual": "unemploymentRate"
+          }
+        }
       ],
       "data": [
-        { "period": "2025-10", "label": "oct 25", "labelEn": "Oct 25", "formalMoM": 0.1, "formalYoY": 0.8, "unemploymentRate": 8.6, "wagesMoM": 0.3, "wagesYoY": 1.4 },
-        { "period": "2025-11", "label": "nov 25", "labelEn": "Nov 25", "formalMoM": 0.2, "formalYoY": 0.9, "unemploymentRate": 8.6, "wagesMoM": 0.1, "wagesYoY": 1.5 },
-        { "period": "2025-12", "label": "dic 25", "labelEn": "Dec 25", "formalMoM": -0.1, "formalYoY": 0.7, "unemploymentRate": 8.5, "wagesMoM": 0.2, "wagesYoY": 1.6 },
-        { "period": "2026-01", "label": "ene 26", "labelEn": "Jan 26", "formalMoM": 0.2, "formalYoY": 0.8, "unemploymentRate": 8.7, "wagesMoM": 0.4, "wagesYoY": 1.5 },
-        { "period": "2026-02", "label": "feb 26", "labelEn": "Feb 26", "formalMoM": 0.1, "formalYoY": 0.9, "unemploymentRate": 8.6, "wagesMoM": 0.3, "wagesYoY": 1.6 },
-        { "period": "2026-03", "label": "mar 26", "labelEn": "Mar 26", "formalMoM": 0.0, "formalYoY": 0.9, "unemploymentRate": 8.5, "wagesMoM": 0.2, "wagesYoY": 1.7 },
-        { "period": "2026-04", "label": "abr 26", "labelEn": "Apr 26", "formalMoM": 0.2, "formalYoY": 1.0, "unemploymentRate": 8.5, "wagesMoM": 0.3, "wagesYoY": 1.7 },
-        { "period": "2026-05", "label": "may 26", "labelEn": "May 26", "formalMoM": 0.1, "formalYoY": 1.1, "unemploymentRate": 8.4, "wagesMoM": 0.2, "wagesYoY": 1.9 },
-        { "period": "2026-06", "label": "jun 26", "labelEn": "Jun 26", "formalMoM": 0.2, "formalYoY": 1.2, "unemploymentRate": 8.5, "wagesMoM": 0.4, "wagesYoY": 2.0 },
-        { "period": "2026-07", "label": "jul 26", "labelEn": "Jul 26", "formalMoM": 0.1, "formalYoY": 1.2, "unemploymentRate": 8.4, "wagesMoM": 0.5, "wagesYoY": 2.1 },
-        { "period": "2026-08", "label": "ago 26", "labelEn": "Aug 26", "formalMoM": 0.2, "formalYoY": 1.4, "unemploymentRate": 8.4, "wagesMoM": 1.8, "wagesYoY": 2.2 },
-        { "period": "2026-09", "label": "sep 26", "labelEn": "Sep 26", "formalMoM": null, "formalYoY": null, "unemploymentRate": null, "wagesMoM": null, "wagesYoY": null }
-      ]
+        {
+          "period": "2023-09",
+          "label": "sep 23",
+          "labelEn": "Sep 23",
+          "unemploymentRate": 8.913
+        },
+        {
+          "period": "2023-10",
+          "label": "oct 23",
+          "labelEn": "Oct 23",
+          "unemploymentRate": 8.886
+        },
+        {
+          "period": "2023-11",
+          "label": "nov 23",
+          "labelEn": "Nov 23",
+          "unemploymentRate": 8.732
+        },
+        {
+          "period": "2023-12",
+          "label": "dic 23",
+          "labelEn": "Dec 23",
+          "unemploymentRate": 8.476
+        },
+        {
+          "period": "2024-01",
+          "label": "ene 24",
+          "labelEn": "Jan 24",
+          "unemploymentRate": 8.436
+        },
+        {
+          "period": "2024-02",
+          "label": "feb 24",
+          "labelEn": "Feb 24",
+          "unemploymentRate": 8.504
+        },
+        {
+          "period": "2024-03",
+          "label": "mar 24",
+          "labelEn": "Mar 24",
+          "unemploymentRate": 8.678
+        },
+        {
+          "period": "2024-04",
+          "label": "abr 24",
+          "labelEn": "Apr 24",
+          "unemploymentRate": 8.524
+        },
+        {
+          "period": "2024-05",
+          "label": "may 24",
+          "labelEn": "May 24",
+          "unemploymentRate": 8.313
+        },
+        {
+          "period": "2024-06",
+          "label": "jun 24",
+          "labelEn": "Jun 24",
+          "unemploymentRate": 8.348
+        },
+        {
+          "period": "2024-07",
+          "label": "jul 24",
+          "labelEn": "Jul 24",
+          "unemploymentRate": 8.684
+        },
+        {
+          "period": "2024-08",
+          "label": "ago 24",
+          "labelEn": "Aug 24",
+          "unemploymentRate": 8.901
+        },
+        {
+          "period": "2024-09",
+          "label": "sep 24",
+          "labelEn": "Sep 24",
+          "unemploymentRate": 8.742
+        },
+        {
+          "period": "2024-10",
+          "label": "oct 24",
+          "labelEn": "Oct 24",
+          "unemploymentRate": 8.58
+        },
+        {
+          "period": "2024-11",
+          "label": "nov 24",
+          "labelEn": "Nov 24",
+          "unemploymentRate": 8.218
+        },
+        {
+          "period": "2024-12",
+          "label": "dic 24",
+          "labelEn": "Dec 24",
+          "unemploymentRate": 8.08
+        },
+        {
+          "period": "2025-01",
+          "label": "ene 25",
+          "labelEn": "Jan 25",
+          "unemploymentRate": 8.023
+        },
+        {
+          "period": "2025-02",
+          "label": "feb 25",
+          "labelEn": "Feb 25",
+          "unemploymentRate": 8.382
+        },
+        {
+          "period": "2025-03",
+          "label": "mar 25",
+          "labelEn": "Mar 25",
+          "unemploymentRate": 8.709
+        },
+        {
+          "period": "2025-04",
+          "label": "abr 25",
+          "labelEn": "Apr 25",
+          "unemploymentRate": 8.841
+        },
+        {
+          "period": "2025-05",
+          "label": "may 25",
+          "labelEn": "May 25",
+          "unemploymentRate": 8.943
+        },
+        {
+          "period": "2025-06",
+          "label": "jun 25",
+          "labelEn": "Jun 25",
+          "unemploymentRate": 8.893
+        },
+        {
+          "period": "2025-07",
+          "label": "jul 25",
+          "labelEn": "Jul 25",
+          "unemploymentRate": 8.699
+        },
+        {
+          "period": "2025-08",
+          "label": "ago 25",
+          "labelEn": "Aug 25",
+          "unemploymentRate": 8.561
+        },
+        {
+          "period": "2025-09",
+          "label": "sep 25",
+          "labelEn": "Sep 25",
+          "unemploymentRate": 8.529
+        },
+        {
+          "period": "2025-10",
+          "label": "oct 25",
+          "labelEn": "Oct 25",
+          "unemploymentRate": 8.448
+        },
+        {
+          "period": "2025-11",
+          "label": "nov 25",
+          "labelEn": "Nov 25",
+          "unemploymentRate": 8.424
+        },
+        {
+          "period": "2025-12",
+          "label": "dic 25",
+          "labelEn": "Dec 25",
+          "unemploymentRate": 8.05
+        },
+        {
+          "period": "2026-01",
+          "label": "ene 26",
+          "labelEn": "Jan 26",
+          "unemploymentRate": 8.285
+        },
+        {
+          "period": "2026-02",
+          "label": "feb 26",
+          "labelEn": "Feb 26",
+          "unemploymentRate": 8.33
+        },
+        {
+          "period": "2026-03",
+          "label": "mar 26",
+          "labelEn": "Mar 26",
+          "unemploymentRate": 8.93
+        },
+        {
+          "period": "2026-04",
+          "label": "abr 26",
+          "labelEn": "Apr 26",
+          "unemploymentRate": 9.109
+        },
+        {
+          "period": "2026-05",
+          "label": "may 26",
+          "labelEn": "May 26",
+          "unemploymentRate": 9.438
+        },
+        {
+          "period": "2026-06",
+          "label": "jun 26",
+          "labelEn": "Jun 26",
+          "unemploymentRate": 9.441
+        },
+        {
+          "period": "2026-07",
+          "label": "jul 26",
+          "labelEn": "Jul 26",
+          "unemploymentRate": 9.529
+        },
+        {
+          "period": "2026-08",
+          "label": "ago 26",
+          "labelEn": "Aug 26",
+          "unemploymentRate": 9.64
+        }
+      ],
+      "dataStatus": "official",
+      "seriesId": "ine.ene.tdes.nacional.total",
+      "sourceUrl": "https://sdmx.ine.gob.cl/rest/data/CL01,DF_TDES_SEXO,1.0/M.TDES._T.AS?format=csv",
+      "documentUrl": "https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/09/30/la-tasa-de-desocupaci%C3%B3n-nacional-fue-9-6-en-el-trimestre-junio---agosto-de-2026"
     },
     {
       "id": "pobreza",
@@ -111,31 +661,194 @@
       "subtitle": "Estimación de ingresos y canasta básica · porcentaje",
       "subtitleEn": "Income estimate and basic food basket · percent",
       "unit": "%",
-      "sourceIds": ["MDS", "INE"],
+      "sourceIds": [
+        "MDS",
+        "INE"
+      ],
       "reference": "oct 2025 — sep 2026",
       "referenceEn": "Oct 2025 — Sep 2026",
       "footnote": "Nowcast y canasta de ejemplo con fines de visualización. CASEN se publica en rondas y no es una serie mensual.",
       "footnoteEn": "Illustrative nowcast and basket for visualization. CASEN is released in rounds, not monthly.",
-      "axes": { "left": "Porcentaje de personas", "leftEn": "Share of population", "right": "Cambio del período", "rightEn": "Period change" },
+      "axes": {
+        "left": "Porcentaje de personas",
+        "leftEn": "Share of population",
+        "right": "Cambio del período",
+        "rightEn": "Period change"
+      },
       "series": [
-        { "id": "poverty", "label": "Pobreza por ingresos", "labelEn": "Income poverty", "type": "line", "axis": "left", "color": "#426f5d", "valuesByVariation": { "mensual": "povertyLevel", "interanual": "povertyYoY" } },
-        { "id": "extreme", "label": "Pobreza extrema", "labelEn": "Extreme poverty", "type": "bar", "axis": "right", "color": "#b57947", "stackId": "poverty", "valuesByVariation": { "mensual": "extremeLevel", "interanual": "extremeYoY" } },
-        { "id": "basket", "label": "Canasta básica · var.", "labelEn": "Basic basket · change", "type": "line", "axis": "right", "color": "#788394", "valuesByVariation": { "mensual": "basketMoM", "interanual": "basketYoY" } }
+        {
+          "id": "poverty",
+          "label": "Pobreza por ingresos",
+          "labelEn": "Income poverty",
+          "type": "line",
+          "axis": "left",
+          "color": "#426f5d",
+          "valuesByVariation": {
+            "mensual": "povertyLevel",
+            "interanual": "povertyYoY"
+          }
+        },
+        {
+          "id": "extreme",
+          "label": "Pobreza extrema",
+          "labelEn": "Extreme poverty",
+          "type": "bar",
+          "axis": "right",
+          "color": "#b57947",
+          "stackId": "poverty",
+          "valuesByVariation": {
+            "mensual": "extremeLevel",
+            "interanual": "extremeYoY"
+          }
+        },
+        {
+          "id": "basket",
+          "label": "Canasta básica · var.",
+          "labelEn": "Basic basket · change",
+          "type": "line",
+          "axis": "right",
+          "color": "#788394",
+          "valuesByVariation": {
+            "mensual": "basketMoM",
+            "interanual": "basketYoY"
+          }
+        }
       ],
       "data": [
-        { "period": "2025-10", "label": "oct 25", "labelEn": "Oct 25", "povertyLevel": 7.3, "povertyYoY": 7.3, "extremeLevel": 2.5, "extremeYoY": 2.5, "basketMoM": 0.8, "basketYoY": 5.1 },
-        { "period": "2025-11", "label": "nov 25", "labelEn": "Nov 25", "povertyLevel": 7.3, "povertyYoY": 7.3, "extremeLevel": 2.5, "extremeYoY": 2.5, "basketMoM": 0.5, "basketYoY": 4.9 },
-        { "period": "2025-12", "label": "dic 25", "labelEn": "Dec 25", "povertyLevel": 7.2, "povertyYoY": 7.2, "extremeLevel": 2.5, "extremeYoY": 2.5, "basketMoM": 0.4, "basketYoY": 4.7 },
-        { "period": "2026-01", "label": "ene 26", "labelEn": "Jan 26", "povertyLevel": 7.2, "povertyYoY": 7.2, "extremeLevel": 2.4, "extremeYoY": 2.4, "basketMoM": 0.7, "basketYoY": 4.6 },
-        { "period": "2026-02", "label": "feb 26", "labelEn": "Feb 26", "povertyLevel": 7.1, "povertyYoY": 7.1, "extremeLevel": 2.4, "extremeYoY": 2.4, "basketMoM": 0.3, "basketYoY": 4.4 },
-        { "period": "2026-03", "label": "mar 26", "labelEn": "Mar 26", "povertyLevel": 7.1, "povertyYoY": 7.1, "extremeLevel": 2.4, "extremeYoY": 2.4, "basketMoM": 0.4, "basketYoY": 4.3 },
-        { "period": "2026-04", "label": "abr 26", "labelEn": "Apr 26", "povertyLevel": 7.0, "povertyYoY": 7.0, "extremeLevel": 2.3, "extremeYoY": 2.3, "basketMoM": 0.6, "basketYoY": 4.1 },
-        { "period": "2026-05", "label": "may 26", "labelEn": "May 26", "povertyLevel": 7.0, "povertyYoY": 7.0, "extremeLevel": 2.3, "extremeYoY": 2.3, "basketMoM": 0.5, "basketYoY": 3.9 },
-        { "period": "2026-06", "label": "jun 26", "labelEn": "Jun 26", "povertyLevel": 6.9, "povertyYoY": 6.9, "extremeLevel": 2.2, "extremeYoY": 2.2, "basketMoM": 0.6, "basketYoY": 3.7 },
-        { "period": "2026-07", "label": "jul 26", "labelEn": "Jul 26", "povertyLevel": 6.9, "povertyYoY": 6.9, "extremeLevel": 2.2, "extremeYoY": 2.2, "basketMoM": 0.4, "basketYoY": 3.5 },
-        { "period": "2026-08", "label": "ago 26", "labelEn": "Aug 26", "povertyLevel": 6.8, "povertyYoY": 6.8, "extremeLevel": 2.1, "extremeYoY": 2.1, "basketMoM": 0.5, "basketYoY": 3.4 },
-        { "period": "2026-09", "label": "sep 26", "labelEn": "Sep 26", "povertyLevel": 6.8, "povertyYoY": 7.1, "extremeLevel": 2.1, "extremeYoY": 2.3, "basketMoM": 0.7, "basketYoY": 3.2 }
-      ]
+        {
+          "period": "2025-10",
+          "label": "oct 25",
+          "labelEn": "Oct 25",
+          "povertyLevel": 7.3,
+          "povertyYoY": 7.3,
+          "extremeLevel": 2.5,
+          "extremeYoY": 2.5,
+          "basketMoM": 0.8,
+          "basketYoY": 5.1
+        },
+        {
+          "period": "2025-11",
+          "label": "nov 25",
+          "labelEn": "Nov 25",
+          "povertyLevel": 7.3,
+          "povertyYoY": 7.3,
+          "extremeLevel": 2.5,
+          "extremeYoY": 2.5,
+          "basketMoM": 0.5,
+          "basketYoY": 4.9
+        },
+        {
+          "period": "2025-12",
+          "label": "dic 25",
+          "labelEn": "Dec 25",
+          "povertyLevel": 7.2,
+          "povertyYoY": 7.2,
+          "extremeLevel": 2.5,
+          "extremeYoY": 2.5,
+          "basketMoM": 0.4,
+          "basketYoY": 4.7
+        },
+        {
+          "period": "2026-01",
+          "label": "ene 26",
+          "labelEn": "Jan 26",
+          "povertyLevel": 7.2,
+          "povertyYoY": 7.2,
+          "extremeLevel": 2.4,
+          "extremeYoY": 2.4,
+          "basketMoM": 0.7,
+          "basketYoY": 4.6
+        },
+        {
+          "period": "2026-02",
+          "label": "feb 26",
+          "labelEn": "Feb 26",
+          "povertyLevel": 7.1,
+          "povertyYoY": 7.1,
+          "extremeLevel": 2.4,
+          "extremeYoY": 2.4,
+          "basketMoM": 0.3,
+          "basketYoY": 4.4
+        },
+        {
+          "period": "2026-03",
+          "label": "mar 26",
+          "labelEn": "Mar 26",
+          "povertyLevel": 7.1,
+          "povertyYoY": 7.1,
+          "extremeLevel": 2.4,
+          "extremeYoY": 2.4,
+          "basketMoM": 0.4,
+          "basketYoY": 4.3
+        },
+        {
+          "period": "2026-04",
+          "label": "abr 26",
+          "labelEn": "Apr 26",
+          "povertyLevel": 7,
+          "povertyYoY": 7,
+          "extremeLevel": 2.3,
+          "extremeYoY": 2.3,
+          "basketMoM": 0.6,
+          "basketYoY": 4.1
+        },
+        {
+          "period": "2026-05",
+          "label": "may 26",
+          "labelEn": "May 26",
+          "povertyLevel": 7,
+          "povertyYoY": 7,
+          "extremeLevel": 2.3,
+          "extremeYoY": 2.3,
+          "basketMoM": 0.5,
+          "basketYoY": 3.9
+        },
+        {
+          "period": "2026-06",
+          "label": "jun 26",
+          "labelEn": "Jun 26",
+          "povertyLevel": 6.9,
+          "povertyYoY": 6.9,
+          "extremeLevel": 2.2,
+          "extremeYoY": 2.2,
+          "basketMoM": 0.6,
+          "basketYoY": 3.7
+        },
+        {
+          "period": "2026-07",
+          "label": "jul 26",
+          "labelEn": "Jul 26",
+          "povertyLevel": 6.9,
+          "povertyYoY": 6.9,
+          "extremeLevel": 2.2,
+          "extremeYoY": 2.2,
+          "basketMoM": 0.4,
+          "basketYoY": 3.5
+        },
+        {
+          "period": "2026-08",
+          "label": "ago 26",
+          "labelEn": "Aug 26",
+          "povertyLevel": 6.8,
+          "povertyYoY": 6.8,
+          "extremeLevel": 2.1,
+          "extremeYoY": 2.1,
+          "basketMoM": 0.5,
+          "basketYoY": 3.4
+        },
+        {
+          "period": "2026-09",
+          "label": "sep 26",
+          "labelEn": "Sep 26",
+          "povertyLevel": 6.8,
+          "povertyYoY": 7.1,
+          "extremeLevel": 2.1,
+          "extremeYoY": 2.3,
+          "basketMoM": 0.7,
+          "basketYoY": 3.2
+        }
+      ],
+      "dataStatus": "demo"
     }
   ]
 }

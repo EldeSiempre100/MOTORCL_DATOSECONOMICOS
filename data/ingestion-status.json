@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "lastSuccessfulRefresh": "2026-10-19T23:27:39.298Z",
+  "source": "INE/SIMEL",
+  "seriesId": "ine.ene.tdes.nacional.total",
+  "observations": 198,
+  "latestPeriod": "2026-08",
+  "newObservations": 0,
+  "revisedObservations": 0,
+  "requestedFrom": "2025-06"
+}

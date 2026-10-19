@@ -15,7 +15,8 @@
       "value": "$948,50",
       "source": "BCCh",
       "tone": "neutral",
-      "icon": "bank"
+      "icon": "bank",
+      "dataStatus": "demo"
     },
     {
       "id": "ipc-sep",
@@ -31,7 +32,8 @@
       "value": "+0,3%",
       "source": "INE",
       "tone": "neutral",
-      "icon": "prices"
+      "icon": "prices",
+      "dataStatus": "demo"
     },
     {
       "id": "imacec-ago",
@@ -47,23 +49,29 @@
       "value": "+0,6%",
       "source": "BCCh",
       "tone": "positive",
-      "icon": "activity"
+      "icon": "activity",
+      "dataStatus": "demo"
     },
     {
       "id": "empleo-trim",
       "status": "published",
-      "date": "2026-09-29",
-      "dateText": "29 sep",
-      "dateTextEn": "Sep 29",
+      "date": "2026-09-30",
+      "dateText": "30 sep",
+      "dateTextEn": "30 Sep",
       "category": "empleo",
-      "indicator": "Empleo formal, variación mensual",
-      "indicatorEn": "Formal employment, monthly change",
-      "period": "jun–ago 2026",
-      "periodEn": "Jun–Aug 2026",
-      "value": "+0,2%",
-      "source": "INE / AFC",
-      "tone": "positive",
-      "icon": "employment"
+      "indicator": "Tasa de desocupación nacional",
+      "indicatorEn": "National unemployment rate",
+      "period": "jun 26–ago 26",
+      "periodEn": "Jun 26–Aug 26",
+      "value": "9,6%",
+      "source": "INE",
+      "tone": "neutral",
+      "icon": "employment",
+      "dataStatus": "official",
+      "seriesId": "ine.ene.tdes.nacional.total",
+      "sourceUrl": "https://sdmx.ine.gob.cl/rest/data/CL01,DF_TDES_SEXO,1.0/M.TDES._T.AS?format=csv",
+      "documentUrl": "https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/09/30/la-tasa-de-desocupaci%C3%B3n-nacional-fue-9-6-en-el-trimestre-junio---agosto-de-2026",
+      "publishedAt": "2026-09-30"
     },
     {
       "id": "eee",
@@ -78,7 +86,8 @@
       "periodEn": "Monthly survey",
       "source": "BCCh",
       "tone": "neutral",
-      "icon": "survey"
+      "icon": "survey",
+      "dataStatus": "demo"
     },
     {
       "id": "imacec-sep-release",
@@ -93,7 +102,8 @@
       "periodEn": "Monthly release",
       "source": "BCCh",
       "tone": "neutral",
-      "icon": "activity"
+      "icon": "activity",
+      "dataStatus": "demo"
     },
     {
       "id": "ipc-oct-release",
@@ -108,7 +118,8 @@
       "periodEn": "Monthly release",
       "source": "INE",
       "tone": "neutral",
-      "icon": "prices"
+      "icon": "prices",
+      "dataStatus": "demo"
     }
   ]
 }

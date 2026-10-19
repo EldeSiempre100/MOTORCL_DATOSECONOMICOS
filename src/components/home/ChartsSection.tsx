@@ -82,7 +82,7 @@ function ChartCard({ chart, metadata, language, variation, period, from, to, ui 
     <article className="chart-card">
       <header className="chart-card-header">
         <div className="chart-card-title">
-          <h3>{language === 'en' ? chart.titleEn : chart.title}</h3>
+          <h3>{language === 'en' ? chart.titleEn : chart.title} <span className={`data-origin data-origin--${chart.dataStatus ?? 'demo'}`}>{chart.dataStatus === 'official' ? 'INE · oficial' : language === 'en' ? 'Example' : 'Ejemplo'}</span></h3>
           <p>{language === 'en' ? chart.subtitleEn : chart.subtitle}</p>
         </div>
         <span className="chart-unit">{chart.unit}</span>
@@ -128,10 +128,11 @@ function ChartCard({ chart, metadata, language, variation, period, from, to, ui 
         <span>{ui.referencePeriod}: <strong>{periodLabel}</strong></span>
         <span className="chart-source-links">
           {chart.sourceIds.map((sourceId, index) => (
-            <span key={sourceId}>{index ? <span className="source-divider">·</span> : null}{metadata.sources[sourceId] ? <a href={metadata.sources[sourceId].url} target="_blank" rel="noreferrer">{sourceId}<ArrowUpRight size={10} /></a> : sourceId}</span>
+            <span key={sourceId}>{index ? <span className="source-divider">·</span> : null}{metadata.sources[sourceId] && chart.dataStatus === 'official' ? <a href={chart.documentUrl ?? metadata.sources[sourceId].url} target="_blank" rel="noreferrer">{sourceId}<ArrowUpRight size={10} /></a> : sourceId}</span>
           ))}
         </span>
         <p>{language === 'en' ? chart.footnoteEn : chart.footnote}</p>
+        {chart.seriesId ? <p><a href={`/indicador/${chart.seriesId}`}>{language === 'en' ? 'See observations and download' : 'Ver observaciones y descarga'} <ArrowUpRight size={10} /></a></p> : null}
       </footer>
     </article>
   );

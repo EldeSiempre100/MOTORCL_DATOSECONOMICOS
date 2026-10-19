@@ -1,51 +1,43 @@
 {
   "schemaVersion": 1,
   "projectName": "Monitor Chile",
-  "status": "demo",
-  "updatedAt": "2026-10-19T15:00:00-03:00",
-  "asOfLabel": "Corte demostrativo · 19 oct 2026",
-  "latestCompleteMonth": "ago 2026",
+  "status": "mixed",
+  "updatedAt": "2026-10-19T23:27:39.298Z",
+  "asOfLabel": "INE consultado 2026-10-19",
+  "latestCompleteMonth": "según serie",
   "isDemo": true,
   "demoNotice": {
-    "es": "Maqueta demostrativa. Las cifras, fechas y expectativas son ejemplos no verificados y no representan publicaciones oficiales ni datos en tiempo real.",
-    "en": "Demonstration mockup. Figures, dates and expectations are unverified examples, not official releases or real-time data."
+    "es": "La tasa de desocupación se obtiene de INE/SIMEL. Las demás cifras, fechas y expectativas de esta vista siguen siendo ejemplos no verificados.",
+    "en": "The unemployment rate comes from INE/SIMEL. Other figures, dates and expectations in this view remain unverified examples."
   },
-  "delayedSeriesCount": 3,
-  "delayedSeries": [
-    {
-      "id": "ipc-productor",
-      "name": "Índice de precios al productor (IPP)",
-      "nameEn": "Producer Price Index (PPI)",
-      "source": "INE",
-      "lastUpdate": "Sep 2026",
-      "reason": "Esperando publicación",
-      "reasonEn": "Release pending"
-    },
-    {
-      "id": "balance-fiscal",
-      "name": "Balance fiscal estructural",
-      "nameEn": "Structural fiscal balance",
-      "source": "DIPRES",
-      "lastUpdate": "2T 2026",
-      "reason": "Serie con rezago trimestral",
-      "reasonEn": "Quarterly release lag"
-    },
-    {
-      "id": "casen-nowcast",
-      "name": "Nowcast de pobreza por ingresos",
-      "nameEn": "Income poverty nowcast",
-      "source": "MDS",
-      "lastUpdate": "Ago 2026",
-      "reason": "Estimación en revisión",
-      "reasonEn": "Estimate under review"
-    }
-  ],
+  "delayedSeriesCount": 0,
+  "delayedSeries": [],
   "sources": {
-    "BCCh": { "url": "https://www.bcentral.cl/" },
-    "INE": { "url": "https://www.ine.gob.cl/" },
-    "DIPRES": { "url": "https://www.dipres.gob.cl/" },
-    "MDS": { "url": "https://www.desarrollosocialyfamilia.gob.cl/" },
-    "SP": { "url": "https://www.spensiones.cl/" }
+    "BCCh": {
+      "url": "https://www.bcentral.cl/",
+      "displayName": "Banco Central de Chile",
+      "displayNameEn": "Central Bank of Chile"
+    },
+    "INE": {
+      "url": "https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/ocupacion-y-desocupacion",
+      "displayName": "Instituto Nacional de Estadísticas",
+      "displayNameEn": "National Statistics Institute"
+    },
+    "DIPRES": {
+      "url": "https://www.dipres.gob.cl/",
+      "displayName": "Dirección de Presupuestos",
+      "displayNameEn": "Budget Office"
+    },
+    "MDS": {
+      "url": "https://www.desarrollosocialyfamilia.gob.cl/",
+      "displayName": "Ministerio de Desarrollo Social",
+      "displayNameEn": "Ministry of Social Development"
+    },
+    "SP": {
+      "url": "https://www.spensiones.cl/",
+      "displayName": "Superintendencia de Pensiones",
+      "displayNameEn": "Pension Regulator"
+    }
   },
   "ui": {
     "es": {
@@ -70,26 +62,74 @@
       "variationLabel": "Variación",
       "periodLabel": "Período",
       "categories": [
-        { "id": "vision-general", "label": "Visión general" },
-        { "id": "actividad", "label": "Actividad" },
-        { "id": "precios", "label": "Precios" },
-        { "id": "dolar-uf", "label": "Dólar y UF" },
-        { "id": "comercio-exterior", "label": "Comercio exterior" },
-        { "id": "tasas", "label": "Tasas (TPM)" },
-        { "id": "frente-fiscal", "label": "Frente fiscal" },
-        { "id": "empleo", "label": "Empleo" },
-        { "id": "pobreza", "label": "Pobreza" }
+        {
+          "id": "vision-general",
+          "label": "Visión general"
+        },
+        {
+          "id": "actividad",
+          "label": "Actividad"
+        },
+        {
+          "id": "precios",
+          "label": "Precios"
+        },
+        {
+          "id": "dolar-uf",
+          "label": "Dólar y UF"
+        },
+        {
+          "id": "comercio-exterior",
+          "label": "Comercio exterior"
+        },
+        {
+          "id": "tasas",
+          "label": "Tasas (TPM)"
+        },
+        {
+          "id": "frente-fiscal",
+          "label": "Frente fiscal"
+        },
+        {
+          "id": "empleo",
+          "label": "Empleo"
+        },
+        {
+          "id": "pobreza",
+          "label": "Pobreza"
+        }
       ],
       "variations": [
-        { "id": "mensual", "label": "Mensual desest." },
-        { "id": "interanual", "label": "Interanual" }
+        {
+          "id": "mensual",
+          "label": "Mensual desest."
+        },
+        {
+          "id": "interanual",
+          "label": "Interanual"
+        }
       ],
       "periods": [
-        { "id": "ultimo", "label": "Último dato" },
-        { "id": "ultimo-mes", "label": "Último mes completo" },
-        { "id": "anio", "label": "En lo que va del año" },
-        { "id": "12-meses", "label": "Últimos 12 meses" },
-        { "id": "personalizado", "label": "Personalizado" }
+        {
+          "id": "ultimo",
+          "label": "Último dato"
+        },
+        {
+          "id": "ultimo-mes",
+          "label": "Último mes completo"
+        },
+        {
+          "id": "anio",
+          "label": "En lo que va del año"
+        },
+        {
+          "id": "12-meses",
+          "label": "Últimos 12 meses"
+        },
+        {
+          "id": "personalizado",
+          "label": "Personalizado"
+        }
       ],
       "latestData": "Último dato",
       "lastCompleteSuffix": "· ago 2026",
@@ -117,7 +157,7 @@
       "noCategoryCards": "No hay tarjetas principales para esta categoría en la maqueta.",
       "noCategoryCharts": "No hay series de gráfico asociadas a esta categoría en esta maqueta.",
       "noSearchResults": "No encontramos indicadores con ese término.",
-      "noTimelineResults": "No hay eventos de esta categoría en el calendario demostrativo.",
+      "noTimelineResults": "No hay publicaciones verificadas para esta selección.",
       "marketExpected": "esperado",
       "releasedOn": "salió el",
       "indicator": "Indicador",
@@ -127,12 +167,25 @@
       "download": "Consultar fuente",
       "footerAboutTitle": "Sobre este monitor",
       "footerAbout": "Una lectura ordenada de indicadores públicos de Chile, con el período y la fuente a la vista.",
-      "footerSourcesTitle": "Fuentes oficiales",
+      "footerSourcesTitle": "Fuentes y referencias",
       "footerMethodTitle": "Datos y metodología",
-      "footerMethod": "Los contratos JSON y las plantillas de extracción están separados para facilitar su conexión futura a fuentes oficiales.",
+      "footerMethod": "La tasa de desocupación usa la serie oficial INE/SIMEL. Los demás indicadores siguen señalados como ejemplos hasta conectar y verificar sus fuentes.",
       "footerCredits": "Diseño editorial para lectura y seguimiento de datos.",
       "noData": "Sin dato para esta selección",
-      "monthNames": ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+      "monthNames": [
+        "ene",
+        "feb",
+        "mar",
+        "abr",
+        "may",
+        "jun",
+        "jul",
+        "ago",
+        "sep",
+        "oct",
+        "nov",
+        "dic"
+      ]
     },
     "en": {
       "brandTagline": "The economy, with the date behind every number.",
@@ -156,26 +209,74 @@
       "variationLabel": "Change",
       "periodLabel": "Period",
       "categories": [
-        { "id": "vision-general", "label": "Overview" },
-        { "id": "actividad", "label": "Activity" },
-        { "id": "precios", "label": "Prices" },
-        { "id": "dolar-uf", "label": "FX & UF" },
-        { "id": "comercio-exterior", "label": "Foreign trade" },
-        { "id": "tasas", "label": "Rates (TPM)" },
-        { "id": "frente-fiscal", "label": "Fiscal" },
-        { "id": "empleo", "label": "Employment" },
-        { "id": "pobreza", "label": "Poverty" }
+        {
+          "id": "vision-general",
+          "label": "Overview"
+        },
+        {
+          "id": "actividad",
+          "label": "Activity"
+        },
+        {
+          "id": "precios",
+          "label": "Prices"
+        },
+        {
+          "id": "dolar-uf",
+          "label": "FX & UF"
+        },
+        {
+          "id": "comercio-exterior",
+          "label": "Foreign trade"
+        },
+        {
+          "id": "tasas",
+          "label": "Rates (TPM)"
+        },
+        {
+          "id": "frente-fiscal",
+          "label": "Fiscal"
+        },
+        {
+          "id": "empleo",
+          "label": "Employment"
+        },
+        {
+          "id": "pobreza",
+          "label": "Poverty"
+        }
       ],
       "variations": [
-        { "id": "mensual", "label": "Monthly s.a." },
-        { "id": "interanual", "label": "Year-on-year" }
+        {
+          "id": "mensual",
+          "label": "Monthly s.a."
+        },
+        {
+          "id": "interanual",
+          "label": "Year-on-year"
+        }
       ],
       "periods": [
-        { "id": "ultimo", "label": "Latest data" },
-        { "id": "ultimo-mes", "label": "Latest full month" },
-        { "id": "anio", "label": "Year to date" },
-        { "id": "12-meses", "label": "Last 12 months" },
-        { "id": "personalizado", "label": "Custom" }
+        {
+          "id": "ultimo",
+          "label": "Latest data"
+        },
+        {
+          "id": "ultimo-mes",
+          "label": "Latest full month"
+        },
+        {
+          "id": "anio",
+          "label": "Year to date"
+        },
+        {
+          "id": "12-meses",
+          "label": "Last 12 months"
+        },
+        {
+          "id": "personalizado",
+          "label": "Custom"
+        }
       ],
       "latestData": "Latest data",
       "lastCompleteSuffix": "· Aug 2026",
@@ -203,7 +304,7 @@
       "noCategoryCards": "No headline cards are available for this category in the mockup.",
       "noCategoryCharts": "No chart series are associated with this category in this mockup.",
       "noSearchResults": "No indicators matched that search.",
-      "noTimelineResults": "No events for this category in the demo calendar.",
+      "noTimelineResults": "No verified releases for this selection.",
       "marketExpected": "expected",
       "releasedOn": "released",
       "indicator": "Indicator",
@@ -213,12 +314,27 @@
       "download": "Visit source",
       "footerAboutTitle": "About this monitor",
       "footerAbout": "A clear reading of public Chilean indicators, with their period and source in view.",
-      "footerSourcesTitle": "Official sources",
+      "footerSourcesTitle": "Sources and references",
       "footerMethodTitle": "Data & method",
-      "footerMethod": "JSON contracts and extraction templates are kept separate for a future connection to official sources.",
+      "footerMethod": "The unemployment rate uses the official INE/SIMEL series. Other indicators remain labelled as examples until their sources are connected and verified.",
       "footerCredits": "Editorial design for reading and tracking economic data.",
       "noData": "No data for this selection",
-      "monthNames": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      "monthNames": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ]
     }
-  }
+  },
+  "asOfLabelEn": "INE checked 2026-10-19",
+  "latestCompleteMonthEn": "by series"
 }

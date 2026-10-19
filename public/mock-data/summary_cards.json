@@ -14,27 +14,140 @@
         "descriptionEn": "Seasonally adjusted monthly change",
         "valuesByVariation": {
           "mensual": {
-            "ultimo": { "value": "+0,6%", "tone": "positive", "diagnosis": "Mejor", "diagnosisEn": "Better", "context": "ago 2026 · vs. jul 2026 · esperado +0,4% (EEE) · salió el 1 oct", "contextEn": "Aug 2026 · vs. Jul 2026 · expected +0.4% (EEE) · released Oct 1" },
-            "ultimo-mes": { "value": "+0,6%", "tone": "positive", "diagnosis": "Mejor", "diagnosisEn": "Better", "context": "ago 2026 · vs. jul 2026 · dato mensual completo", "contextEn": "Aug 2026 · vs. Jul 2026 · complete monthly data" },
-            "anio": { "value": "+2,0%", "tone": "positive", "diagnosis": "En expansión", "diagnosisEn": "Expanding", "context": "ene–ago 2026 · acumulado demostrativo", "contextEn": "Jan–Aug 2026 · illustrative cumulative change" },
-            "12-meses": { "value": "+1,7%", "tone": "positive", "diagnosis": "Crecimiento moderado", "diagnosisEn": "Moderate growth", "context": "sep 2025–ago 2026 · variación acumulada demostrativa", "contextEn": "Sep 2025–Aug 2026 · illustrative cumulative change" },
-            "personalizado": { "value": "+0,6%", "tone": "positive", "diagnosis": "Período seleccionado", "diagnosisEn": "Selected period", "context": "Serie mensual demostrativa · revise las fechas para delimitar el gráfico", "contextEn": "Illustrative monthly series · select dates to delimit the chart" }
+            "ultimo": {
+              "value": "+0,6%",
+              "tone": "positive",
+              "diagnosis": "Mejor",
+              "diagnosisEn": "Better",
+              "context": "ago 2026 · vs. jul 2026 · esperado +0,4% (EEE) · salió el 1 oct",
+              "contextEn": "Aug 2026 · vs. Jul 2026 · expected +0.4% (EEE) · released Oct 1"
+            },
+            "ultimo-mes": {
+              "value": "+0,6%",
+              "tone": "positive",
+              "diagnosis": "Mejor",
+              "diagnosisEn": "Better",
+              "context": "ago 2026 · vs. jul 2026 · dato mensual completo",
+              "contextEn": "Aug 2026 · vs. Jul 2026 · complete monthly data"
+            },
+            "anio": {
+              "value": "+2,0%",
+              "tone": "positive",
+              "diagnosis": "En expansión",
+              "diagnosisEn": "Expanding",
+              "context": "ene–ago 2026 · acumulado demostrativo",
+              "contextEn": "Jan–Aug 2026 · illustrative cumulative change"
+            },
+            "12-meses": {
+              "value": "+1,7%",
+              "tone": "positive",
+              "diagnosis": "Crecimiento moderado",
+              "diagnosisEn": "Moderate growth",
+              "context": "sep 2025–ago 2026 · variación acumulada demostrativa",
+              "contextEn": "Sep 2025–Aug 2026 · illustrative cumulative change"
+            },
+            "personalizado": {
+              "value": "+0,6%",
+              "tone": "positive",
+              "diagnosis": "Período seleccionado",
+              "diagnosisEn": "Selected period",
+              "context": "Serie mensual demostrativa · revise las fechas para delimitar el gráfico",
+              "contextEn": "Illustrative monthly series · select dates to delimit the chart"
+            }
           },
           "interanual": {
-            "ultimo": { "value": "+2,1%", "tone": "positive", "diagnosis": "Sobre el año anterior", "diagnosisEn": "Above year ago", "context": "ago 2026 · vs. ago 2025 · variación demostrativa", "contextEn": "Aug 2026 · vs. Aug 2025 · illustrative change" },
-            "ultimo-mes": { "value": "+2,1%", "tone": "positive", "diagnosis": "Sobre el año anterior", "diagnosisEn": "Above year ago", "context": "ago 2026 · comparación interanual demostrativa", "contextEn": "Aug 2026 · illustrative year-on-year comparison" },
-            "anio": { "value": "+2,0%", "tone": "positive", "diagnosis": "En expansión", "diagnosisEn": "Expanding", "context": "ene–ago 2026 · acumulado demostrativo", "contextEn": "Jan–Aug 2026 · illustrative cumulative change" },
-            "12-meses": { "value": "+1,7%", "tone": "positive", "diagnosis": "Crecimiento moderado", "diagnosisEn": "Moderate growth", "context": "sep 2025–ago 2026 · variación acumulada demostrativa", "contextEn": "Sep 2025–Aug 2026 · illustrative cumulative change" },
-            "personalizado": { "value": "+2,1%", "tone": "positive", "diagnosis": "Período seleccionado", "diagnosisEn": "Selected period", "context": "Comparación interanual de muestra", "contextEn": "Illustrative year-on-year comparison" }
+            "ultimo": {
+              "value": "+2,1%",
+              "tone": "positive",
+              "diagnosis": "Sobre el año anterior",
+              "diagnosisEn": "Above year ago",
+              "context": "ago 2026 · vs. ago 2025 · variación demostrativa",
+              "contextEn": "Aug 2026 · vs. Aug 2025 · illustrative change"
+            },
+            "ultimo-mes": {
+              "value": "+2,1%",
+              "tone": "positive",
+              "diagnosis": "Sobre el año anterior",
+              "diagnosisEn": "Above year ago",
+              "context": "ago 2026 · comparación interanual demostrativa",
+              "contextEn": "Aug 2026 · illustrative year-on-year comparison"
+            },
+            "anio": {
+              "value": "+2,0%",
+              "tone": "positive",
+              "diagnosis": "En expansión",
+              "diagnosisEn": "Expanding",
+              "context": "ene–ago 2026 · acumulado demostrativo",
+              "contextEn": "Jan–Aug 2026 · illustrative cumulative change"
+            },
+            "12-meses": {
+              "value": "+1,7%",
+              "tone": "positive",
+              "diagnosis": "Crecimiento moderado",
+              "diagnosisEn": "Moderate growth",
+              "context": "sep 2025–ago 2026 · variación acumulada demostrativa",
+              "contextEn": "Sep 2025–Aug 2026 · illustrative cumulative change"
+            },
+            "personalizado": {
+              "value": "+2,1%",
+              "tone": "positive",
+              "diagnosis": "Período seleccionado",
+              "diagnosisEn": "Selected period",
+              "context": "Comparación interanual de muestra",
+              "contextEn": "Illustrative year-on-year comparison"
+            }
           }
         }
       },
       "subIndicators": [
-        { "name": "Industria (IPI)", "nameEn": "Industry (IPI)", "period": "ago 2026", "periodEn": "Aug 2026", "values": { "mensual": "+1,2%", "interanual": "−2,4%" }, "toneByVariation": { "mensual": "positive", "interanual": "negative" } },
-        { "name": "Construcción (IMACON)", "nameEn": "Construction (IMACON)", "period": "ago 2026", "periodEn": "Aug 2026", "values": { "mensual": "−0,4%", "interanual": "+1,1%" }, "toneByVariation": { "mensual": "negative", "interanual": "positive" } },
-        { "name": "Comercio (IAC)", "nameEn": "Retail trade (IAC)", "period": "ago 2026", "periodEn": "Aug 2026", "values": { "mensual": "+2,1%", "interanual": "+3,6%" }, "toneByVariation": { "mensual": "positive", "interanual": "positive" } }
+        {
+          "name": "Industria (IPI)",
+          "nameEn": "Industry (IPI)",
+          "period": "ago 2026",
+          "periodEn": "Aug 2026",
+          "values": {
+            "mensual": "+1,2%",
+            "interanual": "−2,4%"
+          },
+          "toneByVariation": {
+            "mensual": "positive",
+            "interanual": "negative"
+          }
+        },
+        {
+          "name": "Construcción (IMACON)",
+          "nameEn": "Construction (IMACON)",
+          "period": "ago 2026",
+          "periodEn": "Aug 2026",
+          "values": {
+            "mensual": "−0,4%",
+            "interanual": "+1,1%"
+          },
+          "toneByVariation": {
+            "mensual": "negative",
+            "interanual": "positive"
+          }
+        },
+        {
+          "name": "Comercio (IAC)",
+          "nameEn": "Retail trade (IAC)",
+          "period": "ago 2026",
+          "periodEn": "Aug 2026",
+          "values": {
+            "mensual": "+2,1%",
+            "interanual": "+3,6%"
+          },
+          "toneByVariation": {
+            "mensual": "positive",
+            "interanual": "positive"
+          }
+        }
       ],
-      "sources": ["BCCh", "INE"]
+      "sources": [
+        "BCCh",
+        "INE"
+      ],
+      "dataStatus": "demo"
     },
     {
       "id": "inflacion",
@@ -49,27 +162,140 @@
         "descriptionEn": "Monthly change",
         "valuesByVariation": {
           "mensual": {
-            "ultimo": { "value": "+0,3%", "tone": "neutral", "diagnosis": "Como se esperaba", "diagnosisEn": "As expected", "context": "sep 2026 · esperado 0,3% (EEE) · salió el 8 oct", "contextEn": "Sep 2026 · expected 0.3% (EEE) · released Oct 8" },
-            "ultimo-mes": { "value": "+0,3%", "tone": "neutral", "diagnosis": "Como se esperaba", "diagnosisEn": "As expected", "context": "sep 2026 · dato mensual completo", "contextEn": "Sep 2026 · complete monthly data" },
-            "anio": { "value": "+2,8%", "tone": "neutral", "diagnosis": "Acumulado del año", "diagnosisEn": "Year-to-date", "context": "ene–sep 2026 · acumulado demostrativo", "contextEn": "Jan–Sep 2026 · illustrative cumulative change" },
-            "12-meses": { "value": "+4,2%", "tone": "neutral", "diagnosis": "Inflación acumulada", "diagnosisEn": "Cumulative inflation", "context": "oct 2025–sep 2026 · acumulado demostrativo", "contextEn": "Oct 2025–Sep 2026 · illustrative cumulative change" },
-            "personalizado": { "value": "+0,3%", "tone": "neutral", "diagnosis": "Período seleccionado", "diagnosisEn": "Selected period", "context": "Serie mensual demostrativa · revise las fechas para delimitar el gráfico", "contextEn": "Illustrative monthly series · select dates to delimit the chart" }
+            "ultimo": {
+              "value": "+0,3%",
+              "tone": "neutral",
+              "diagnosis": "Como se esperaba",
+              "diagnosisEn": "As expected",
+              "context": "sep 2026 · esperado 0,3% (EEE) · salió el 8 oct",
+              "contextEn": "Sep 2026 · expected 0.3% (EEE) · released Oct 8"
+            },
+            "ultimo-mes": {
+              "value": "+0,3%",
+              "tone": "neutral",
+              "diagnosis": "Como se esperaba",
+              "diagnosisEn": "As expected",
+              "context": "sep 2026 · dato mensual completo",
+              "contextEn": "Sep 2026 · complete monthly data"
+            },
+            "anio": {
+              "value": "+2,8%",
+              "tone": "neutral",
+              "diagnosis": "Acumulado del año",
+              "diagnosisEn": "Year-to-date",
+              "context": "ene–sep 2026 · acumulado demostrativo",
+              "contextEn": "Jan–Sep 2026 · illustrative cumulative change"
+            },
+            "12-meses": {
+              "value": "+4,2%",
+              "tone": "neutral",
+              "diagnosis": "Inflación acumulada",
+              "diagnosisEn": "Cumulative inflation",
+              "context": "oct 2025–sep 2026 · acumulado demostrativo",
+              "contextEn": "Oct 2025–Sep 2026 · illustrative cumulative change"
+            },
+            "personalizado": {
+              "value": "+0,3%",
+              "tone": "neutral",
+              "diagnosis": "Período seleccionado",
+              "diagnosisEn": "Selected period",
+              "context": "Serie mensual demostrativa · revise las fechas para delimitar el gráfico",
+              "contextEn": "Illustrative monthly series · select dates to delimit the chart"
+            }
           },
           "interanual": {
-            "ultimo": { "value": "+3,4%", "tone": "neutral", "diagnosis": "Interanual", "diagnosisEn": "Year-on-year", "context": "sep 2026 · vs. sep 2025 · variación demostrativa", "contextEn": "Sep 2026 · vs. Sep 2025 · illustrative change" },
-            "ultimo-mes": { "value": "+3,4%", "tone": "neutral", "diagnosis": "Interanual", "diagnosisEn": "Year-on-year", "context": "sep 2026 · comparación interanual demostrativa", "contextEn": "Sep 2026 · illustrative year-on-year comparison" },
-            "anio": { "value": "+2,8%", "tone": "neutral", "diagnosis": "Acumulado del año", "diagnosisEn": "Year-to-date", "context": "ene–sep 2026 · acumulado demostrativo", "contextEn": "Jan–Sep 2026 · illustrative cumulative change" },
-            "12-meses": { "value": "+4,2%", "tone": "neutral", "diagnosis": "Inflación acumulada", "diagnosisEn": "Cumulative inflation", "context": "oct 2025–sep 2026 · acumulado demostrativo", "contextEn": "Oct 2025–Sep 2026 · illustrative cumulative change" },
-            "personalizado": { "value": "+3,4%", "tone": "neutral", "diagnosis": "Período seleccionado", "diagnosisEn": "Selected period", "context": "Comparación interanual de muestra", "contextEn": "Illustrative year-on-year comparison" }
+            "ultimo": {
+              "value": "+3,4%",
+              "tone": "neutral",
+              "diagnosis": "Interanual",
+              "diagnosisEn": "Year-on-year",
+              "context": "sep 2026 · vs. sep 2025 · variación demostrativa",
+              "contextEn": "Sep 2026 · vs. Sep 2025 · illustrative change"
+            },
+            "ultimo-mes": {
+              "value": "+3,4%",
+              "tone": "neutral",
+              "diagnosis": "Interanual",
+              "diagnosisEn": "Year-on-year",
+              "context": "sep 2026 · comparación interanual demostrativa",
+              "contextEn": "Sep 2026 · illustrative year-on-year comparison"
+            },
+            "anio": {
+              "value": "+2,8%",
+              "tone": "neutral",
+              "diagnosis": "Acumulado del año",
+              "diagnosisEn": "Year-to-date",
+              "context": "ene–sep 2026 · acumulado demostrativo",
+              "contextEn": "Jan–Sep 2026 · illustrative cumulative change"
+            },
+            "12-meses": {
+              "value": "+4,2%",
+              "tone": "neutral",
+              "diagnosis": "Inflación acumulada",
+              "diagnosisEn": "Cumulative inflation",
+              "context": "oct 2025–sep 2026 · acumulado demostrativo",
+              "contextEn": "Oct 2025–Sep 2026 · illustrative cumulative change"
+            },
+            "personalizado": {
+              "value": "+3,4%",
+              "tone": "neutral",
+              "diagnosis": "Período seleccionado",
+              "diagnosisEn": "Selected period",
+              "context": "Comparación interanual de muestra",
+              "contextEn": "Illustrative year-on-year comparison"
+            }
           }
         }
       },
       "subIndicators": [
-        { "name": "IPC sin volátiles", "nameEn": "Core CPI", "period": "sep 2026", "periodEn": "Sep 2026", "values": { "mensual": "+0,2%", "interanual": "+3,1%" }, "toneByVariation": { "mensual": "neutral", "interanual": "neutral" } },
-        { "name": "Alimentos y energía", "nameEn": "Food & energy", "period": "sep 2026", "periodEn": "Sep 2026", "values": { "mensual": "+0,5%", "interanual": "+4,0%" }, "toneByVariation": { "mensual": "negative", "interanual": "negative" } },
-        { "name": "Precios productor (IPP)", "nameEn": "Producer prices (PPI)", "period": "sep 2026", "periodEn": "Sep 2026", "values": { "mensual": "+0,8%", "interanual": "+2,6%" }, "toneByVariation": { "mensual": "negative", "interanual": "neutral" } }
+        {
+          "name": "IPC sin volátiles",
+          "nameEn": "Core CPI",
+          "period": "sep 2026",
+          "periodEn": "Sep 2026",
+          "values": {
+            "mensual": "+0,2%",
+            "interanual": "+3,1%"
+          },
+          "toneByVariation": {
+            "mensual": "neutral",
+            "interanual": "neutral"
+          }
+        },
+        {
+          "name": "Alimentos y energía",
+          "nameEn": "Food & energy",
+          "period": "sep 2026",
+          "periodEn": "Sep 2026",
+          "values": {
+            "mensual": "+0,5%",
+            "interanual": "+4,0%"
+          },
+          "toneByVariation": {
+            "mensual": "negative",
+            "interanual": "negative"
+          }
+        },
+        {
+          "name": "Precios productor (IPP)",
+          "nameEn": "Producer prices (PPI)",
+          "period": "sep 2026",
+          "periodEn": "Sep 2026",
+          "values": {
+            "mensual": "+0,8%",
+            "interanual": "+2,6%"
+          },
+          "toneByVariation": {
+            "mensual": "negative",
+            "interanual": "neutral"
+          }
+        }
       ],
-      "sources": ["INE", "BCCh"]
+      "sources": [
+        "INE",
+        "BCCh"
+      ],
+      "dataStatus": "demo"
     },
     {
       "id": "empleo",
@@ -78,33 +304,134 @@
       "titleEn": "Employment",
       "icon": "employment",
       "main": {
-        "name": "Ocupados formales (INE/AFC)",
-        "nameEn": "Formal employment (INE/AFC)",
-        "description": "Variación mensual desestacionalizada",
-        "descriptionEn": "Seasonally adjusted monthly change",
+        "name": "Tasa de desocupación nacional",
+        "nameEn": "National unemployment rate",
+        "description": "Nivel · trimestre móvil ENE",
+        "descriptionEn": "Level · ENE rolling quarter",
         "valuesByVariation": {
           "mensual": {
-            "ultimo": { "value": "+0,2%", "tone": "positive", "diagnosis": "Mejor", "diagnosisEn": "Improving", "context": "jun–ago 2026 · dato publicado el 29 sep", "contextEn": "Jun–Aug 2026 · released Sep 29" },
-            "ultimo-mes": { "value": "+0,2%", "tone": "positive", "diagnosis": "Mejor", "diagnosisEn": "Improving", "context": "jun–ago 2026 · trimestre móvil", "contextEn": "Jun–Aug 2026 · rolling quarter" },
-            "anio": { "value": "+0,6%", "tone": "positive", "diagnosis": "Avance gradual", "diagnosisEn": "Gradual improvement", "context": "ene–ago 2026 · variación demostrativa", "contextEn": "Jan–Aug 2026 · illustrative change" },
-            "12-meses": { "value": "+0,5%", "tone": "positive", "diagnosis": "Avance gradual", "diagnosisEn": "Gradual improvement", "context": "sep 2025–ago 2026 · variación demostrativa", "contextEn": "Sep 2025–Aug 2026 · illustrative change" },
-            "personalizado": { "value": "+0,2%", "tone": "positive", "diagnosis": "Período seleccionado", "diagnosisEn": "Selected period", "context": "Serie de empleo demostrativa · revise las fechas para delimitar el gráfico", "contextEn": "Illustrative employment series · select dates to delimit the chart" }
+            "ultimo": {
+              "value": "9,6%",
+              "tone": "neutral",
+              "diagnosis": "+0,1 pp",
+              "diagnosisEn": "+0,1 pp",
+              "context": "jun 26–ago 26 · +0,1 pp vs. trimestre móvil anterior · publicado 2026-09-30",
+              "contextEn": "Jun 26–Aug 26 · +0,1 pp vs. prior rolling quarter · published 2026-09-30"
+            },
+            "ultimo-mes": {
+              "value": "—",
+              "tone": "neutral",
+              "diagnosis": "No corresponde",
+              "diagnosisEn": "Not applicable",
+              "context": "La tasa de desocupación es un nivel de trimestre móvil; no tiene acumulado anual.",
+              "contextEn": "The unemployment rate is a rolling-quarter level; an annual cumulative value does not apply."
+            },
+            "anio": {
+              "value": "—",
+              "tone": "neutral",
+              "diagnosis": "No corresponde",
+              "diagnosisEn": "Not applicable",
+              "context": "La tasa de desocupación es un nivel de trimestre móvil; no tiene acumulado anual.",
+              "contextEn": "The unemployment rate is a rolling-quarter level; an annual cumulative value does not apply."
+            },
+            "12-meses": {
+              "value": "—",
+              "tone": "neutral",
+              "diagnosis": "No corresponde",
+              "diagnosisEn": "Not applicable",
+              "context": "La tasa de desocupación es un nivel de trimestre móvil; no tiene acumulado anual.",
+              "contextEn": "The unemployment rate is a rolling-quarter level; an annual cumulative value does not apply."
+            },
+            "personalizado": {
+              "value": "—",
+              "tone": "neutral",
+              "diagnosis": "No corresponde",
+              "diagnosisEn": "Not applicable",
+              "context": "La tasa de desocupación es un nivel de trimestre móvil; no tiene acumulado anual.",
+              "contextEn": "The unemployment rate is a rolling-quarter level; an annual cumulative value does not apply."
+            }
           },
           "interanual": {
-            "ultimo": { "value": "+1,4%", "tone": "positive", "diagnosis": "Sobre el año anterior", "diagnosisEn": "Above year ago", "context": "jun–ago 2026 · comparación demostrativa", "contextEn": "Jun–Aug 2026 · illustrative comparison" },
-            "ultimo-mes": { "value": "+1,4%", "tone": "positive", "diagnosis": "Sobre el año anterior", "diagnosisEn": "Above year ago", "context": "jun–ago 2026 · comparación interanual", "contextEn": "Jun–Aug 2026 · year-on-year comparison" },
-            "anio": { "value": "+0,6%", "tone": "positive", "diagnosis": "Avance gradual", "diagnosisEn": "Gradual improvement", "context": "ene–ago 2026 · variación demostrativa", "contextEn": "Jan–Aug 2026 · illustrative change" },
-            "12-meses": { "value": "+0,5%", "tone": "positive", "diagnosis": "Avance gradual", "diagnosisEn": "Gradual improvement", "context": "sep 2025–ago 2026 · variación demostrativa", "contextEn": "Sep 2025–Aug 2026 · illustrative change" },
-            "personalizado": { "value": "+1,4%", "tone": "positive", "diagnosis": "Período seleccionado", "diagnosisEn": "Selected period", "context": "Comparación interanual de muestra", "contextEn": "Illustrative year-on-year comparison" }
+            "ultimo": {
+              "value": "9,6%",
+              "tone": "neutral",
+              "diagnosis": "+1,1 pp",
+              "diagnosisEn": "+1,1 pp",
+              "context": "jun 26–ago 26 · +1,1 pp vs. igual trimestre del año anterior · publicado 2026-09-30",
+              "contextEn": "Jun 26–Aug 26 · +1,1 pp vs. same quarter last year · published 2026-09-30"
+            },
+            "ultimo-mes": {
+              "value": "—",
+              "tone": "neutral",
+              "diagnosis": "No corresponde",
+              "diagnosisEn": "Not applicable",
+              "context": "La tasa de desocupación es un nivel de trimestre móvil; no tiene acumulado anual.",
+              "contextEn": "The unemployment rate is a rolling-quarter level; an annual cumulative value does not apply."
+            },
+            "anio": {
+              "value": "—",
+              "tone": "neutral",
+              "diagnosis": "No corresponde",
+              "diagnosisEn": "Not applicable",
+              "context": "La tasa de desocupación es un nivel de trimestre móvil; no tiene acumulado anual.",
+              "contextEn": "The unemployment rate is a rolling-quarter level; an annual cumulative value does not apply."
+            },
+            "12-meses": {
+              "value": "—",
+              "tone": "neutral",
+              "diagnosis": "No corresponde",
+              "diagnosisEn": "Not applicable",
+              "context": "La tasa de desocupación es un nivel de trimestre móvil; no tiene acumulado anual.",
+              "contextEn": "The unemployment rate is a rolling-quarter level; an annual cumulative value does not apply."
+            },
+            "personalizado": {
+              "value": "—",
+              "tone": "neutral",
+              "diagnosis": "No corresponde",
+              "diagnosisEn": "Not applicable",
+              "context": "La tasa de desocupación es un nivel de trimestre móvil; no tiene acumulado anual.",
+              "contextEn": "The unemployment rate is a rolling-quarter level; an annual cumulative value does not apply."
+            }
           }
         }
       },
       "subIndicators": [
-        { "name": "Tasa de desocupación", "nameEn": "Unemployment rate", "period": "jun–ago 2026", "periodEn": "Jun–Aug 2026", "values": { "mensual": "8,4%", "interanual": "8,4%" }, "toneByVariation": { "mensual": "negative", "interanual": "negative" } },
-        { "name": "Ocupación informal", "nameEn": "Informal employment", "period": "jun–ago 2026", "periodEn": "Jun–Aug 2026", "values": { "mensual": "27,2%", "interanual": "27,2%" }, "toneByVariation": { "mensual": "neutral", "interanual": "neutral" } },
-        { "name": "Remuneraciones reales (IR)", "nameEn": "Real wages (IR)", "period": "ago 2026", "periodEn": "Aug 2026", "values": { "mensual": "+1,8%", "interanual": "+2,2%" }, "toneByVariation": { "mensual": "positive", "interanual": "positive" } }
+        {
+          "name": "Cambio mensual",
+          "nameEn": "Monthly change",
+          "period": "jun 26–ago 26",
+          "periodEn": "Jun 26–Aug 26",
+          "values": {
+            "mensual": "+0,1 pp",
+            "interanual": "+0,1 pp"
+          },
+          "toneByVariation": {
+            "mensual": "neutral",
+            "interanual": "neutral"
+          }
+        },
+        {
+          "name": "Cambio en doce meses",
+          "nameEn": "12-month change",
+          "period": "jun 26–ago 26",
+          "periodEn": "Jun 26–Aug 26",
+          "values": {
+            "mensual": "+1,1 pp",
+            "interanual": "+1,1 pp"
+          },
+          "toneByVariation": {
+            "mensual": "neutral",
+            "interanual": "neutral"
+          }
+        }
       ],
-      "sources": ["INE", "SP"]
+      "sources": [
+        "INE"
+      ],
+      "dataStatus": "official",
+      "seriesId": "ine.ene.tdes.nacional.total",
+      "sourceUrl": "https://sdmx.ine.gob.cl/rest/data/CL01,DF_TDES_SEXO,1.0/M.TDES._T.AS?format=csv",
+      "documentUrl": "https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/09/30/la-tasa-de-desocupaci%C3%B3n-nacional-fue-9-6-en-el-trimestre-junio---agosto-de-2026"
     },
     {
       "id": "pobreza",
@@ -119,27 +446,140 @@
         "descriptionEn": "Rolling estimate · level",
         "valuesByVariation": {
           "mensual": {
-            "ultimo": { "value": "6,8%", "tone": "positive", "diagnosis": "Señal de alivio", "diagnosisEn": "Improving signal", "context": "mar–ago 2026 · −0,1 p.p. vs. feb–jul 2026", "contextEn": "Mar–Aug 2026 · −0.1 pp vs. Feb–Jul 2026" },
-            "ultimo-mes": { "value": "6,8%", "tone": "positive", "diagnosis": "Señal de alivio", "diagnosisEn": "Improving signal", "context": "mar–ago 2026 · estimación móvil", "contextEn": "Mar–Aug 2026 · rolling estimate" },
-            "anio": { "value": "6,8%", "tone": "positive", "diagnosis": "Nivel demostrativo", "diagnosisEn": "Illustrative level", "context": "ene–ago 2026 · estimación de muestra", "contextEn": "Jan–Aug 2026 · illustrative estimate" },
-            "12-meses": { "value": "6,9%", "tone": "neutral", "diagnosis": "Nivel demostrativo", "diagnosisEn": "Illustrative level", "context": "sep 2025–ago 2026 · estimación de muestra", "contextEn": "Sep 2025–Aug 2026 · illustrative estimate" },
-            "personalizado": { "value": "6,8%", "tone": "positive", "diagnosis": "Período seleccionado", "diagnosisEn": "Selected period", "context": "Estimación móvil demostrativa · revise las fechas para delimitar el gráfico", "contextEn": "Illustrative rolling estimate · select dates to delimit the chart" }
+            "ultimo": {
+              "value": "6,8%",
+              "tone": "positive",
+              "diagnosis": "Señal de alivio",
+              "diagnosisEn": "Improving signal",
+              "context": "mar–ago 2026 · −0,1 p.p. vs. feb–jul 2026",
+              "contextEn": "Mar–Aug 2026 · −0.1 pp vs. Feb–Jul 2026"
+            },
+            "ultimo-mes": {
+              "value": "6,8%",
+              "tone": "positive",
+              "diagnosis": "Señal de alivio",
+              "diagnosisEn": "Improving signal",
+              "context": "mar–ago 2026 · estimación móvil",
+              "contextEn": "Mar–Aug 2026 · rolling estimate"
+            },
+            "anio": {
+              "value": "6,8%",
+              "tone": "positive",
+              "diagnosis": "Nivel demostrativo",
+              "diagnosisEn": "Illustrative level",
+              "context": "ene–ago 2026 · estimación de muestra",
+              "contextEn": "Jan–Aug 2026 · illustrative estimate"
+            },
+            "12-meses": {
+              "value": "6,9%",
+              "tone": "neutral",
+              "diagnosis": "Nivel demostrativo",
+              "diagnosisEn": "Illustrative level",
+              "context": "sep 2025–ago 2026 · estimación de muestra",
+              "contextEn": "Sep 2025–Aug 2026 · illustrative estimate"
+            },
+            "personalizado": {
+              "value": "6,8%",
+              "tone": "positive",
+              "diagnosis": "Período seleccionado",
+              "diagnosisEn": "Selected period",
+              "context": "Estimación móvil demostrativa · revise las fechas para delimitar el gráfico",
+              "contextEn": "Illustrative rolling estimate · select dates to delimit the chart"
+            }
           },
           "interanual": {
-            "ultimo": { "value": "7,1%", "tone": "positive", "diagnosis": "Menor al año anterior", "diagnosisEn": "Below year ago", "context": "mar–ago 2026 · nivel comparativo demostrativo", "contextEn": "Mar–Aug 2026 · illustrative comparison" },
-            "ultimo-mes": { "value": "7,1%", "tone": "positive", "diagnosis": "Menor al año anterior", "diagnosisEn": "Below year ago", "context": "mar–ago 2026 · nivel comparativo demostrativo", "contextEn": "Mar–Aug 2026 · illustrative comparison" },
-            "anio": { "value": "7,1%", "tone": "positive", "diagnosis": "Nivel comparativo", "diagnosisEn": "Comparative level", "context": "ene–ago 2026 · estimación de muestra", "contextEn": "Jan–Aug 2026 · illustrative estimate" },
-            "12-meses": { "value": "7,2%", "tone": "neutral", "diagnosis": "Nivel comparativo", "diagnosisEn": "Comparative level", "context": "sep 2025–ago 2026 · estimación de muestra", "contextEn": "Sep 2025–Aug 2026 · illustrative estimate" },
-            "personalizado": { "value": "7,1%", "tone": "positive", "diagnosis": "Período seleccionado", "diagnosisEn": "Selected period", "context": "Comparación interanual de muestra", "contextEn": "Illustrative year-on-year comparison" }
+            "ultimo": {
+              "value": "7,1%",
+              "tone": "positive",
+              "diagnosis": "Menor al año anterior",
+              "diagnosisEn": "Below year ago",
+              "context": "mar–ago 2026 · nivel comparativo demostrativo",
+              "contextEn": "Mar–Aug 2026 · illustrative comparison"
+            },
+            "ultimo-mes": {
+              "value": "7,1%",
+              "tone": "positive",
+              "diagnosis": "Menor al año anterior",
+              "diagnosisEn": "Below year ago",
+              "context": "mar–ago 2026 · nivel comparativo demostrativo",
+              "contextEn": "Mar–Aug 2026 · illustrative comparison"
+            },
+            "anio": {
+              "value": "7,1%",
+              "tone": "positive",
+              "diagnosis": "Nivel comparativo",
+              "diagnosisEn": "Comparative level",
+              "context": "ene–ago 2026 · estimación de muestra",
+              "contextEn": "Jan–Aug 2026 · illustrative estimate"
+            },
+            "12-meses": {
+              "value": "7,2%",
+              "tone": "neutral",
+              "diagnosis": "Nivel comparativo",
+              "diagnosisEn": "Comparative level",
+              "context": "sep 2025–ago 2026 · estimación de muestra",
+              "contextEn": "Sep 2025–Aug 2026 · illustrative estimate"
+            },
+            "personalizado": {
+              "value": "7,1%",
+              "tone": "positive",
+              "diagnosis": "Período seleccionado",
+              "diagnosisEn": "Selected period",
+              "context": "Comparación interanual de muestra",
+              "contextEn": "Illustrative year-on-year comparison"
+            }
           }
         }
       },
       "subIndicators": [
-        { "name": "Pobreza oficial (CASEN)", "nameEn": "Official poverty (CASEN)", "period": "Medición vigente", "periodEn": "Current measurement", "values": { "mensual": "CASEN", "interanual": "CASEN" }, "toneByVariation": { "mensual": "neutral", "interanual": "neutral" } },
-        { "name": "Canasta básica (CBA)", "nameEn": "Basic food basket (CBA)", "period": "sep 2026", "periodEn": "Sep 2026", "values": { "mensual": "$68.450", "interanual": "+3,2%" }, "toneByVariation": { "mensual": "neutral", "interanual": "negative" } },
-        { "name": "Pobreza extrema (Nowcast)", "nameEn": "Extreme poverty (nowcast)", "period": "mar–ago 2026", "periodEn": "Mar–Aug 2026", "values": { "mensual": "2,1%", "interanual": "2,3%" }, "toneByVariation": { "mensual": "positive", "interanual": "positive" } }
+        {
+          "name": "Pobreza oficial (CASEN)",
+          "nameEn": "Official poverty (CASEN)",
+          "period": "Medición vigente",
+          "periodEn": "Current measurement",
+          "values": {
+            "mensual": "CASEN",
+            "interanual": "CASEN"
+          },
+          "toneByVariation": {
+            "mensual": "neutral",
+            "interanual": "neutral"
+          }
+        },
+        {
+          "name": "Canasta básica (CBA)",
+          "nameEn": "Basic food basket (CBA)",
+          "period": "sep 2026",
+          "periodEn": "Sep 2026",
+          "values": {
+            "mensual": "$68.450",
+            "interanual": "+3,2%"
+          },
+          "toneByVariation": {
+            "mensual": "neutral",
+            "interanual": "negative"
+          }
+        },
+        {
+          "name": "Pobreza extrema (Nowcast)",
+          "nameEn": "Extreme poverty (nowcast)",
+          "period": "mar–ago 2026",
+          "periodEn": "Mar–Aug 2026",
+          "values": {
+            "mensual": "2,1%",
+            "interanual": "2,3%"
+          },
+          "toneByVariation": {
+            "mensual": "positive",
+            "interanual": "positive"
+          }
+        }
       ],
-      "sources": ["MDS", "INE"]
+      "sources": [
+        "MDS",
+        "INE"
+      ],
+      "dataStatus": "demo"
     }
   ]
 }

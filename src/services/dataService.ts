@@ -32,3 +32,35 @@ export async function loadDashboardData(signal?: AbortSignal): Promise<Dashboard
 
   return { metadata, timeline, summaries, charts };
 }
+
+export interface SeriesObservation {
+  period: string;
+  observedFrom: string;
+  observedTo: string;
+  value: number;
+  publishedAt: string | null;
+  documentUrl: string | null;
+  sourceStatus: string | null;
+  revisions: Array<{ detectedAt: string; previousValue: number; newValue: number }>;
+}
+
+export interface PublishedSeries {
+  id: string;
+  organization: string;
+  officialCode: string;
+  name: string;
+  nameEn: string;
+  unit: string;
+  frequency: string;
+  sourceUrl: string;
+  methodologyUrl: string;
+  lastSuccessfulRefresh: string;
+  observations: SeriesObservation[];
+}
+
+export async function loadPublishedSeries(id: string, signal?: AbortSignal): Promise<PublishedSeries> {
+  if (!/^[a-z0-9.-]+$/.test(id)) throw new Error('Identificador de serie inválido');
+  const response = await fetch(`/series/${id}.json`, { signal, headers: { Accept: 'application/json' } });
+  if (!response.ok) throw new Error(`Unable to load series ${id} (${response.status})`);
+  return (await response.json()) as PublishedSeries;
+}
