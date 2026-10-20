@@ -57,16 +57,25 @@ function normalizeRecord(record, spec, today) {
   if (!record || typeof record.fecha !== 'string' || typeof record.valor !== 'number') {
     throw new Error('Estructura de observación inválida: ' + spec.code);
   }
-  const period = record.fecha.slice(0, 10);
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(period) || new Date(period).toISOString().slice(0, 10) !== period) {
+  const rawDate = record.fecha.slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(rawDate) ||
+      Number.isNaN(Date.parse(rawDate)) ||
+      new Date(rawDate).toISOString().slice(0, 10) !== rawDate) {
     throw new Error('Fecha inválida para ' + spec.code + ': ' + record.fecha);
   }
-  if (period > today) return null; // Do not present any projected or future-dated observations as current.
+  const monthly = spec.frequency === 'monthly';
+  if (monthly && !rawDate.endsWith('-01')) {
+    throw new Error('Un dato mensual debe corresponder al primer día del mes: ' + spec.code);
+  }
+  const period = monthly ? rawDate.slice(0, 7) : rawDate;
+  if (period > today.slice(0, monthly ? 7 : 10)) return null; // Exclude future periods.
   if (!Number.isFinite(record.valor) || record.valor < spec.min || record.valor > spec.max) {
     throw new Error('Valor fuera de rango para ' + spec.code + ' en ' + period);
   }
   return {
-    period, observedFrom: period, observedTo: period, value: record.valor,
+    period, observedFrom: monthly ? period + '-01' : period,
+    observedTo: monthly ? new Date(Date.UTC(Number(period.slice(0, 4)), Number(period.slice(5, 7)), 0)).toISOString().slice(0, 10) : period,
+    value: record.valor,
     sourceStatus: null,
   };
 }
