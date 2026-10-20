@@ -123,6 +123,7 @@ export interface MainIndicator {
   valuesByVariation: Record<Variation, Record<PeriodId, PeriodValue>>;
 }
 export interface SubIndicator {
+  seriesId?: string;
   name: string; nameEn: string; period: string; periodEn: string; values: Record<Variation, string>; toneByVariation: Record<Variation, Tone>;
 }
 export interface SummaryCard extends Traceable {
