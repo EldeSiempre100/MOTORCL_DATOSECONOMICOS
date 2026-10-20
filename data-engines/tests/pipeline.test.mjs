@@ -140,7 +140,7 @@ test('live contracts hide all demonstration figures and expose sourced cards', (
 
 
 test('Mindicador UTM monthly normalization and merging use YYYY-MM periods', () => {
-  const spec = INDICATORS.utm;
+  const spec = { id:'test.utm', code:'utm', name:'UTM', nameEn:'Monthly tax unit', category:'dolar-uf', organization:'SII', provider:'Mindicador', unit:'clp', frequency:'monthly', min:10000, max:160000 };
   const payload = { autor: 'mindicador.cl', codigo: 'utm', unidad_medida: 'Pesos',
     serie: [
       { fecha:'2026-10-01T03:00:00.000Z', valor:72151 },
