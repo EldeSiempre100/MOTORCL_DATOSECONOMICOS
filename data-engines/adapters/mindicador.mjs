@@ -123,15 +123,19 @@ export async function fetchMindicador(spec, previous, fetcher = fetch, clock = n
   const records = new Map();
   let successful = 0;
   let latestEndpoint = MINDICADOR_BASE + '/' + spec.code;
-  for (const y of years) {
+  // Annual requests are independent; sequential calls multiplied the risk of
+  // hitting the Actions job timeout as the number of tracked series grew.
+  const annual = await Promise.allSettled(years.map(async (y) => {
     const url = MINDICADOR_BASE + '/' + spec.code + '/' + y;
-    try {
-      const payload = await getJson(url, fetcher);
-      for (const point of normalizeMindicador(payload, spec, today)) records.set(point.period, point);
+    const payload = await getJson(url, fetcher);
+    return { year: y, points: normalizeMindicador(payload, spec, today) };
+  }));
+  for (let i = 0; i < years.length; i += 1) {
+    if (annual[i].status === 'fulfilled') {
+      for (const point of annual[i].value.points) records.set(point.period, point);
       successful += 1;
-    } catch (error) {
-      // A yearly mirror can temporarily fail; the current series endpoint remains mandatory.
-      console.warn('Mindicador historical warning', spec.code, y, String(error));
+    } else {
+      console.warn('Mindicador historical warning', spec.code, years[i], String(annual[i].reason));
     }
   }
   const payload = await getJson(latestEndpoint, fetcher);
