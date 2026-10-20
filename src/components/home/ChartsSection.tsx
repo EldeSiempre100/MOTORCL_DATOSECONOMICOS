@@ -30,18 +30,24 @@ interface ChartsSectionProps {
 }
 
 function selectPeriod(data: ChartPoint[], period: PeriodId, from: string, to: string, range: TimeRange): ChartPoint[] {
-  let base = data;
+  const ordered = [...data].sort((a, b) => a.period.localeCompare(b.period));
+  const latest = ordered.at(-1)?.period;
+  if (!latest) return [];
+  const year = latest.slice(0, 4);
+  let base = ordered;
   if (period === 'anio') {
-    base = data.filter((point) => point.period >= '2026-01');
+    base = base.filter(point => point.period >= year + '-01');
   } else if (period === 'personalizado') {
-    base = data.filter((point) => (!from || point.period >= from) && (!to || point.period <= to));
+    // Month inputs must include every day of their ending month.
+    base = base.filter(point => (!from || point.period.slice(0, 7) >= from) &&
+      (!to || point.period.slice(0, 7) <= to));
   }
-
-  // Apply local range toggle
-  if (range === '1A') return base.slice(-12);
-  if (range === '3A') return base.slice(-36);
-  if (range === '5A') return base.slice(-60);
-  return base;
+  if (range === 'Todo') return base;
+  // A year is a calendar interval, NOT twelve arbitrary daily/monthly records.
+  const distance = range === '1A' ? 1 : range === '3A' ? 3 : 5;
+  const start = new Date(Date.UTC(Number(year) - distance, Number(latest.slice(5, 7)) - 1, Number(latest.slice(8, 10)) || 1));
+  const lower = start.toISOString().slice(0, 10);
+  return base.filter(point => (point.period.length === 7 ? point.period + '-01' : point.period) >= lower);
 }
 
 function ChartTooltip({
