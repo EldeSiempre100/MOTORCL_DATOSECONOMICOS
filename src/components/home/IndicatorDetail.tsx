@@ -244,7 +244,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                 <Calendar size={18} />
               </div>
               <div className="calendar-alert-body">
-                <h3 className="calendar-alert-title">Calendario de publicación oficial</h3>
+                <h3 className="calendar-alert-title">{isOfficialIne ? 'Calendario de publicación oficial' : 'Disponibilidad de la serie'}</h3>
                 <p className="calendar-alert-text">
                   {isOfficialIne ? 'Consulte el calendario oficial INE para conocer la próxima publicación de la Encuesta Nacional de Empleo.' : 'Mindicador no proporciona fechas oficiales de publicación futura para esta serie. Consulte el organismo emisor.'}
                 </p>
@@ -263,7 +263,7 @@ export function IndicatorDetail({ id }: { id: string }) {
             <section className="section-block" aria-labelledby="indicator-chart-heading">
               <div className="section-heading">
                 <div>
-                  <h2 id="indicator-chart-heading">Serie histórica oficial</h2>
+                  <h2 id="indicator-chart-heading">{isOfficialIne ? 'Serie histórica oficial' : 'Serie histórica con fuente identificada'}</h2>
                   <p className="section-subtitle">
                     {filteredObservations.length} observaciones ({series.frequency === 'daily' ? 'frecuencia diaria' : 'trimestres móviles'})
                   </p>
@@ -384,7 +384,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                         <td className="dato">
                           <span className="table-rate-pill">{unit === 'clp' ? '$' : ''}{number(item.value, unit)}{unit === 'percent' ? '%' : ''}</span>
                         </td>
-                        <td>{item.publishedAt ?? 'No informada en SDMX'}</td>
+                        <td>{item.publishedAt ?? (isOfficialIne ? 'No informada en SDMX' : 'No informada por proveedor')}</td>
                         <td>
                           {item.revisions.length > 0 ? (
                             <span className="revisions-badge">{item.revisions.length}</span>
