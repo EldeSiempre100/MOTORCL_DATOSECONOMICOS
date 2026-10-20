@@ -139,7 +139,7 @@ export function IndicatorDetail({ id }: { id: string }) {
     series?.category === 'mercados' ? 'Mercados' :
     series?.category === 'empleo' ? 'Empleo' : 'Dólar y UF';
   const prefix = unit === 'clp' ? '$' : unit === 'usd-lb' ? 'US$' : '';
-  const suffix = unit === 'percent' || unit === 'percent-change' ? '%' : '';
+  const suffix = unit === 'percent' || unit === 'percent-change' ? '%' : unit === 'index' ? ' pts' : '';
   const momChange = change(latestValue, prior?.value, unit);
   const momTone = changeTone(latestValue, prior?.value, isOfficialIne);
   const yoyChange = change(latestValue, yearAgo?.value, unit);
@@ -311,7 +311,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                     <YAxis
                       domain={['auto', 'auto']}
                       tick={{ fontSize: 11, fill: 'var(--text-muted)', fontFamily: 'var(--f-mono)' }}
-                      unit={unit === 'clp' ? ' CLP' : unit === 'usd-lb' ? ' US$/lb' : '%'}
+                      unit={unit === 'clp' ? ' CLP' : unit === 'index' ? ' puntos' : unit === 'usd-lb' ? ' US$/lb' : '%'}
                       axisLine={false}
                       tickLine={false}
                       width={46}
