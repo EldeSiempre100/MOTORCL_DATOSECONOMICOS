@@ -8,6 +8,7 @@ on:
     branches:
       - main
       - feat/motorcl-motores-fuentes-reales
+      - feat/motorcl-coverage-economica-v4
     paths:
       - 'data-engines/**'
       - '.github/workflows/update-data.yml'
