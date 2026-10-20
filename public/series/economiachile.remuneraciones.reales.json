@@ -13,7 +13,7 @@
   "unit": "index",
   "sourceUrl": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/remuneraciones.csv",
   "methodologyUrl": "https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/remuneraciones-y-costos-laborales",
-  "lastSuccessfulRefresh": "2026-10-20T12:25:52.995Z",
+  "lastSuccessfulRefresh": "2026-10-20T12:34:17.214Z",
   "observations": [
     {
       "period": "2023-01",

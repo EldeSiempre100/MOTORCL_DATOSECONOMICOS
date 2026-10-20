@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "runId": "motorcl-20261020122552995",
-  "checkedAt": "2026-10-20T12:25:52.995Z",
-  "latestSuccessfulRefresh": "2026-10-20T12:25:52.995Z",
+  "runId": "motorcl-20261020123417214",
+  "checkedAt": "2026-10-20T12:34:17.214Z",
+  "latestSuccessfulRefresh": "2026-10-20T12:34:17.214Z",
   "result": "partial",
   "sources": [
     {
@@ -30,27 +30,19 @@
       "source": "Mindicador",
       "code": "uf",
       "seriesId": "mindicador.uf",
-      "state": "ok",
-      "latestPeriod": "2026-10-20",
-      "observations": 1024,
-      "added": 0,
-      "revised": 0,
-      "sha256": "969c8aeadc23cce5748548590387a94135b51aebd8332aa802cfba634bd533f4",
-      "endpoint": "https://mindicador.cl/api/uf",
-      "fetchedAt": "2026-10-20T12:25:53.932Z"
+      "state": "cached",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "ageDays": 0,
+      "latestPeriod": "2026-10-20"
     },
     {
       "source": "Mindicador",
       "code": "tpm",
       "seriesId": "mindicador.tpm",
-      "state": "ok",
-      "latestPeriod": "2026-10-20",
-      "observations": 698,
-      "added": 0,
-      "revised": 0,
-      "sha256": "316722f1ae8b419970c1d3f273df00ea7b58e62224283c8b1932c79c405c3819",
-      "endpoint": "https://mindicador.cl/api/tpm",
-      "fetchedAt": "2026-10-20T12:25:53.927Z"
+      "state": "cached",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "ageDays": 0,
+      "latestPeriod": "2026-10-20"
     },
     {
       "source": "Economía Chile",
@@ -59,11 +51,11 @@
       "state": "ok",
       "latestPeriod": "2026-09",
       "observations": 202,
-      "added": 202,
+      "added": 0,
       "revised": 0,
       "sha256": "103c865bb872c459c1f2358e789d1d4b8b034c99c48be9a3a6092f90cc3a34a2",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv",
-      "fetchedAt": "2026-10-20T12:26:43.925Z"
+      "fetchedAt": "2026-10-20T12:35:10.325Z"
     },
     {
       "source": "Economía Chile",
@@ -72,11 +64,11 @@
       "state": "ok",
       "latestPeriod": "2026-08",
       "observations": 164,
-      "added": 164,
+      "added": 0,
       "revised": 0,
       "sha256": "3888bf266111a95f2f09b4fd1b78678b9481ed27e41232875f581ddee33f967e",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/imacec.csv",
-      "fetchedAt": "2026-10-20T12:26:43.926Z"
+      "fetchedAt": "2026-10-20T12:35:10.324Z"
     },
     {
       "source": "Economía Chile",
@@ -85,11 +77,11 @@
       "state": "ok",
       "latestPeriod": "2026-09",
       "observations": 201,
-      "added": 201,
+      "added": 0,
       "revised": 0,
       "sha256": "120dd67cd41ce197c8bc5a57e2de86984f3624abaec2602c1450fb7211837b34",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipsa.csv",
-      "fetchedAt": "2026-10-20T12:26:43.927Z"
+      "fetchedAt": "2026-10-20T12:35:10.325Z"
     },
     {
       "source": "Economía Chile",
@@ -98,11 +90,11 @@
       "state": "ok",
       "latestPeriod": "2026-08",
       "observations": 44,
-      "added": 44,
+      "added": 0,
       "revised": 0,
       "sha256": "b8152eb2b8d9b9d44fa6e84a789a43a756fcc50f78fb1a32eb40c59e987f0f9b",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/remuneraciones.csv",
-      "fetchedAt": "2026-10-20T12:26:44.028Z"
+      "fetchedAt": "2026-10-20T12:35:10.466Z"
     }
   ],
   "errors": [
@@ -112,6 +104,20 @@
       "source": "Mindicador",
       "error": "The operation was aborted due to timeout",
       "lastUpdate": "2026-10-20T12:08:15.878Z"
+    },
+    {
+      "code": "uf",
+      "name": "Unidad de Fomento (UF)",
+      "source": "Mindicador",
+      "error": "The operation was aborted due to timeout",
+      "lastUpdate": "2026-10-20T12:25:52.995Z"
+    },
+    {
+      "code": "tpm",
+      "name": "Tasa de Política Monetaria (TPM)",
+      "source": "Mindicador",
+      "error": "The operation was aborted due to timeout",
+      "lastUpdate": "2026-10-20T12:25:52.995Z"
     }
   ],
   "publishedSeries": 8
