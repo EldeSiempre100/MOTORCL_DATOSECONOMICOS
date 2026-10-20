@@ -115,7 +115,7 @@ export function SummaryCardsGrid({
                   </button>
                   <span className={`data-origin data-origin--${card.dataStatus ?? 'demo'}`}>
                     <span className={`status-dot status-dot--${isOfficial ? 'green' : 'gray'}`} />
-                    {isOfficial ? 'INE · Oficial' : (language === 'en' ? 'Example' : 'Ejemplo')}
+                    {isOfficial ? 'INE · Oficial' : (card.dataStatus === 'sourced' ? 'Mindicador · fuente externa' : '')}
                   </span>
                 </div>
 
@@ -168,7 +168,7 @@ export function SummaryCardsGrid({
                     return (
                       <span className="source-link-wrap" key={sourceId}>
                         {index > 0 ? <span className="source-divider">·</span> : null}
-                        {source && isOfficial ? (
+                        {source && (isOfficial || card.dataStatus === 'sourced') ? (
                           <a href={card.documentUrl ?? source.url} target="_blank" rel="noreferrer">
                             {sourceId}
                             <ArrowUpRight size={10} />
@@ -183,7 +183,7 @@ export function SummaryCardsGrid({
 
                 {card.seriesId ? (
                   <a className="indicator-detail-link" href={`/indicador/${card.seriesId}`}>
-                    <span>{language === 'en' ? 'View official series and data' : 'Ver ficha técnica oficial'}</span>
+                    <span>{language === 'en' ? 'View series and data' : 'Ver ficha técnica y datos'}</span>
                     <ArrowRight size={13} />
                   </a>
                 ) : null}
