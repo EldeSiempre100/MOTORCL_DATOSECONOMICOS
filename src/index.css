@@ -604,3 +604,111 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .chart-card-title h3 { font-size: 16px; }
   .timeline-section .section-heading h2 { font-size: 19px; }
 }
+
+
+/* MOTORCL V3 — Editorial sparklines integrated into economic cards.
+   Charts preserve real source observations and all demo/official labels. */
+:root {
+  --spark-line: #747e86;
+  --spark-highlight: #5b82c9;
+  --spark-bar-muted: #a8adb2;
+}
+:root.dark {
+  --spark-line: #b8bdc2;
+  --spark-highlight: #82a7e8;
+  --spark-bar-muted: #979ba2;
+}
+
+/* The chart belongs to the KPI, not to a separate panel. */
+.summary-card .kpi-context {
+  margin-bottom: 5px;
+}
+.card-sparkline {
+  position: relative;
+  padding: 0;
+  margin: 2px 0 11px;
+  border: 0;
+}
+.sparkline-plot {
+  width: 100%;
+  min-width: 0;
+  height: 82px;
+  margin: 0;
+}
+.card-sparkline .recharts-surface {
+  overflow: visible;
+}
+.card-sparkline--bars .recharts-bar-rectangle {
+  transition: opacity .12s ease;
+}
+.card-sparkline--bars .recharts-bar-rectangle:hover {
+  opacity: .78;
+}
+.sparkline-unavailable {
+  min-height: 74px;
+  padding: 12px 0;
+  margin: 1px 0 10px;
+  border-top: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.sparkline-tooltip {
+  padding: 8px 10px;
+  gap: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.summary-card .card-divider {
+  margin-bottom: 0;
+}
+
+/* Dates remain visible on phone: two aligned lines rather than a third column. */
+.summary-card .sub-indicator {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 10px;
+  min-height: 49px;
+  padding: 7px 0;
+}
+.summary-card .sub-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  min-width: 0;
+}
+.summary-card .sub-name {
+  display: block;
+  overflow: visible;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.35;
+  white-space: normal;
+  text-overflow: clip;
+}
+.summary-card .sub-period {
+  display: block;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  line-height: 1.3;
+  white-space: normal;
+}
+.summary-card .sub-value {
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.summary-card .card-sources { padding-top: 11px; margin-top: auto; }
+@media (max-width: 680px) {
+  .card-sparkline {
+    margin: 0 0 10px;
+  }
+  .summary-card .sub-indicator { min-height: 49px; }
+  .summary-card .sub-name { font-size: 13px; }
+  .summary-card .sub-period { font-size: 12px; }
+  .summary-card .sub-value { font-size: 14px; }
+}
