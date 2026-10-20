@@ -132,11 +132,6 @@ function MonitorDashboard({ data }: { data: DashboardData }) {
           ui={ui}
         />
 
-        <details className="demo-disclosure">
-          <summary><AlertTriangle size={12} /> {data.metadata.status === 'mixed' ? (language === 'es' ? 'Datos oficiales y de ejemplo · revisar cada etiqueta' : 'Official and example data · check each label') : (language === 'es' ? 'Datos de ejemplo · no oficiales' : 'Example data · unofficial')}</summary>
-          <p>{data.metadata.demoNotice[language]} {data.metadata.asOfLabel}</p>
-        </details>
-
         <SummaryCardsGrid
           cards={data.summaries.cards}
           charts={data.charts.charts}
