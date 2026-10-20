@@ -98,6 +98,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
       title, titleEn,
       icon: isTpm ? 'activity' : 'prices',
       dataStatus: 'sourced',
+      seriesId: series.id,
       sourceUrl: series.sourceUrl,
       main: {
         name: spec.name, nameEn: spec.nameEn,
@@ -108,6 +109,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
       subIndicators: !isTpm && currency.find(x => x.spec.code === 'uf') ? [
         {
           name: 'Unidad de Fomento (UF)', nameEn: 'UF',
+          seriesId: currency.find(x => x.spec.code === 'uf').series.id,
           period: monthLabel(latestRecord(currency.find(x => x.spec.code === 'uf').series).period),
           periodEn: latestRecord(currency.find(x => x.spec.code === 'uf').series).period,
           values: {
@@ -140,6 +142,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
       subtitle: 'Niveles diarios en pesos chilenos; escalas independientes',
       subtitleEn: 'Daily levels in Chilean pesos; separate axes',
       dataStatus: 'sourced',
+      seriesId: primary.series.id,
       sourceUrl: primary.series.sourceUrl,
       unit: 'CLP', sourceIds: ['Mindicador'],
       reference: monthLabel(primary.series.observations[0].period) + ' — ' + monthLabel(latestRecord(primary.series).period),
@@ -168,7 +171,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
       title: 'Tasa de Política Monetaria', titleEn: 'Monetary policy rate',
       subtitle: 'Nivel observado de la TPM, porcentaje; fuente intermediaria',
       subtitleEn: 'Observed policy rate level, percent; third-party source',
-      dataStatus: 'sourced', sourceUrl: tpm.series.sourceUrl,
+      dataStatus: 'sourced', seriesId: tpm.series.id, sourceUrl: tpm.series.sourceUrl,
       unit: '%', sourceIds: ['Mindicador'],
       reference: monthLabel(tpm.series.observations[0].period) + ' — ' + monthLabel(latestRecord(tpm.series).period),
       referenceEn: tpm.series.observations[0].period + ' — ' + latestRecord(tpm.series).period,
@@ -183,6 +186,12 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
       data: chartData(tpm.series, 'tpmRate'),
     });
   }
+
+  const activeCategories = new Set(summaries.cards.map(c => c.category));
+  for (const lang of ['es', 'en']) {
+    metadata.ui[lang].categories = metadata.ui[lang].categories.filter(c => c.id === 'vision-general' || activeCategories.has(c.id));
+  }
+  metadata.sources = Object.fromEntries(Object.entries(metadata.sources).filter(([id]) => ['INE', 'Mindicador'].includes(id)));
 
   metadata.isDemo = false;
   metadata.status = 'live';
