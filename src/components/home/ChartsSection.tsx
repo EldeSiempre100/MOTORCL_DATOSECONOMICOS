@@ -4,7 +4,6 @@ import {
   Bar,
   CartesianGrid,
   ComposedChart,
-  Legend,
   Line,
   ReferenceLine,
   ResponsiveContainer,
@@ -77,6 +76,7 @@ function ChartCard({ chart, metadata, language, variation, period, from, to, ui 
   const periodLabel = language === 'en' ? chart.referenceEn : chart.reference;
   const leftAxis = language === 'en' ? chart.axes.leftEn : chart.axes.left;
   const rightAxis = language === 'en' ? chart.axes.rightEn : chart.axes.right;
+  const hasRightAxis = chart.series.some((series) => series.axis === 'right');
 
   return (
     <article className="chart-card">
@@ -99,26 +99,25 @@ function ChartCard({ chart, metadata, language, variation, period, from, to, ui 
       {!missing && data.length ? (
         <div className="chart-plot">
           <div className="axis-caption axis-caption--left">{leftAxis}</div>
-          <ResponsiveContainer width="100%" height={230}>
-            <ComposedChart data={data} margin={{ top: 8, right: 7, left: -14, bottom: 0 }}>
+          <ResponsiveContainer width="100%" height={278}>
+            <ComposedChart data={data} margin={{ top: 22, right: 2, left: 0, bottom: 10 }}>
               <CartesianGrid strokeDasharray="2 4" vertical={false} stroke="var(--chart-grid)" />
-              <XAxis dataKey={language === 'en' ? 'labelEn' : 'label'} tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 10 }} minTickGap={8} />
-              <YAxis yAxisId="left" tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 10 }} tickFormatter={(value: number) => new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', { maximumFractionDigits: 1 }).format(value)} width={38} />
-              <YAxis yAxisId="right" orientation="right" tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 10 }} tickFormatter={(value: number) => new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', { maximumFractionDigits: 1 }).format(value)} width={36} />
+              <XAxis dataKey={language === 'en' ? 'labelEn' : 'label'} tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 12 }} minTickGap={18} />
+              <YAxis yAxisId="left" tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 12 }} tickFormatter={(value: number) => new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', { maximumFractionDigits: 1 }).format(value)} width={46} tickCount={5} />
+              {hasRightAxis ? <YAxis yAxisId="right" orientation="right" tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 12 }} tickFormatter={(value: number) => new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', { maximumFractionDigits: 1 }).format(value)} width={44} tickCount={5} /> : null}
               <ReferenceLine y={0} yAxisId="left" stroke="var(--chart-grid)" />
               <Tooltip content={<ChartTooltip language={language} chart={chart} variation={variation} />} cursor={{ fill: 'var(--chart-cursor)' }} />
-              <Legend content={() => null} />
               {chart.series.map((series) => {
                 const dataKey = series.valuesByVariation[variation];
                 return series.type === 'bar' ? (
                   <Bar key={series.id} dataKey={dataKey} yAxisId={series.axis} fill={series.color} radius={[3, 3, 0, 0]} maxBarSize={18} stackId={series.stackId} isAnimationActive={false} />
                 ) : (
-                  <Line key={series.id} dataKey={dataKey} yAxisId={series.axis} type="monotone" stroke={series.color} strokeWidth={2} dot={false} activeDot={{ r: 3.5, strokeWidth: 0 }} connectNulls={false} isAnimationActive={false} />
+                  <Line key={series.id} dataKey={dataKey} yAxisId={series.axis} type="linear" stroke={series.color} strokeWidth={2} dot={false} activeDot={{ r: 3.5, strokeWidth: 0 }} connectNulls={false} isAnimationActive={false} />
                 );
               })}
             </ComposedChart>
           </ResponsiveContainer>
-          <div className="axis-caption axis-caption--right">{rightAxis}</div>
+          {hasRightAxis && rightAxis ? <div className="axis-caption axis-caption--right">{rightAxis}</div> : null}
         </div>
       ) : (
         <div className="chart-empty">{ui.noData}</div>
