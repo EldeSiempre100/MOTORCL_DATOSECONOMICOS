@@ -2,7 +2,7 @@ export type Language = 'es' | 'en';
 export type Variation = 'mensual' | 'interanual';
 export type PeriodId = 'ultimo' | 'ultimo-mes' | 'anio' | '12-meses' | 'personalizado';
 export type Tone = 'positive' | 'negative' | 'neutral';
-export type DataStatus = 'official' | 'demo' | 'unavailable';
+export type DataStatus = 'official' | 'sourced' | 'demo' | 'unavailable';
 export interface Traceable {
   dataStatus?: DataStatus;
   seriesId?: string;
@@ -123,6 +123,7 @@ export interface MainIndicator {
   valuesByVariation: Record<Variation, Record<PeriodId, PeriodValue>>;
 }
 export interface SubIndicator {
+  seriesId?: string;
   name: string; nameEn: string; period: string; periodEn: string; values: Record<Variation, string>; toneByVariation: Record<Variation, Tone>;
 }
 export interface SummaryCard extends Traceable {

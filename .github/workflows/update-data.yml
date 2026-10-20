@@ -1,35 +1,92 @@
-name: Update official data
+name: Update sourced economic data
 
 on:
   schedule:
     - cron: '0 12 * * *'
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - feat/motorcl-motores-fuentes-reales
+    paths:
+      - 'data-engines/**'
+      - '.github/workflows/update-data.yml'
+      - 'package.json'
+      - 'package-lock.json'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: motorcl-data-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Refresh INE/SIMEL series
+      - name: Refresh keyless official and sourced data
         run: npm run update:data
-      - name: Check data transformations
+      - name: Validate statistical transformations
         run: npm run test:data
-      - name: Check React build
+      - name: Validate React build
         run: npm run build
-      - name: Package generated data for review
+      - name: Ensure non-demonstrative published contracts
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const cards = JSON.parse(fs.readFileSync('public/mock-data/summary_cards.json'));
+          const charts = JSON.parse(fs.readFileSync('public/mock-data/charts_series.json'));
+          const timeline = JSON.parse(fs.readFileSync('public/mock-data/timeline_events.json'));
+          if (cards.cards.some(x => x.dataStatus === 'demo') ||
+              charts.charts.some(x => x.dataStatus === 'demo') ||
+              timeline.events.some(x => x.dataStatus === 'demo')) {
+            process.exitCode = 1;
+            console.error('Demonstration figures must not be published.');
+          }
+          NODE
+      - name: Publish validated data to the current branch
+        id: publish
+        run: |
+          git config user.name "motorcl-data-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ public/mock-data/ public/series/ public/data/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No validated observation changes to publish."
+          else
+            git commit -m "data: publish validated economic series [skip ci]"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Request Vercel redeploy if hook is configured
+        if: steps.publish.outputs.changed == 'true' && github.ref_name == 'main'
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            echo "::warning::New JSON files were committed but no VERCEL_DEPLOY_HOOK_URL is set. Vercel publication is not yet automatic."
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error --retry 3 --retry-delay 3 -X POST "$VERCEL_DEPLOY_HOOK_URL"
+      - name: Preserve validation evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: motorcl-data
+          name: motorcl-data-${{ github.run_number }}
           path: |
-            data/
+            data/ingestion-status.json
+            public/data/
             public/mock-data/
             public/series/
+          if-no-files-found: warn

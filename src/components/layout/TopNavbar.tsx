@@ -111,7 +111,7 @@ export function TopNavbar({
             category: card.category,
             value: sub.values.mensual,
             tone: sub.toneByVariation.mensual,
-            seriesId: card.seriesId,
+            seriesId: sub.seriesId,
             dataStatus: card.dataStatus,
           });
         }
@@ -170,7 +170,7 @@ export function TopNavbar({
                 <a
                   key={item.id}
                   className="search-result-item"
-                  href={item.seriesId ? `/indicador/${item.seriesId}` : `#${item.category}`}
+                  href={item.seriesId ? `/indicador/${item.seriesId}` : `#card-${item.category}`}
                   onClick={() => {
                     setDropdownOpen(false);
                   }}
@@ -179,7 +179,7 @@ export function TopNavbar({
                     <span className="search-result-name">{item.title}</span>
                     <span className="search-result-sub">
                       <span className={`status-dot status-dot--${item.dataStatus === 'official' ? 'green' : 'gray'}`} />
-                      {item.dataStatus === 'official' ? 'INE · Oficial' : (language === 'en' ? 'Example data' : 'Dato de ejemplo')}
+                      {item.dataStatus === 'official' ? 'INE · Oficial' : (item.dataStatus === 'sourced' ? 'Mindicador · fuente externa' : '')}
                     </span>
                   </div>
                   <div className="search-result-side">
