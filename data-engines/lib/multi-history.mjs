@@ -16,9 +16,16 @@ export function mergeProviderHistory(previous, incoming, spec, checkedAt, endpoi
   let added = 0;
   let revised = 0;
   for (const row of incoming) {
-    if (!row || !Number.isFinite(row.value) || row.observedFrom !== row.period ||
-        row.observedTo !== row.period || !/^\d{4}-\d{2}-\d{2}$/.test(row.period) ||
-        row.period > checkedAt.slice(0, 10)) throw new Error('Observación rechazada ' + String(row?.period));
+    const monthly = spec.frequency === 'monthly' && /^\d{4}-\d{2}$/.test(row?.period ?? '');
+    const daily = spec.frequency !== 'monthly' && /^\d{4}-\d{2}-\d{2}$/.test(row?.period ?? '');
+    const validPeriod = monthly
+      ? row.observedFrom === row.period + '-01' && /^\d{4}-\d{2}-\d{2}$/.test(row.observedTo) &&
+        row.observedTo.slice(0, 7) === row.period
+      : daily && row.observedFrom === row.period && row.observedTo === row.period;
+    if (!row || !Number.isFinite(row.value) || !validPeriod ||
+        row.period > checkedAt.slice(0, monthly ? 7 : 10)) {
+      throw new Error('Observación rechazada ' + String(row?.period));
+    }
     const old = stored.get(row.period);
     if (!old) {
       added += 1;
@@ -56,11 +63,12 @@ export function mergeProviderHistory(previous, incoming, spec, checkedAt, endpoi
     schemaVersion: 1,
     id: spec.id, organization: spec.organization,
     sourceProvider: spec.provider,
+    measure: spec.measure ?? 'level',
     officialCode: null, providerCode: spec.code,
     name: spec.name, nameEn: spec.nameEn,
     category: spec.category, frequency: spec.frequency, unit: spec.unit,
     sourceUrl: endpoint,
-    methodologyUrl: 'https://www.bcentral.cl/',
+    methodologyUrl: spec.officialUrl ?? 'https://www.bcentral.cl/',
     lastSuccessfulRefresh: checkedAt,
     observations,
   };
