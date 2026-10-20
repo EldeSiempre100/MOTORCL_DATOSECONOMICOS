@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { fetchUnemployment, SERIES_ID } from './ine_engine/simel.mjs';
 import { mergeHistory, incrementalStart, readJson, writeJson } from './lib/history.mjs';
 import { fetchMindicador, INDICATORS } from './adapters/mindicador.mjs';
+import { fetchIndicadoresCl, SECONDARY_INDICATORS } from './adapters/indicadores-cl.mjs';
 import { mergeProviderHistory, contentHash } from './lib/multi-history.mjs';
 import { buildLiveContracts } from './lib/live-contracts.mjs';
 
@@ -70,24 +71,24 @@ async function main() {
   const providerEntries = [];
   const extraFiles = [];
   const sourceRuns = [];
-  for (const spec of Object.values(INDICATORS)) {
+  for (const spec of [...Object.values(INDICATORS), ...Object.values(SECONDARY_INDICATORS)]) {
     const previous = await readJson(seriesPath(spec.id));
     try {
-      const incoming = await fetchMindicador(spec, previous);
+      const incoming = spec.provider === 'Indicadores.cl' ? await fetchIndicadoresCl(spec) : await fetchMindicador(spec, previous);
       const result = mergeProviderHistory(previous, incoming.observations, spec, checkedAt, incoming.endpoint);
       providerEntries.push({ spec, series: result.series });
       extraFiles.push({ path: seriesPath(spec.id), content: result.series });
       extraFiles.push({ path: publicSeriesPath(spec.id), content: result.series });
       sourceRuns.push({
-        source: 'Mindicador', code: spec.code, seriesId: spec.id,
+        source: spec.provider, code: spec.code, seriesId: spec.id,
         state: 'ok', latestPeriod: result.series.observations.at(-1).period,
         observations: result.series.observations.length, added: result.added, revised: result.revised,
         sha256: result.sha256, endpoint: incoming.endpoint, fetchedAt: incoming.fetchedAt,
       });
     } catch (error) {
-      errors.push(sourceError(spec.code, spec.name, 'Mindicador', error, previous?.lastSuccessfulRefresh));
+      errors.push(sourceError(spec.code, spec.name, spec.provider, error, previous?.lastSuccessfulRefresh));
       sourceRuns.push({
-        source: 'Mindicador', code: spec.code, seriesId: spec.id,
+        source: spec.provider, code: spec.code, seriesId: spec.id,
         state: 'failed', message: String(error),
         latestPeriod: previous?.observations?.at(-1)?.period ?? null,
       });
