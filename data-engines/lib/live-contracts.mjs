@@ -50,7 +50,10 @@ function values(series, spec) {
     '12-meses': previousYear ? cardValue(last, previousYear, spec) : unavailable('Sin histórico anual comparable'),
     personalizado: unavailable('Seleccione el rango de fechas en el gráfico histórico'),
   };
-  return { mensual: structuredClone(set), interanual: structuredClone(set) };
+  const annual = structuredClone(set);
+  annual.ultimo = previousYear ? cardValue(last, previousYear, spec) : unavailable('Sin histórico interanual comparable');
+  annual['ultimo-mes'] = annual.ultimo;
+  return { mensual: structuredClone(set), interanual: annual };
 }
 function latestRecord(series) {
   const latest = series.observations.at(-1);
