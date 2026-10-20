@@ -71,30 +71,50 @@ async function main() {
   const providerEntries = [];
   const extraFiles = [];
   const sourceRuns = [];
-  for (const spec of [...Object.values(INDICATORS), ...Object.values(SECONDARY_INDICATORS)]) {
+  const allSources = [...Object.values(INDICATORS), ...Object.values(SECONDARY_INDICATORS)];
+  async function ingest(spec) {
     const previous = await readJson(seriesPath(spec.id));
     try {
-      const incoming = spec.provider === 'Indicadores.cl' ? await fetchIndicadoresCl(spec) : await fetchMindicador(spec, previous);
+      const incoming = spec.provider === 'Indicadores.cl'
+        ? await fetchIndicadoresCl(spec) : await fetchMindicador(spec, previous);
       const result = mergeProviderHistory(previous, incoming.observations, spec, checkedAt, incoming.endpoint);
-      providerEntries.push({ spec, series: result.series });
-      extraFiles.push({ path: seriesPath(spec.id), content: result.series });
-      extraFiles.push({ path: publicSeriesPath(spec.id), content: result.series });
-      sourceRuns.push({
-        source: spec.provider, code: spec.code, seriesId: spec.id,
-        state: 'ok', latestPeriod: result.series.observations.at(-1).period,
-        observations: result.series.observations.length, added: result.added, revised: result.revised,
-        sha256: result.sha256, endpoint: incoming.endpoint, fetchedAt: incoming.fetchedAt,
-      });
+      console.log('Source ready:', spec.code, result.series.observations.length, 'observations');
+      return {
+        entry: {spec,series:result.series},
+        files: [
+          {path:seriesPath(spec.id),content:result.series},
+          {path:publicSeriesPath(spec.id),content:result.series},
+        ],
+        run: {
+          source:spec.provider,code:spec.code,seriesId:spec.id,
+          state:'ok',latestPeriod:result.series.observations.at(-1).period,
+          observations:result.series.observations.length,added:result.added,revised:result.revised,
+          sha256:result.sha256,endpoint:incoming.endpoint,fetchedAt:incoming.fetchedAt,
+        },
+      };
     } catch (error) {
-      errors.push(sourceError(spec.code, spec.name, spec.provider, error, previous?.lastSuccessfulRefresh));
-      sourceRuns.push({
-        source: spec.provider, code: spec.code, seriesId: spec.id,
-        state: 'failed', message: String(error),
-        latestPeriod: previous?.observations?.at(-1)?.period ?? null,
-      });
-      // Preserve the last known valid observation for transparency, but expose a delay.
-      if (previous?.observations?.length) providerEntries.push({ spec, series: previous });
-      console.warn('Fuente no actualizada: ' + spec.code + ': ' + error);
+      console.warn('Source failed:', spec.code, String(error));
+      return {
+        entry: previous?.observations?.length ? {spec,series:previous} : null,
+        files: [],
+        run: {
+          source:spec.provider,code:spec.code,seriesId:spec.id,
+          state:'failed',message:String(error),
+          latestPeriod:previous?.observations?.at(-1)?.period ?? null,
+        },
+        error:sourceError(spec.code,spec.name,spec.provider,error,previous?.lastSuccessfulRefresh),
+      };
+    }
+  }
+  // Bounded concurrency: downloading every series sequentially caused
+  // multi-minute jobs. More than three concurrent vendors risks throttling.
+  for (let index=0; index<allSources.length; index+=3) {
+    const batch=await Promise.all(allSources.slice(index,index+3).map(ingest));
+    for (const item of batch) {
+      if (item.entry) providerEntries.push(item.entry);
+      extraFiles.push(...item.files);
+      sourceRuns.push(item.run);
+      if (item.error) errors.push(item.error);
     }
   }
 
