@@ -126,7 +126,7 @@ function ChartCard({
             <h3>{language === 'en' ? chart.titleEn : chart.title}</h3>
             <span className={`data-origin data-origin--${chart.dataStatus ?? 'demo'}`}>
               <span className={`status-dot status-dot--${isOfficial ? 'green' : 'gray'}`} />
-              {isOfficial ? 'INE · Oficial' : (language === 'en' ? 'Example' : 'Ejemplo')}
+              {isOfficial ? 'INE · Oficial' : (chart.dataStatus === 'sourced' ? 'Mindicador · fuente externa' : '')}
             </span>
           </div>
           <p>{language === 'en' ? chart.subtitleEn : chart.subtitle}</p>
@@ -252,7 +252,7 @@ function ChartCard({
             {chart.sourceIds.map((sourceId, index) => (
               <span key={sourceId}>
                 {index ? <span className="source-divider">·</span> : null}
-                {metadata.sources[sourceId] && chart.dataStatus === 'official' ? (
+                {metadata.sources[sourceId] && (chart.dataStatus === 'official' || chart.dataStatus === 'sourced') ? (
                   <a href={chart.documentUrl ?? metadata.sources[sourceId].url} target="_blank" rel="noreferrer">
                     {sourceId}
                     <ArrowUpRight size={10} />
@@ -268,7 +268,7 @@ function ChartCard({
         {chart.seriesId ? (
           <div className="chart-footer-cta">
             <a href={`/indicador/${chart.seriesId}`} className="chart-detail-btn">
-              <span>{language === 'en' ? 'Open official indicator sheet' : 'Ver ficha oficial y descarga CSV'}</span>
+              <span>{language === 'en' ? 'Open indicator sheet' : 'Ver ficha y descarga CSV'}</span>
               <ArrowUpRight size={12} />
             </a>
           </div>
