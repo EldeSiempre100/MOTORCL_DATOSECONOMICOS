@@ -144,6 +144,7 @@
       "titleEn": "Dollar and UF",
       "icon": "prices",
       "dataStatus": "sourced",
+      "seriesId": "mindicador.dolar.observado",
       "sourceUrl": "https://mindicador.cl/api/dolar",
       "main": {
         "name": "Dólar observado",
@@ -241,6 +242,7 @@
         {
           "name": "Unidad de Fomento (UF)",
           "nameEn": "UF",
+          "seriesId": "mindicador.uf",
           "period": "20 oct 2026",
           "periodEn": "2026-10-20",
           "values": {
@@ -264,6 +266,7 @@
       "titleEn": "Monetary policy rate",
       "icon": "activity",
       "dataStatus": "sourced",
+      "seriesId": "mindicador.tpm",
       "sourceUrl": "https://mindicador.cl/api/tpm",
       "main": {
         "name": "Tasa de Política Monetaria (TPM)",

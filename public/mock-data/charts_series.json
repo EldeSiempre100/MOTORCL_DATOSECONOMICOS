@@ -267,6 +267,7 @@
       "subtitle": "Niveles diarios en pesos chilenos; escalas independientes",
       "subtitleEn": "Daily levels in Chilean pesos; separate axes",
       "dataStatus": "sourced",
+      "seriesId": "mindicador.dolar.observado",
       "sourceUrl": "https://mindicador.cl/api/dolar",
       "unit": "CLP",
       "sourceIds": [
@@ -2758,6 +2759,7 @@
       "subtitle": "Nivel observado de la TPM, porcentaje; fuente intermediaria",
       "subtitleEn": "Observed policy rate level, percent; third-party source",
       "dataStatus": "sourced",
+      "seriesId": "mindicador.tpm",
       "sourceUrl": "https://mindicador.cl/api/tpm",
       "unit": "%",
       "sourceIds": [

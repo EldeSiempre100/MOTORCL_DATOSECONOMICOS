@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "runId": "motorcl-20261020031540936",
-  "checkedAt": "2026-10-20T03:15:40.936Z",
-  "latestSuccessfulRefresh": "2026-10-20T03:15:40.936Z",
+  "runId": "motorcl-20261020032857987",
+  "checkedAt": "2026-10-20T03:28:57.987Z",
+  "latestSuccessfulRefresh": "2026-10-20T03:28:57.987Z",
   "result": "ok",
   "sources": [
     {
@@ -24,11 +24,11 @@
       "state": "ok",
       "latestPeriod": "2026-10-20",
       "observations": 697,
-      "added": 697,
+      "added": 0,
       "revised": 0,
       "sha256": "6e0db3db94d5aafb4a1dad5963278e4f92545fe80bd7d2ab6b1b7b08fb766e43",
       "endpoint": "https://mindicador.cl/api/dolar",
-      "fetchedAt": "2026-10-20T03:15:42.346Z"
+      "fetchedAt": "2026-10-20T03:29:01.179Z"
     },
     {
       "source": "Mindicador",
@@ -37,11 +37,11 @@
       "state": "ok",
       "latestPeriod": "2026-10-20",
       "observations": 1024,
-      "added": 1024,
+      "added": 0,
       "revised": 0,
       "sha256": "969c8aeadc23cce5748548590387a94135b51aebd8332aa802cfba634bd533f4",
       "endpoint": "https://mindicador.cl/api/uf",
-      "fetchedAt": "2026-10-20T03:15:43.717Z"
+      "fetchedAt": "2026-10-20T03:29:04.433Z"
     },
     {
       "source": "Mindicador",
@@ -50,11 +50,11 @@
       "state": "ok",
       "latestPeriod": "2026-10-20",
       "observations": 698,
-      "added": 698,
+      "added": 0,
       "revised": 0,
       "sha256": "316722f1ae8b419970c1d3f273df00ea7b58e62224283c8b1932c79c405c3819",
       "endpoint": "https://mindicador.cl/api/tpm",
-      "fetchedAt": "2026-10-20T03:15:44.954Z"
+      "fetchedAt": "2026-10-20T03:29:05.527Z"
     }
   ],
   "errors": [],
