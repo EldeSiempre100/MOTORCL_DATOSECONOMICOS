@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import {
   Bar,
@@ -14,6 +14,8 @@ import {
 } from 'recharts';
 import type { AppMetadata, ChartDefinition, ChartPoint, Language, PeriodId, UIStrings, Variation } from '../../types/monitor.types';
 
+type TimeRange = '1A' | '3A' | '5A' | 'Todo';
+
 interface ChartsSectionProps {
   charts: ChartDefinition[];
   metadata: AppMetadata;
@@ -27,41 +29,74 @@ interface ChartsSectionProps {
   ui: UIStrings;
 }
 
-function selectPeriod(data: ChartPoint[], period: PeriodId, from: string, to: string): ChartPoint[] {
-  if (period === 'anio') return data.filter((point) => point.period >= '2026-01');
-  if (period === 'personalizado') {
-    return data.filter((point) => (!from || point.period >= from) && (!to || point.period <= to));
+function selectPeriod(data: ChartPoint[], period: PeriodId, from: string, to: string, range: TimeRange): ChartPoint[] {
+  let base = data;
+  if (period === 'anio') {
+    base = data.filter((point) => point.period >= '2026-01');
+  } else if (period === 'personalizado') {
+    base = data.filter((point) => (!from || point.period >= from) && (!to || point.period <= to));
   }
-  if (period === 'ultimo-mes') {
-    const complete = data.filter((point) => Object.entries(point).some(([key, value]) => key !== 'period' && key !== 'label' && key !== 'labelEn' && value !== null));
-    return complete.slice(-12);
-  }
-  return data.slice(-12);
+
+  // Apply local range toggle
+  if (range === '1A') return base.slice(-12);
+  if (range === '3A') return base.slice(-36);
+  if (range === '5A') return base.slice(-60);
+  return base;
 }
 
-function ChartTooltip({ active, payload, label, language, chart, variation }: TooltipProps<number, string> & { language: Language; chart: ChartDefinition; variation: Variation }) {
+function ChartTooltip({
+  active,
+  payload,
+  label,
+  language,
+  chart,
+  variation,
+}: TooltipProps<number, string> & { language: Language; chart: ChartDefinition; variation: Variation }) {
   if (!active || !payload?.length) return null;
   const available = payload.filter((item) => item.value !== null && item.value !== undefined);
   if (!available.length) return null;
 
   return (
     <div className="chart-tooltip">
-      <p className="tooltip-period">{String(label ?? '')}</p>
-      {available.map((item, index) => {
-        const series = chart.series.find((candidate) => candidate.valuesByVariation[variation] === String(item.dataKey));
-        return (
-          <div className="tooltip-row" key={`${String(item.dataKey)}-${index}`}>
-            <span className="tooltip-dot" style={{ backgroundColor: String(item.color ?? '#426f5d') }} />
-            <span className="tooltip-name">{series ? (language === 'en' ? series.labelEn : series.label) : String(item.name ?? '')}</span>
-            <strong>{new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', { maximumFractionDigits: 1 }).format(Number(item.value))}{chart.unit}</strong>
-          </div>
-        );
-      })}
+      <div className="tooltip-period-header">
+        <span className="tooltip-period">{String(label ?? '')}</span>
+        <span className="tooltip-unit-tag">{chart.unit}</span>
+      </div>
+      <div className="tooltip-rows">
+        {available.map((item, index) => {
+          const series = chart.series.find((candidate) => candidate.valuesByVariation[variation] === String(item.dataKey));
+          const color = String(item.color ?? series?.color ?? '#1b4985');
+          return (
+            <div className="tooltip-row" key={`${String(item.dataKey)}-${index}`}>
+              <span className="tooltip-dot" style={{ backgroundColor: color }} />
+              <span className="tooltip-name">
+                {series ? (language === 'en' ? series.labelEn : series.label) : String(item.name ?? '')}
+              </span>
+              <strong className="tooltip-val dato">
+                {new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', {
+                  maximumFractionDigits: 1,
+                  minimumFractionDigits: 1,
+                }).format(Number(item.value))}
+                {chart.unit}
+              </strong>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
 
-function ChartCard({ chart, metadata, language, variation, period, from, to, ui }: {
+function ChartCard({
+  chart,
+  metadata,
+  language,
+  variation,
+  period,
+  from,
+  to,
+  ui,
+}: {
   chart: ChartDefinition;
   metadata: AppMetadata;
   language: Language;
@@ -71,26 +106,57 @@ function ChartCard({ chart, metadata, language, variation, period, from, to, ui 
   to: string;
   ui: UIStrings;
 }) {
-  const data = useMemo(() => selectPeriod(chart.data, period, from, to), [chart.data, period, from, to]);
+  const [range, setRange] = useState<TimeRange>(period === 'personalizado' ? 'Todo' : '1A');
+  const data = useMemo(
+    () => selectPeriod(chart.data, period, from, to, range),
+    [chart.data, period, from, to, range]
+  );
   const missing = data.every((point) => chart.series.every((series) => point[series.valuesByVariation[variation]] === null));
   const periodLabel = language === 'en' ? chart.referenceEn : chart.reference;
   const leftAxis = language === 'en' ? chart.axes.leftEn : chart.axes.left;
   const rightAxis = language === 'en' ? chart.axes.rightEn : chart.axes.right;
   const hasRightAxis = chart.series.some((series) => series.axis === 'right');
+  const isOfficial = chart.dataStatus === 'official';
 
   return (
-    <article className="chart-card">
+    <article className={`chart-card ${isOfficial ? 'es-reciente' : ''}`} id={`chart-${chart.id}`}>
       <header className="chart-card-header">
         <div className="chart-card-title">
-          <h3>{language === 'en' ? chart.titleEn : chart.title} <span className={`data-origin data-origin--${chart.dataStatus ?? 'demo'}`}>{chart.dataStatus === 'official' ? 'INE · oficial' : language === 'en' ? 'Example' : 'Ejemplo'}</span></h3>
+          <div className="chart-title-row">
+            <h3>{language === 'en' ? chart.titleEn : chart.title}</h3>
+            <span className={`data-origin data-origin--${chart.dataStatus ?? 'demo'}`}>
+              <span className={`status-dot status-dot--${isOfficial ? 'green' : 'gray'}`} />
+              {isOfficial ? 'INE · Oficial' : (language === 'en' ? 'Example' : 'Ejemplo')}
+            </span>
+          </div>
           <p>{language === 'en' ? chart.subtitleEn : chart.subtitle}</p>
         </div>
-        <span className="chart-unit">{chart.unit}</span>
+
+        <div className="chart-card-actions">
+          <div className="rangos" role="group" aria-label="Rango temporal">
+            {(['1A', '3A', '5A', 'Todo'] as const).map((r) => (
+              <button
+                key={r}
+                type="button"
+                className="rango-btn"
+                aria-pressed={range === r}
+                onClick={() => setRange(r)}
+              >
+                {r}
+              </button>
+            ))}
+          </div>
+          <span className="chart-unit">{chart.unit}</span>
+        </div>
       </header>
+
       <div className="chart-legend" aria-label={ui.seriesLabel}>
         {chart.series.map((series) => (
           <span className="legend-item" key={series.id}>
-            <span className={`legend-mark legend-mark--${series.type}`} style={{ backgroundColor: series.color, borderColor: series.color }} />
+            <span
+              className={`legend-mark legend-mark--${series.type}`}
+              style={{ backgroundColor: series.color, borderColor: series.color }}
+            />
             {language === 'en' ? series.labelEn : series.label}
           </span>
         ))}
@@ -99,20 +165,76 @@ function ChartCard({ chart, metadata, language, variation, period, from, to, ui 
       {!missing && data.length ? (
         <div className="chart-plot">
           <div className="axis-caption axis-caption--left">{leftAxis}</div>
-          <ResponsiveContainer width="100%" height={278}>
-            <ComposedChart data={data} margin={{ top: 22, right: 2, left: 0, bottom: 10 }}>
-              <CartesianGrid strokeDasharray="2 4" vertical={false} stroke="var(--chart-grid)" />
-              <XAxis dataKey={language === 'en' ? 'labelEn' : 'label'} tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 12 }} minTickGap={18} />
-              <YAxis yAxisId="left" tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 12 }} tickFormatter={(value: number) => new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', { maximumFractionDigits: 1 }).format(value)} width={46} tickCount={5} />
-              {hasRightAxis ? <YAxis yAxisId="right" orientation="right" tickLine={false} axisLine={false} tick={{ fill: 'var(--text-muted)', fontSize: 12 }} tickFormatter={(value: number) => new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', { maximumFractionDigits: 1 }).format(value)} width={44} tickCount={5} /> : null}
-              <ReferenceLine y={0} yAxisId="left" stroke="var(--chart-grid)" />
-              <Tooltip content={<ChartTooltip language={language} chart={chart} variation={variation} />} cursor={{ fill: 'var(--chart-cursor)' }} />
+          <ResponsiveContainer width="100%" height={290}>
+            <ComposedChart data={data} margin={{ top: 22, right: 6, left: -4, bottom: 8 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--chart-grid)" />
+              <XAxis
+                dataKey={language === 'en' ? 'labelEn' : 'label'}
+                tickLine={false}
+                axisLine={false}
+                tick={{ fill: 'var(--text-muted)', fontSize: 11, fontFamily: 'var(--f-mono)' }}
+                minTickGap={16}
+              />
+              <YAxis
+                yAxisId="left"
+                tickLine={false}
+                axisLine={false}
+                tick={{ fill: 'var(--text-muted)', fontSize: 11, fontFamily: 'var(--f-mono)' }}
+                tickFormatter={(val: number) =>
+                  new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', {
+                    maximumFractionDigits: 1,
+                  }).format(val)
+                }
+                width={44}
+                tickCount={5}
+              />
+              {hasRightAxis ? (
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fill: 'var(--text-muted)', fontSize: 11, fontFamily: 'var(--f-mono)' }}
+                  tickFormatter={(val: number) =>
+                    new Intl.NumberFormat(language === 'es' ? 'es-CL' : 'en-US', {
+                      maximumFractionDigits: 1,
+                    }).format(val)
+                  }
+                  width={42}
+                  tickCount={5}
+                />
+              ) : null}
+              <ReferenceLine y={0} yAxisId="left" stroke="var(--border-strong)" strokeWidth={1} />
+              <Tooltip
+                content={<ChartTooltip language={language} chart={chart} variation={variation} />}
+                cursor={{ stroke: 'var(--chart-cursor)', strokeWidth: 1.5, strokeDasharray: '4 4' }}
+              />
               {chart.series.map((series) => {
                 const dataKey = series.valuesByVariation[variation];
                 return series.type === 'bar' ? (
-                  <Bar key={series.id} dataKey={dataKey} yAxisId={series.axis} fill={series.color} radius={[3, 3, 0, 0]} maxBarSize={18} stackId={series.stackId} isAnimationActive={false} />
+                  <Bar
+                    key={series.id}
+                    dataKey={dataKey}
+                    yAxisId={series.axis}
+                    fill={series.color}
+                    radius={[3, 3, 0, 0]}
+                    maxBarSize={16}
+                    stackId={series.stackId}
+                    isAnimationActive={false}
+                  />
                 ) : (
-                  <Line key={series.id} dataKey={dataKey} yAxisId={series.axis} type="linear" stroke={series.color} strokeWidth={2} dot={false} activeDot={{ r: 3.5, strokeWidth: 0 }} connectNulls={false} isAnimationActive={false} />
+                  <Line
+                    key={series.id}
+                    dataKey={dataKey}
+                    yAxisId={series.axis}
+                    type="monotone"
+                    stroke={series.color}
+                    strokeWidth={2.4}
+                    dot={false}
+                    activeDot={{ r: 4.5, stroke: 'var(--surface)', strokeWidth: 2 }}
+                    connectNulls={false}
+                    isAnimationActive={false}
+                  />
                 );
               })}
             </ComposedChart>
@@ -124,24 +246,60 @@ function ChartCard({ chart, metadata, language, variation, period, from, to, ui 
       )}
 
       <footer className="chart-card-footer">
-        <span>{ui.referencePeriod}: <strong>{periodLabel}</strong></span>
-        <span className="chart-source-links">
-          {chart.sourceIds.map((sourceId, index) => (
-            <span key={sourceId}>{index ? <span className="source-divider">·</span> : null}{metadata.sources[sourceId] && chart.dataStatus === 'official' ? <a href={chart.documentUrl ?? metadata.sources[sourceId].url} target="_blank" rel="noreferrer">{sourceId}<ArrowUpRight size={10} /></a> : sourceId}</span>
-          ))}
-        </span>
-        <p>{language === 'en' ? chart.footnoteEn : chart.footnote}</p>
-        {chart.seriesId ? <p><a href={`/indicador/${chart.seriesId}`}>{language === 'en' ? 'See observations and download' : 'Ver observaciones y descarga'} <ArrowUpRight size={10} /></a></p> : null}
+        <div className="chart-footer-meta">
+          <span>{ui.referencePeriod}: <strong>{periodLabel}</strong></span>
+          <span className="chart-source-links">
+            {chart.sourceIds.map((sourceId, index) => (
+              <span key={sourceId}>
+                {index ? <span className="source-divider">·</span> : null}
+                {metadata.sources[sourceId] && chart.dataStatus === 'official' ? (
+                  <a href={chart.documentUrl ?? metadata.sources[sourceId].url} target="_blank" rel="noreferrer">
+                    {sourceId}
+                    <ArrowUpRight size={10} />
+                  </a>
+                ) : (
+                  sourceId
+                )}
+              </span>
+            ))}
+          </span>
+        </div>
+        <p className="chart-footnote">{language === 'en' ? chart.footnoteEn : chart.footnote}</p>
+        {chart.seriesId ? (
+          <div className="chart-footer-cta">
+            <a href={`/indicador/${chart.seriesId}`} className="chart-detail-btn">
+              <span>{language === 'en' ? 'Open official indicator sheet' : 'Ver ficha oficial y descarga CSV'}</span>
+              <ArrowUpRight size={12} />
+            </a>
+          </div>
+        ) : null}
       </footer>
     </article>
   );
 }
 
-export function ChartsSection({ charts, metadata, language, variation, period, from, to, category, search, ui }: ChartsSectionProps) {
+export function ChartsSection({
+  charts,
+  metadata,
+  language,
+  variation,
+  period,
+  from,
+  to,
+  category,
+  search,
+  ui,
+}: ChartsSectionProps) {
   const normalizedSearch = search.trim().toLocaleLowerCase(language === 'es' ? 'es-CL' : 'en');
   const visibleCharts = charts.filter((chart) => {
     const matchesCategory = category === 'vision-general' || chart.category === category;
-    const searchable = [chart.title, chart.titleEn, chart.subtitle, chart.subtitleEn, ...chart.series.flatMap((series) => [series.label, series.labelEn])]
+    const searchable = [
+      chart.title,
+      chart.titleEn,
+      chart.subtitle,
+      chart.subtitleEn,
+      ...chart.series.flatMap((series) => [series.label, series.labelEn]),
+    ]
       .join(' ')
       .toLocaleLowerCase(language === 'es' ? 'es-CL' : 'en');
     return matchesCategory && (!normalizedSearch || searchable.includes(normalizedSearch));
@@ -155,14 +313,30 @@ export function ChartsSection({ charts, metadata, language, variation, period, f
           <h2 id="charts-heading">{ui.chartTitle}</h2>
           <p className="section-subtitle">{ui.chartSubtitle}</p>
         </div>
-        <span className="section-period">{ui.variationLabel}: <strong>{ui.variations.find((option) => option.id === variation)?.label}</strong></span>
+        <span className="section-period">
+          {ui.variationLabel}: <strong>{ui.variations.find((option) => option.id === variation)?.label}</strong>
+        </span>
       </div>
 
       {visibleCharts.length ? (
         <div className="charts-grid">
-          {visibleCharts.map((chart) => <ChartCard key={chart.id} chart={chart} metadata={metadata} language={language} variation={variation} period={period} from={from} to={to} ui={ui} />)}
+          {visibleCharts.map((chart) => (
+            <ChartCard
+              key={chart.id}
+              chart={chart}
+              metadata={metadata}
+              language={language}
+              variation={variation}
+              period={period}
+              from={from}
+              to={to}
+              ui={ui}
+            />
+          ))}
         </div>
-      ) : <div className="empty-state">{search.trim() ? ui.noSearchResults : ui.noCategoryCharts}</div>}
+      ) : (
+        <div className="empty-state">{search.trim() ? ui.noSearchResults : ui.noCategoryCharts}</div>
+      )}
     </section>
   );
 }

@@ -117,6 +117,8 @@ function MonitorDashboard({ data }: { data: DashboardData }) {
         onToggleLanguage={() => setLanguage((current) => current === 'es' ? 'en' : 'es')}
         onToggleTheme={() => setDark((current) => !current)}
         onShowDelayed={() => setShowDelayed(true)}
+        cards={data.summaries.cards}
+        charts={data.charts.charts}
       />
 
       <main className="page-shell main-content">

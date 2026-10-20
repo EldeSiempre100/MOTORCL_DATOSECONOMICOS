@@ -5,11 +5,11 @@
   "type": "module",
   "packageManager": "pnpm@11.25.0",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 3000",
+    "dev": "vite --host 0.0.0.0 --port 3002",
     "build": "tsc -b && vite build",
     "update:data": "node data-engines/update.mjs",
     "test:data": "node --test data-engines/tests/pipeline.test.mjs",
-    "preview": "vite preview --host 0.0.0.0 --port 3000"
+    "preview": "vite preview --host 0.0.0.0 --port 3002"
   },
   "dependencies": {
     "@vitejs/plugin-react": "4.7.0",
