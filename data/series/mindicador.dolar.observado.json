@@ -3,6 +3,7 @@
   "id": "mindicador.dolar.observado",
   "organization": "BCCh",
   "sourceProvider": "Mindicador",
+  "measure": "level",
   "officialCode": null,
   "providerCode": "dolar",
   "name": "Dólar observado",
@@ -12,7 +13,7 @@
   "unit": "clp",
   "sourceUrl": "https://mindicador.cl/api/dolar",
   "methodologyUrl": "https://www.bcentral.cl/",
-  "lastSuccessfulRefresh": "2026-10-20T03:56:49.846Z",
+  "lastSuccessfulRefresh": "2026-10-20T12:08:15.878Z",
   "observations": [
     {
       "period": "2024-01-02",

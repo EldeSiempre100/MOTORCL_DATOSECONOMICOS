@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "projectName": "Monitor Chile",
   "status": "live",
-  "updatedAt": "2026-10-20T03:56:49.846Z",
+  "updatedAt": "2026-10-20T12:08:15.878Z",
   "asOfLabel": "Consulta de motores: 2026-10-20",
   "latestCompleteMonth": "según última observación de cada serie",
   "isDemo": false,
@@ -10,8 +10,81 @@
     "es": "",
     "en": ""
   },
-  "delayedSeriesCount": 0,
-  "delayedSeries": [],
+  "delayedSeriesCount": 8,
+  "delayedSeries": [
+    {
+      "id": "uf",
+      "name": "Unidad de Fomento (UF)",
+      "nameEn": "Unidad de Fomento (UF)",
+      "source": "Mindicador",
+      "lastUpdate": "2026-10-20T03:56:49.846Z",
+      "reason": "The operation was aborted due to timeout",
+      "reasonEn": "The operation was aborted due to timeout"
+    },
+    {
+      "id": "euro",
+      "name": "Euro observado",
+      "nameEn": "Euro observado",
+      "source": "Mindicador",
+      "lastUpdate": "No disponible",
+      "reason": "The operation was aborted due to timeout",
+      "reasonEn": "The operation was aborted due to timeout"
+    },
+    {
+      "id": "utm",
+      "name": "Unidad Tributaria Mensual",
+      "nameEn": "Unidad Tributaria Mensual",
+      "source": "Mindicador",
+      "lastUpdate": "No disponible",
+      "reason": "The operation was aborted due to timeout",
+      "reasonEn": "The operation was aborted due to timeout"
+    },
+    {
+      "id": "ivp",
+      "name": "Índice de Valor Promedio (IVP)",
+      "nameEn": "Índice de Valor Promedio (IVP)",
+      "source": "Mindicador",
+      "lastUpdate": "No disponible",
+      "reason": "The operation was aborted due to timeout",
+      "reasonEn": "The operation was aborted due to timeout"
+    },
+    {
+      "id": "libra_cobre",
+      "name": "Precio del cobre",
+      "nameEn": "Precio del cobre",
+      "source": "Mindicador",
+      "lastUpdate": "No disponible",
+      "reason": "The operation was aborted due to timeout",
+      "reasonEn": "The operation was aborted due to timeout"
+    },
+    {
+      "id": "tpm",
+      "name": "Tasa de Política Monetaria (TPM)",
+      "nameEn": "Tasa de Política Monetaria (TPM)",
+      "source": "Mindicador",
+      "lastUpdate": "2026-10-20T03:56:49.846Z",
+      "reason": "The operation was aborted due to timeout",
+      "reasonEn": "The operation was aborted due to timeout"
+    },
+    {
+      "id": "ipc",
+      "name": "Inflación IPC",
+      "nameEn": "Inflación IPC",
+      "source": "Indicadores.cl",
+      "lastUpdate": "No disponible",
+      "reason": "Indicadores.cl HTTP 403: ipc",
+      "reasonEn": "Indicadores.cl HTTP 403: ipc"
+    },
+    {
+      "id": "imacec",
+      "name": "Imacec · variación anual",
+      "nameEn": "Imacec · variación anual",
+      "source": "Indicadores.cl",
+      "lastUpdate": "No disponible",
+      "reason": "Indicadores.cl HTTP 403: imacec",
+      "reasonEn": "Indicadores.cl HTTP 403: imacec"
+    }
+  ],
   "sources": {
     "INE": {
       "url": "https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/ocupacion-y-desocupacion",
@@ -57,7 +130,7 @@
         },
         {
           "id": "tasas",
-          "label": "Tasas (TPM)"
+          "label": "Tasas"
         },
         {
           "id": "empleo",
@@ -67,11 +140,11 @@
       "variations": [
         {
           "id": "mensual",
-          "label": "Mensual desest."
+          "label": "Medición actual"
         },
         {
           "id": "interanual",
-          "label": "Interanual"
+          "label": "Referencia anual"
         }
       ],
       "periods": [
@@ -185,7 +258,7 @@
         },
         {
           "id": "tasas",
-          "label": "Rates (TPM)"
+          "label": "Rates"
         },
         {
           "id": "empleo",
@@ -195,11 +268,11 @@
       "variations": [
         {
           "id": "mensual",
-          "label": "Monthly s.a."
+          "label": "Current measure"
         },
         {
           "id": "interanual",
-          "label": "Year-on-year"
+          "label": "Annual comparison"
         }
       ],
       "periods": [

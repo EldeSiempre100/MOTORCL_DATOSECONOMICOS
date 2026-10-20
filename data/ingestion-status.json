@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "runId": "motorcl-20261020035649846",
-  "checkedAt": "2026-10-20T03:56:49.846Z",
-  "latestSuccessfulRefresh": "2026-10-20T03:56:49.846Z",
-  "result": "ok",
+  "runId": "motorcl-20261020120815878",
+  "checkedAt": "2026-10-20T12:08:15.878Z",
+  "latestSuccessfulRefresh": "2026-10-20T12:08:15.878Z",
+  "result": "partial",
   "sources": [
     {
       "source": "INE/SIMEL",
@@ -28,35 +28,130 @@
       "revised": 0,
       "sha256": "6e0db3db94d5aafb4a1dad5963278e4f92545fe80bd7d2ab6b1b7b08fb766e43",
       "endpoint": "https://mindicador.cl/api/dolar",
-      "fetchedAt": "2026-10-20T03:56:51.093Z"
+      "fetchedAt": "2026-10-20T12:08:17.250Z"
     },
     {
       "source": "Mindicador",
       "code": "uf",
       "seriesId": "mindicador.uf",
-      "state": "ok",
-      "latestPeriod": "2026-10-20",
-      "observations": 1024,
-      "added": 0,
-      "revised": 0,
-      "sha256": "969c8aeadc23cce5748548590387a94135b51aebd8332aa802cfba634bd533f4",
-      "endpoint": "https://mindicador.cl/api/uf",
-      "fetchedAt": "2026-10-20T03:56:51.673Z"
+      "state": "failed",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "latestPeriod": "2026-10-20"
+    },
+    {
+      "source": "Mindicador",
+      "code": "euro",
+      "seriesId": "mindicador.euro.clp",
+      "state": "failed",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "latestPeriod": null
+    },
+    {
+      "source": "Mindicador",
+      "code": "utm",
+      "seriesId": "mindicador.utm",
+      "state": "failed",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "latestPeriod": null
+    },
+    {
+      "source": "Mindicador",
+      "code": "ivp",
+      "seriesId": "mindicador.ivp",
+      "state": "failed",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "latestPeriod": null
+    },
+    {
+      "source": "Mindicador",
+      "code": "libra_cobre",
+      "seriesId": "mindicador.cobre.usd.lb",
+      "state": "failed",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "latestPeriod": null
     },
     {
       "source": "Mindicador",
       "code": "tpm",
       "seriesId": "mindicador.tpm",
-      "state": "ok",
-      "latestPeriod": "2026-10-20",
-      "observations": 698,
-      "added": 0,
-      "revised": 0,
-      "sha256": "316722f1ae8b419970c1d3f273df00ea7b58e62224283c8b1932c79c405c3819",
-      "endpoint": "https://mindicador.cl/api/tpm",
-      "fetchedAt": "2026-10-20T03:56:52.129Z"
+      "state": "failed",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "latestPeriod": "2026-10-20"
+    },
+    {
+      "source": "Indicadores.cl",
+      "code": "ipc",
+      "seriesId": "indicadorescl.ipc.variacion.mensual",
+      "state": "failed",
+      "message": "Error: Indicadores.cl HTTP 403: ipc",
+      "latestPeriod": null
+    },
+    {
+      "source": "Indicadores.cl",
+      "code": "imacec",
+      "seriesId": "indicadorescl.imacec.variacion.anual",
+      "state": "failed",
+      "message": "Error: Indicadores.cl HTTP 403: imacec",
+      "latestPeriod": null
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "code": "uf",
+      "name": "Unidad de Fomento (UF)",
+      "source": "Mindicador",
+      "error": "The operation was aborted due to timeout",
+      "lastUpdate": "2026-10-20T03:56:49.846Z"
+    },
+    {
+      "code": "euro",
+      "name": "Euro observado",
+      "source": "Mindicador",
+      "error": "The operation was aborted due to timeout",
+      "lastUpdate": "No disponible"
+    },
+    {
+      "code": "utm",
+      "name": "Unidad Tributaria Mensual",
+      "source": "Mindicador",
+      "error": "The operation was aborted due to timeout",
+      "lastUpdate": "No disponible"
+    },
+    {
+      "code": "ivp",
+      "name": "Índice de Valor Promedio (IVP)",
+      "source": "Mindicador",
+      "error": "The operation was aborted due to timeout",
+      "lastUpdate": "No disponible"
+    },
+    {
+      "code": "libra_cobre",
+      "name": "Precio del cobre",
+      "source": "Mindicador",
+      "error": "The operation was aborted due to timeout",
+      "lastUpdate": "No disponible"
+    },
+    {
+      "code": "tpm",
+      "name": "Tasa de Política Monetaria (TPM)",
+      "source": "Mindicador",
+      "error": "The operation was aborted due to timeout",
+      "lastUpdate": "2026-10-20T03:56:49.846Z"
+    },
+    {
+      "code": "ipc",
+      "name": "Inflación IPC",
+      "source": "Indicadores.cl",
+      "error": "Indicadores.cl HTTP 403: ipc",
+      "lastUpdate": "No disponible"
+    },
+    {
+      "code": "imacec",
+      "name": "Imacec · variación anual",
+      "source": "Indicadores.cl",
+      "error": "Indicadores.cl HTTP 403: imacec",
+      "lastUpdate": "No disponible"
+    }
+  ],
   "publishedSeries": 4
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "runId": "motorcl-20261020035649846",
-  "generatedAt": "2026-10-20T03:56:49.846Z",
+  "runId": "motorcl-20261020120815878",
+  "generatedAt": "2026-10-20T12:08:15.878Z",
   "series": [
     {
       "id": "ine.ene.tdes.nacional.total",
@@ -16,7 +16,7 @@
       "unit": "percent",
       "endpoint": "https://sdmx.ine.gob.cl/rest/data/CL01,DF_TDES_SEXO,1.0/M.TDES._T.AS?format=csv",
       "latestPeriod": "2026-08",
-      "lastSuccessfulRefresh": "2026-10-20T03:56:49.846Z",
+      "lastSuccessfulRefresh": "2026-10-20T12:08:15.878Z",
       "sha256": "8b6b37da4690f53bac3f079376766d7a5eff12ad721cd53b9cdeb1a2469bbcfb",
       "available": true,
       "stale": false
@@ -34,7 +34,7 @@
       "unit": "clp",
       "endpoint": "https://mindicador.cl/api/dolar",
       "latestPeriod": "2026-10-20",
-      "lastSuccessfulRefresh": "2026-10-20T03:56:49.846Z",
+      "lastSuccessfulRefresh": "2026-10-20T12:08:15.878Z",
       "sha256": "6e0db3db94d5aafb4a1dad5963278e4f92545fe80bd7d2ab6b1b7b08fb766e43",
       "available": true,
       "stale": false
@@ -55,7 +55,7 @@
       "lastSuccessfulRefresh": "2026-10-20T03:56:49.846Z",
       "sha256": "969c8aeadc23cce5748548590387a94135b51aebd8332aa802cfba634bd533f4",
       "available": true,
-      "stale": false
+      "stale": true
     },
     {
       "id": "mindicador.tpm",
@@ -73,7 +73,7 @@
       "lastSuccessfulRefresh": "2026-10-20T03:56:49.846Z",
       "sha256": "316722f1ae8b419970c1d3f273df00ea7b58e62224283c8b1932c79c405c3819",
       "available": true,
-      "stale": false
+      "stale": true
     }
   ]
 }
