@@ -234,3 +234,11 @@ test('economic CSV parser validates original economic indices and their lineage'
   assert.equal(result.series.measure,'level');
   assert.equal(result.series.sourceProvider,'Economía Chile');
 });
+
+
+test('detail component is not accidentally duplicated during source edits', async () => {
+  const source=await readFile(new URL('../../src/components/home/IndicatorDetail.tsx',import.meta.url),'utf8');
+  const declarations=(source.match(/export function IndicatorDetail/g)??[]).length;
+  assert.equal(declarations,1);
+  assert.ok(source.length<30000,'The detail source unexpectedly grew from duplicate code');
+});
