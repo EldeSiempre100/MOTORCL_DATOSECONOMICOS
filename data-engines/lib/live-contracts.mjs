@@ -189,7 +189,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
 
   const activeCategories = new Set(summaries.cards.map(c => c.category));
   for (const lang of ['es', 'en']) {
-    metadata.ui[lang].categories = metadata.ui[lang].categories.filter(c => c.id === 'vision-general' || activeCategories.has(c.id));
+    metadata.ui[lang].categories = (metadata.ui[lang].categories ?? []).filter(c => c.id === 'vision-general' || activeCategories.has(c.id));
   }
   metadata.sources = Object.fromEntries(Object.entries(metadata.sources).filter(([id]) => ['INE', 'Mindicador'].includes(id)));
 
