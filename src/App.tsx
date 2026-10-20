@@ -137,6 +137,9 @@ function MonitorDashboard({ data }: { data: DashboardData }) {
 
         <SummaryCardsGrid
           cards={data.summaries.cards}
+          charts={data.charts.charts}
+          from={filters.from}
+          to={filters.to}
           metadata={data.metadata}
           language={language}
           variation={filters.variation}
