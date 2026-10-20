@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/indicador/:id",
+      "destination": "/index.html"
+    }
+  ]
+}
