@@ -198,18 +198,18 @@
             "ultimo": {
               "value": "$981,86",
               "tone": "neutral",
-              "diagnosis": "+$0,21",
-              "diagnosisEn": "+$0,21",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: +$0,21 · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: +$0,21 · vía Mindicador"
+              "diagnosis": "+$21,52",
+              "diagnosisEn": "+$21,52",
+              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: +$21,52 · vía Mindicador",
+              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: +$21,52 · vía Mindicador"
             },
             "ultimo-mes": {
               "value": "$981,86",
               "tone": "neutral",
-              "diagnosis": "+$0,21",
-              "diagnosisEn": "+$0,21",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: +$0,21 · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: +$0,21 · vía Mindicador"
+              "diagnosis": "+$21,52",
+              "diagnosisEn": "+$21,52",
+              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: +$21,52 · vía Mindicador",
+              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: +$21,52 · vía Mindicador"
             },
             "anio": {
               "value": "$981,86",
@@ -320,18 +320,18 @@
             "ultimo": {
               "value": "4,5%",
               "tone": "neutral",
-              "diagnosis": "0,0 pp",
-              "diagnosisEn": "0,0 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: 0,0 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: 0,0 pp · vía Mindicador"
+              "diagnosis": "-0,25 pp",
+              "diagnosisEn": "-0,25 pp",
+              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador",
+              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador"
             },
             "ultimo-mes": {
               "value": "4,5%",
               "tone": "neutral",
-              "diagnosis": "0,0 pp",
-              "diagnosisEn": "0,0 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: 0,0 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: 0,0 pp · vía Mindicador"
+              "diagnosis": "-0,25 pp",
+              "diagnosisEn": "-0,25 pp",
+              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador",
+              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador"
             },
             "anio": {
               "value": "4,5%",
