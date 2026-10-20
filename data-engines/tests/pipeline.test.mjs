@@ -206,3 +206,31 @@ test('new sourced indicators create real dashboards without fake release calenda
   assert.equal(output.charts.charts[0].data.at(-1).v,0.4);
   assert.ok(!('timeline' in output));
 });
+
+
+test('economic CSV parser validates original economic indices and their lineage', async () => {
+  const { ECONOMIA_SERIES, parseEconomiaCsv } = await import('../adapters/economia-chile-csv.mjs');
+  const spec=ECONOMIA_SERIES.ipc_indice;
+  const dates=Array.from({length:12},(_,i)=>{
+    const date=new Date(Date.UTC(2025,9+i,1));
+    const year=date.getUTCFullYear(), month=date.getUTCMonth()+1;
+    return {year,month,period: year+'-'+String(month).padStart(2,'0'),
+      value:i===11?'113,59':String(104+i).replace('.',',')};
+  });
+  const rows=dates.map((date,index)=>
+    '"' + (index+1) + '";"' + spec.rowName + '";"' + date.year + '-' + date.month + '-1";' +
+    date.value+';'+date.year+';'+date.month+';2026-10-19'
+  );
+  const sample='"";"serie";"fecha";"valor";"año";"mes";"fecha_scraping"\n'+rows.join('\n');
+  const out=parseEconomiaCsv(sample,spec,'2026-10-20');
+  assert.equal(out.length,12);
+  assert.equal(out.at(-1).period,'2026-09');
+  assert.equal(out.at(-1).value,113.59);
+  assert.throws(()=>parseEconomiaCsv('<<<<<<< HEAD\n'+sample,spec,'2026-10-20'),/corrupto/);
+  assert.throws(()=>parseEconomiaCsv(sample.replace('113,59','900,00'),spec,'2026-10-20'),/fuera de rango|referencia/);
+  const result=mergeProviderHistory(null,out,spec,'2026-10-20T13:00:00.000Z',
+    'https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv');
+  assert.equal(result.series.unit,'index');
+  assert.equal(result.series.measure,'level');
+  assert.equal(result.series.sourceProvider,'Economía Chile');
+});
