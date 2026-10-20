@@ -364,6 +364,430 @@
       "sources": [
         "Mindicador"
       ]
+    },
+    {
+      "id": "economiachile.ipc.indice.2023",
+      "category": "precios",
+      "title": "IPC general · índice",
+      "titleEn": "CPI index",
+      "icon": "prices",
+      "dataStatus": "sourced",
+      "seriesId": "economiachile.ipc.indice.2023",
+      "sourceUrl": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv",
+      "main": {
+        "name": "IPC general · índice",
+        "nameEn": "CPI index",
+        "description": "Nivel del índice, no variación porcentual",
+        "descriptionEn": "Nivel del índice, no variación porcentual",
+        "valuesByVariation": {
+          "mensual": {
+            "ultimo": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+0,44 pts",
+              "diagnosisEn": "+0,44 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +0,44 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +0,44 pts"
+            },
+            "ultimo-mes": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+0,44 pts",
+              "diagnosisEn": "+0,44 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +0,44 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +0,44 pts"
+            },
+            "anio": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+3,88 pts",
+              "diagnosisEn": "+3,88 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ene 2026: +3,88 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ene 2026: +3,88 pts"
+            },
+            "12-meses": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+4,45 pts",
+              "diagnosisEn": "+4,45 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts"
+            },
+            "personalizado": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+0,44 pts",
+              "diagnosisEn": "+0,44 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +0,44 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +0,44 pts"
+            }
+          },
+          "interanual": {
+            "ultimo": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+4,45 pts",
+              "diagnosisEn": "+4,45 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts"
+            },
+            "ultimo-mes": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+4,45 pts",
+              "diagnosisEn": "+4,45 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts"
+            },
+            "anio": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+3,88 pts",
+              "diagnosisEn": "+3,88 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ene 2026: +3,88 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ene 2026: +3,88 pts"
+            },
+            "12-meses": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+4,45 pts",
+              "diagnosisEn": "+4,45 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts"
+            },
+            "personalizado": {
+              "value": "113,59 pts",
+              "tone": "neutral",
+              "diagnosis": "+4,45 pts",
+              "diagnosisEn": "+4,45 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +4,45 pts"
+            }
+          }
+        }
+      },
+      "subIndicators": [],
+      "sources": [
+        "Economía Chile"
+      ]
+    },
+    {
+      "id": "economiachile.imacec.original.indice",
+      "category": "actividad",
+      "title": "Imacec original · índice",
+      "titleEn": "Imacec unadjusted index",
+      "icon": "activity",
+      "dataStatus": "sourced",
+      "seriesId": "economiachile.imacec.original.indice",
+      "sourceUrl": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/imacec.csv",
+      "main": {
+        "name": "Imacec original · índice",
+        "nameEn": "Imacec unadjusted index",
+        "description": "Nivel del índice, no variación porcentual",
+        "descriptionEn": "Nivel del índice, no variación porcentual",
+        "valuesByVariation": {
+          "mensual": {
+            "ultimo": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "+2,1 pts",
+              "diagnosisEn": "+2,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: +2,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: +2,1 pts"
+            },
+            "ultimo-mes": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "+2,1 pts",
+              "diagnosisEn": "+2,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: +2,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: +2,1 pts"
+            },
+            "anio": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "-2,1 pts",
+              "diagnosisEn": "-2,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ene 2026: -2,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ene 2026: -2,1 pts"
+            },
+            "12-meses": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "-1,1 pts",
+              "diagnosisEn": "-1,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts"
+            },
+            "personalizado": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "+2,1 pts",
+              "diagnosisEn": "+2,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: +2,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: +2,1 pts"
+            }
+          },
+          "interanual": {
+            "ultimo": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "-1,1 pts",
+              "diagnosisEn": "-1,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts"
+            },
+            "ultimo-mes": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "-1,1 pts",
+              "diagnosisEn": "-1,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts"
+            },
+            "anio": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "-2,1 pts",
+              "diagnosisEn": "-2,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ene 2026: -2,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ene 2026: -2,1 pts"
+            },
+            "12-meses": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "-1,1 pts",
+              "diagnosisEn": "-1,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts"
+            },
+            "personalizado": {
+              "value": "109,1 pts",
+              "tone": "neutral",
+              "diagnosis": "-1,1 pts",
+              "diagnosisEn": "-1,1 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: -1,1 pts"
+            }
+          }
+        }
+      },
+      "subIndicators": [],
+      "sources": [
+        "Economía Chile"
+      ]
+    },
+    {
+      "id": "economiachile.ipsa.mensual",
+      "category": "mercados",
+      "title": "IPSA · serie mensual",
+      "titleEn": "IPSA monthly index",
+      "icon": "activity",
+      "dataStatus": "sourced",
+      "seriesId": "economiachile.ipsa.mensual",
+      "sourceUrl": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipsa.csv",
+      "main": {
+        "name": "IPSA · serie mensual",
+        "nameEn": "IPSA monthly index",
+        "description": "Nivel del índice, no variación porcentual",
+        "descriptionEn": "Nivel del índice, no variación porcentual",
+        "valuesByVariation": {
+          "mensual": {
+            "ultimo": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+93,6 pts",
+              "diagnosisEn": "+93,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +93,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +93,6 pts"
+            },
+            "ultimo-mes": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+93,6 pts",
+              "diagnosisEn": "+93,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +93,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +93,6 pts"
+            },
+            "anio": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+142,6 pts",
+              "diagnosisEn": "+142,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ene 2026: +142,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ene 2026: +142,6 pts"
+            },
+            "12-meses": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+2.270,6 pts",
+              "diagnosisEn": "+2.270,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts"
+            },
+            "personalizado": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+93,6 pts",
+              "diagnosisEn": "+93,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +93,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ago 2026: +93,6 pts"
+            }
+          },
+          "interanual": {
+            "ultimo": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+2.270,6 pts",
+              "diagnosisEn": "+2.270,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts"
+            },
+            "ultimo-mes": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+2.270,6 pts",
+              "diagnosisEn": "+2.270,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts"
+            },
+            "anio": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+142,6 pts",
+              "diagnosisEn": "+142,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de ene 2026: +142,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de ene 2026: +142,6 pts"
+            },
+            "12-meses": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+2.270,6 pts",
+              "diagnosisEn": "+2.270,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts"
+            },
+            "personalizado": {
+              "value": "11.326,7 pts",
+              "tone": "neutral",
+              "diagnosis": "+2.270,6 pts",
+              "diagnosisEn": "+2.270,6 pts",
+              "context": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts",
+              "contextEn": "sep 2026 · nivel · Economía Chile · respecto de sep 2025: +2.270,6 pts"
+            }
+          }
+        }
+      },
+      "subIndicators": [],
+      "sources": [
+        "Economía Chile"
+      ]
+    },
+    {
+      "id": "economiachile.remuneraciones.reales",
+      "category": "empleo",
+      "title": "Remuneraciones reales · índice",
+      "titleEn": "Real earnings index",
+      "icon": "activity",
+      "dataStatus": "sourced",
+      "seriesId": "economiachile.remuneraciones.reales",
+      "sourceUrl": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/remuneraciones.csv",
+      "main": {
+        "name": "Remuneraciones reales · índice",
+        "nameEn": "Real earnings index",
+        "description": "Nivel del índice, no variación porcentual",
+        "descriptionEn": "Nivel del índice, no variación porcentual",
+        "valuesByVariation": {
+          "mensual": {
+            "ultimo": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "-0,64 pts",
+              "diagnosisEn": "-0,64 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: -0,64 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: -0,64 pts"
+            },
+            "ultimo-mes": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "-0,64 pts",
+              "diagnosisEn": "-0,64 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: -0,64 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: -0,64 pts"
+            },
+            "anio": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "+2,29 pts",
+              "diagnosisEn": "+2,29 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ene 2026: +2,29 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ene 2026: +2,29 pts"
+            },
+            "12-meses": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "+3,6 pts",
+              "diagnosisEn": "+3,6 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts"
+            },
+            "personalizado": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "-0,64 pts",
+              "diagnosisEn": "-0,64 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: -0,64 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de jul 2026: -0,64 pts"
+            }
+          },
+          "interanual": {
+            "ultimo": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "+3,6 pts",
+              "diagnosisEn": "+3,6 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts"
+            },
+            "ultimo-mes": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "+3,6 pts",
+              "diagnosisEn": "+3,6 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts"
+            },
+            "anio": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "+2,29 pts",
+              "diagnosisEn": "+2,29 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ene 2026: +2,29 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ene 2026: +2,29 pts"
+            },
+            "12-meses": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "+3,6 pts",
+              "diagnosisEn": "+3,6 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts"
+            },
+            "personalizado": {
+              "value": "110,16 pts",
+              "tone": "neutral",
+              "diagnosis": "+3,6 pts",
+              "diagnosisEn": "+3,6 pts",
+              "context": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts",
+              "contextEn": "ago 2026 · nivel · Economía Chile · respecto de ago 2025: +3,6 pts"
+            }
+          }
+        }
+      },
+      "subIndicators": [],
+      "sources": [
+        "Economía Chile"
+      ]
     }
   ]
 }

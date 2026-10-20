@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "runId": "motorcl-20261020120815878",
-  "checkedAt": "2026-10-20T12:08:15.878Z",
-  "latestSuccessfulRefresh": "2026-10-20T12:08:15.878Z",
+  "runId": "motorcl-20261020122552995",
+  "checkedAt": "2026-10-20T12:25:52.995Z",
+  "latestSuccessfulRefresh": "2026-10-20T12:25:52.995Z",
   "result": "partial",
   "sources": [
     {
@@ -21,137 +21,98 @@
       "source": "Mindicador",
       "code": "dolar",
       "seriesId": "mindicador.dolar.observado",
-      "state": "ok",
-      "latestPeriod": "2026-10-20",
-      "observations": 697,
-      "added": 0,
-      "revised": 0,
-      "sha256": "6e0db3db94d5aafb4a1dad5963278e4f92545fe80bd7d2ab6b1b7b08fb766e43",
-      "endpoint": "https://mindicador.cl/api/dolar",
-      "fetchedAt": "2026-10-20T12:08:17.250Z"
+      "state": "cached",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "ageDays": 0,
+      "latestPeriod": "2026-10-20"
     },
     {
       "source": "Mindicador",
       "code": "uf",
       "seriesId": "mindicador.uf",
-      "state": "failed",
-      "message": "TimeoutError: The operation was aborted due to timeout",
-      "latestPeriod": "2026-10-20"
-    },
-    {
-      "source": "Mindicador",
-      "code": "euro",
-      "seriesId": "mindicador.euro.clp",
-      "state": "failed",
-      "message": "TimeoutError: The operation was aborted due to timeout",
-      "latestPeriod": null
-    },
-    {
-      "source": "Mindicador",
-      "code": "utm",
-      "seriesId": "mindicador.utm",
-      "state": "failed",
-      "message": "TimeoutError: The operation was aborted due to timeout",
-      "latestPeriod": null
-    },
-    {
-      "source": "Mindicador",
-      "code": "ivp",
-      "seriesId": "mindicador.ivp",
-      "state": "failed",
-      "message": "TimeoutError: The operation was aborted due to timeout",
-      "latestPeriod": null
-    },
-    {
-      "source": "Mindicador",
-      "code": "libra_cobre",
-      "seriesId": "mindicador.cobre.usd.lb",
-      "state": "failed",
-      "message": "TimeoutError: The operation was aborted due to timeout",
-      "latestPeriod": null
+      "state": "ok",
+      "latestPeriod": "2026-10-20",
+      "observations": 1024,
+      "added": 0,
+      "revised": 0,
+      "sha256": "969c8aeadc23cce5748548590387a94135b51aebd8332aa802cfba634bd533f4",
+      "endpoint": "https://mindicador.cl/api/uf",
+      "fetchedAt": "2026-10-20T12:25:53.932Z"
     },
     {
       "source": "Mindicador",
       "code": "tpm",
       "seriesId": "mindicador.tpm",
-      "state": "failed",
-      "message": "TimeoutError: The operation was aborted due to timeout",
-      "latestPeriod": "2026-10-20"
+      "state": "ok",
+      "latestPeriod": "2026-10-20",
+      "observations": 698,
+      "added": 0,
+      "revised": 0,
+      "sha256": "316722f1ae8b419970c1d3f273df00ea7b58e62224283c8b1932c79c405c3819",
+      "endpoint": "https://mindicador.cl/api/tpm",
+      "fetchedAt": "2026-10-20T12:25:53.927Z"
     },
     {
-      "source": "Indicadores.cl",
-      "code": "ipc",
-      "seriesId": "indicadorescl.ipc.variacion.mensual",
-      "state": "failed",
-      "message": "Error: Indicadores.cl HTTP 403: ipc",
-      "latestPeriod": null
+      "source": "Economía Chile",
+      "code": "ipc_indice",
+      "seriesId": "economiachile.ipc.indice.2023",
+      "state": "ok",
+      "latestPeriod": "2026-09",
+      "observations": 202,
+      "added": 202,
+      "revised": 0,
+      "sha256": "103c865bb872c459c1f2358e789d1d4b8b034c99c48be9a3a6092f90cc3a34a2",
+      "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv",
+      "fetchedAt": "2026-10-20T12:26:43.925Z"
     },
     {
-      "source": "Indicadores.cl",
-      "code": "imacec",
-      "seriesId": "indicadorescl.imacec.variacion.anual",
-      "state": "failed",
-      "message": "Error: Indicadores.cl HTTP 403: imacec",
-      "latestPeriod": null
+      "source": "Economía Chile",
+      "code": "imacec_indice",
+      "seriesId": "economiachile.imacec.original.indice",
+      "state": "ok",
+      "latestPeriod": "2026-08",
+      "observations": 164,
+      "added": 164,
+      "revised": 0,
+      "sha256": "3888bf266111a95f2f09b4fd1b78678b9481ed27e41232875f581ddee33f967e",
+      "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/imacec.csv",
+      "fetchedAt": "2026-10-20T12:26:43.926Z"
+    },
+    {
+      "source": "Economía Chile",
+      "code": "ipsa_mensual",
+      "seriesId": "economiachile.ipsa.mensual",
+      "state": "ok",
+      "latestPeriod": "2026-09",
+      "observations": 201,
+      "added": 201,
+      "revised": 0,
+      "sha256": "120dd67cd41ce197c8bc5a57e2de86984f3624abaec2602c1450fb7211837b34",
+      "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipsa.csv",
+      "fetchedAt": "2026-10-20T12:26:43.927Z"
+    },
+    {
+      "source": "Economía Chile",
+      "code": "remuneracion_real",
+      "seriesId": "economiachile.remuneraciones.reales",
+      "state": "ok",
+      "latestPeriod": "2026-08",
+      "observations": 44,
+      "added": 44,
+      "revised": 0,
+      "sha256": "b8152eb2b8d9b9d44fa6e84a789a43a756fcc50f78fb1a32eb40c59e987f0f9b",
+      "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/remuneraciones.csv",
+      "fetchedAt": "2026-10-20T12:26:44.028Z"
     }
   ],
   "errors": [
     {
-      "code": "uf",
-      "name": "Unidad de Fomento (UF)",
+      "code": "dolar",
+      "name": "Dólar observado",
       "source": "Mindicador",
       "error": "The operation was aborted due to timeout",
-      "lastUpdate": "2026-10-20T03:56:49.846Z"
-    },
-    {
-      "code": "euro",
-      "name": "Euro observado",
-      "source": "Mindicador",
-      "error": "The operation was aborted due to timeout",
-      "lastUpdate": "No disponible"
-    },
-    {
-      "code": "utm",
-      "name": "Unidad Tributaria Mensual",
-      "source": "Mindicador",
-      "error": "The operation was aborted due to timeout",
-      "lastUpdate": "No disponible"
-    },
-    {
-      "code": "ivp",
-      "name": "Índice de Valor Promedio (IVP)",
-      "source": "Mindicador",
-      "error": "The operation was aborted due to timeout",
-      "lastUpdate": "No disponible"
-    },
-    {
-      "code": "libra_cobre",
-      "name": "Precio del cobre",
-      "source": "Mindicador",
-      "error": "The operation was aborted due to timeout",
-      "lastUpdate": "No disponible"
-    },
-    {
-      "code": "tpm",
-      "name": "Tasa de Política Monetaria (TPM)",
-      "source": "Mindicador",
-      "error": "The operation was aborted due to timeout",
-      "lastUpdate": "2026-10-20T03:56:49.846Z"
-    },
-    {
-      "code": "ipc",
-      "name": "Inflación IPC",
-      "source": "Indicadores.cl",
-      "error": "Indicadores.cl HTTP 403: ipc",
-      "lastUpdate": "No disponible"
-    },
-    {
-      "code": "imacec",
-      "name": "Imacec · variación anual",
-      "source": "Indicadores.cl",
-      "error": "Indicadores.cl HTTP 403: imacec",
-      "lastUpdate": "No disponible"
+      "lastUpdate": "2026-10-20T12:08:15.878Z"
     }
   ],
-  "publishedSeries": 4
+  "publishedSeries": 8
 }

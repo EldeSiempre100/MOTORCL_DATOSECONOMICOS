@@ -3,6 +3,7 @@
   "id": "mindicador.tpm",
   "organization": "BCCh",
   "sourceProvider": "Mindicador",
+  "measure": "level",
   "officialCode": null,
   "providerCode": "tpm",
   "name": "Tasa de Política Monetaria (TPM)",
@@ -12,7 +13,7 @@
   "unit": "percent",
   "sourceUrl": "https://mindicador.cl/api/tpm",
   "methodologyUrl": "https://www.bcentral.cl/",
-  "lastSuccessfulRefresh": "2026-10-20T03:56:49.846Z",
+  "lastSuccessfulRefresh": "2026-10-20T12:25:52.995Z",
   "observations": [
     {
       "period": "2024-01-02",
