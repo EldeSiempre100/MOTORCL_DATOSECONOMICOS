@@ -1,8 +1,12 @@
 import { ArrowRight, BriefcaseBusiness, ChartNoAxesColumnIncreasing, Coins, HeartPulse } from 'lucide-react';
-import type { AppMetadata, Language, PeriodId, SummaryCard, UIStrings, Variation } from '../../types/monitor.types';
+import { CardSparkline } from './CardSparkline';
+import type { AppMetadata, ChartDefinition, Language, PeriodId, SummaryCard, UIStrings, Variation } from '../../types/monitor.types';
 
 interface SummaryCardsGridProps {
   cards: SummaryCard[];
+  charts: ChartDefinition[];
+  from: string;
+  to: string;
   metadata: AppMetadata;
   language: Language;
   variation: Variation;
@@ -28,7 +32,7 @@ function toneClass(tone: string) {
   return tone === 'positive' ? 'tone-positive' : tone === 'negative' ? 'tone-negative' : 'tone-neutral';
 }
 
-export function SummaryCardsGrid({ cards, metadata, language, variation, period, category, search, ui, onChooseCategory }: SummaryCardsGridProps) {
+export function SummaryCardsGrid({ cards, charts, from, to, metadata, language, variation, period, category, search, ui, onChooseCategory }: SummaryCardsGridProps) {
   const normalizedSearch = search.trim().toLocaleLowerCase(language === 'es' ? 'es-CL' : 'en');
   const visibleCards = cards.filter((card) => {
     const matchesCategory = category === 'vision-general' || card.category === category;
@@ -52,6 +56,7 @@ export function SummaryCardsGrid({ cards, metadata, language, variation, period,
         <div className="summary-grid">
           {visibleCards.map((card) => {
             const indicator = card.main.valuesByVariation[variation][period] ?? card.main.valuesByVariation[variation].ultimo;
+            const matchingChart = charts.find((item) => item.category === card.category && (item.dataStatus ?? 'demo') === (card.dataStatus ?? 'demo') && (!card.seriesId || item.seriesId === card.seriesId));
             return (
               <article className="summary-card" key={card.id}>
                 <button className="card-category" type="button" onClick={() => onChooseCategory(card.category)} aria-label={language === 'en' ? card.titleEn : card.title}>
@@ -69,6 +74,7 @@ export function SummaryCardsGrid({ cards, metadata, language, variation, period,
                   <span className={`diagnosis ${toneClass(indicator.tone)}`}>{language === 'en' ? indicator.diagnosisEn : indicator.diagnosis}</span>
                 </div>
                 <p className="kpi-context">{language === 'en' ? indicator.contextEn : indicator.context}</p>
+                <CardSparkline chart={matchingChart} language={language} variation={variation} period={period} from={from} to={to} />
 
                 <div className="card-divider" />
                 <div className="sub-indicators">
