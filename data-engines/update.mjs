@@ -93,14 +93,18 @@ async function main() {
         },
       };
     } catch (error) {
-      console.warn('Source failed:', spec.code, String(error));
+      const last=previous?.observations?.at(-1);
+      const age=last ? Math.floor((Date.parse(checkedAt.slice(0,10)) -
+        Date.parse(last.period.length===7 ? last.observedTo : last.period))/86400000) : Infinity;
+      const usable=Boolean(last && Number.isFinite(age) && age>=0 && age<=spec.maxAgeDays);
+      console.warn('Source unavailable:',spec.code,usable?'fresh snapshot retained':'no current snapshot',String(error));
       return {
-        entry: previous?.observations?.length ? {spec,series:previous} : null,
+        entry: usable ? {spec,series:previous} : null,
         files: [],
         run: {
           source:spec.provider,code:spec.code,seriesId:spec.id,
-          state:'failed',message:String(error),
-          latestPeriod:previous?.observations?.at(-1)?.period ?? null,
+          state:usable?'cached':'failed', message:String(error), ageDays:age,
+          latestPeriod:last?.period ?? null,
         },
         error:sourceError(spec.code,spec.name,spec.provider,error,previous?.lastSuccessfulRefresh),
       };
