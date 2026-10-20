@@ -20,6 +20,30 @@ export const INDICATORS = Object.freeze({
     unit: 'clp', frequency: 'daily', min: 1000, max: 150000,
     maxAgeDays: 6,
   },
+  euro: {
+    id: 'mindicador.euro.clp', code: 'euro', name: 'Euro observado',
+    nameEn: 'Observed euro', category: 'dolar-uf',
+    organization: 'BCCh', provider: 'Mindicador',
+    unit: 'clp', frequency: 'daily', min: 300, max: 4000, maxAgeDays: 12,
+  },
+  utm: {
+    id: 'mindicador.utm', code: 'utm', name: 'Unidad Tributaria Mensual',
+    nameEn: 'Monthly tax unit (UTM)', category: 'dolar-uf',
+    organization: 'SII', provider: 'Mindicador',
+    unit: 'clp', frequency: 'monthly', min: 10000, max: 160000, maxAgeDays: 45,
+  },
+  ivp: {
+    id: 'mindicador.ivp', code: 'ivp', name: 'Índice de Valor Promedio (IVP)',
+    nameEn: 'Average value index (IVP)', category: 'dolar-uf',
+    organization: 'BCCh', provider: 'Mindicador',
+    unit: 'clp', frequency: 'daily', min: 1000, max: 150000, maxAgeDays: 10,
+  },
+  libra_cobre: {
+    id: 'mindicador.cobre.usd.lb', code: 'libra_cobre', name: 'Precio del cobre',
+    nameEn: 'Copper price', category: 'mercados',
+    organization: 'BCCh', provider: 'Mindicador',
+    unit: 'usd-lb', frequency: 'daily', min: 0.3, max: 25, maxAgeDays: 12,
+  },
   tpm: {
     id: 'mindicador.tpm', code: 'tpm',
     name: 'Tasa de Política Monetaria (TPM)', nameEn: 'Monetary policy rate',
@@ -53,7 +77,8 @@ export function normalizeMindicador(payload, spec, today = new Date().toISOStrin
     throw new Error('Respuesta Mindicador inválida para ' + spec.code);
   }
   if ((spec.unit === 'clp' && payload.unidad_medida !== 'Pesos') ||
-      (spec.unit === 'percent' && payload.unidad_medida !== 'Porcentaje')) {
+      (spec.unit === 'percent' && payload.unidad_medida !== 'Porcentaje') ||
+      (spec.unit === 'usd-lb' && payload.unidad_medida !== 'Dólar')) {
     throw new Error('Unidad Mindicador no reconocida para ' + spec.code);
   }
   const entries = new Map();
