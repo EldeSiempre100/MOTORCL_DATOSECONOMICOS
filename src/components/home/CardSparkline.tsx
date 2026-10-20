@@ -67,8 +67,12 @@ export function CardSparkline({ chart, language, variation, period, from, to }: 
     return true;
   });
   // Trim unpublished trailing periods but retain interior missing observations.
-  const lastObservedIndex = filtered.findLastIndex((point) =>
-    typeof point[dataKey] === 'number' && Number.isFinite(point[dataKey]));
+  let lastObservedIndex = filtered.length - 1;
+  while (lastObservedIndex >= 0) {
+    const value = filtered[lastObservedIndex][dataKey];
+    if (typeof value === 'number' && Number.isFinite(value)) break;
+    lastObservedIndex -= 1;
+  }
   const history = filtered.slice(0, lastObservedIndex + 1).slice(-12);
   const validValues = history
     .map((point) => point[dataKey])
