@@ -13,7 +13,6 @@ import {
   AreaChart,
   CartesianGrid,
   ReferenceDot,
-  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -79,10 +78,12 @@ export function IndicatorDetail({ id }: { id: string }) {
 
   const filteredObservations = useMemo(() => {
     if (!observations.length) return [];
-    if (range === '1A') return observations.slice(-12);
-    if (range === '2A') return observations.slice(-24);
-    if (range === '5A') return observations.slice(-60);
-    return observations;
+    if (range === 'Todo') return observations;
+    const years = range === '1A' ? 1 : range === '2A' ? 2 : 5;
+    const p = observations.at(-1)?.period;
+    if (!p) return [];
+    const threshold = new Date(Date.UTC(Number(p.slice(0, 4)) - years, Number(p.slice(5, 7)) - 1, Number(p.slice(8, 10)) || 1)).toISOString().slice(0, 10);
+    return observations.filter(item => (item.period.length === 7 ? item.period + '-01' : item.period) >= threshold;
   }, [observations, range]);
 
   const chartData = useMemo(() => {
@@ -169,7 +170,7 @@ export function IndicatorDetail({ id }: { id: string }) {
               <div className="indicator-hero-header">
                 <div className="indicator-badges">
                   <span className={isOfficialIne ? 'status-badge status-badge--official' : 'status-badge'}>
-                    <span className="status-dot status-dot--green" />
+                    <span className={isOfficialIne ? 'status-dot status-dot--green' : 'status-dot status-dot--gray'} />
                     {isOfficialIne ? 'Fuente oficial · INE/SIMEL' : 'Datos intermediados · Mindicador'}
                   </span>
                   <span className="freshness-badge">Dato: {latest.period}</span>
@@ -245,8 +246,7 @@ export function IndicatorDetail({ id }: { id: string }) {
               <div className="calendar-alert-body">
                 <h3 className="calendar-alert-title">Calendario de publicación oficial</h3>
                 <p className="calendar-alert-text">
-                  El Instituto Nacional de Estadísticas (INE) publica los resultados de la Encuesta Nacional de Empleo
-                  el último día hábil de cada mes a las 09:00 horas.
+                  {isOfficialIne ? 'Consulte el calendario oficial INE para conocer la próxima publicación de la Encuesta Nacional de Empleo.' : 'Mindicador no proporciona fechas oficiales de publicación futura para esta serie. Consulte el organismo emisor.'}
                 </p>
               </div>
               <a
@@ -404,9 +404,7 @@ export function IndicatorDetail({ id }: { id: string }) {
               <div className="methodology-note">
                 <Info size={16} />
                 <p>
-                  Esta serie es adquirida de forma no comercial directamente desde el repositorio oficial SIMEL del
-                  Instituto Nacional de Estadísticas de Chile bajo la licencia de datos abiertos del Estado de Chile.
-                  Las cifras se conservan en su definición original sin interpolaciones destructivas.
+                  {isOfficialIne ? 'Datos obtenidos directamente de INE/SIMEL. El registro conserva revisiones detectadas y no altera los valores originales.' : 'Datos intermediados por Mindicador y atribuidos al BCCh. Las revisiones registradas son cambios detectados por MotorCL, no notificaciones oficiales del Banco Central.'}
                 </p>
               </div>
             </footer>
