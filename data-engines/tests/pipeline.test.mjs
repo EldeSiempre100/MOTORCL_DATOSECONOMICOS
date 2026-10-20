@@ -4,6 +4,9 @@ import { readFile } from 'node:fs/promises';
 import { parseCsv, normalizeSimelRows } from '../ine_engine/simel.mjs';
 import { mergeHistory, incrementalStart, validateSeries } from '../lib/history.mjs';
 import { buildContracts } from '../lib/contracts.mjs';
+import { buildLiveContracts } from '../lib/live-contracts.mjs';
+import { normalizeMindicador, INDICATORS } from '../adapters/mindicador.mjs';
+import { mergeProviderHistory } from '../lib/multi-history.mjs';
 
 const csv = 'DATAFLOW;FREQ;INDICADOR;AREA_REF;SEXO;TIME_PERIOD;OBS_VALUE;OBS_STATUS;UNIDAD;NOTAS\n' +
   'CL01:DF_TDES_SEXO(1.0);M;TDES;_T;AS;2026-06-01/P3M;9.640319093536927;;RT;"nota; con separador"\n';
@@ -75,7 +78,62 @@ test('published contracts agree with the persisted official series', async () =>
   assert.equal(Number.parseFloat(card.main.valuesByVariation.mensual.ultimo.value.replace(',', '.')), Number(latest.value.toFixed(1)));
   assert.equal(chart.data.at(-1).unemploymentRate, Number(latest.value.toFixed(3)));
   assert.equal(event.publishedAt, latest.publishedAt);
-  assert.ok(cards.cards.filter((item) => item.id !== 'empleo').every((item) => item.dataStatus === 'demo'));
-  assert.ok(charts.charts.filter((item) => item.id !== 'empleo').every((item) => item.dataStatus === 'demo'));
-  assert.ok(timeline.events.filter((item) => item.id !== 'empleo-trim').every((item) => item.dataStatus === 'demo'));
+  assert.ok(cards.cards.every((item) => ['official', 'sourced'].includes(item.dataStatus)));
+  assert.ok(charts.charts.every((item) => ['official', 'sourced'].includes(item.dataStatus)));
+  assert.ok(timeline.events.every((item) => item.dataStatus === 'official'));
+});
+
+
+test('normalizes public mirror data without assuming publication dates or accepting projected UF', () => {
+  const spec = INDICATORS.uf;
+  const payload = { codigo: 'uf', autor: 'mindicador.cl', unidad_medida: 'Pesos',
+    serie: [
+      { fecha: '2026-10-20T03:00:00.000Z', valor: 41184.01 },
+      { fecha: '2026-10-19T03:00:00.000Z', valor: 41183.94 },
+      { fecha: '2026-11-09T03:00:00.000Z', valor: 41295.46 },
+    ] };
+  const points = normalizeMindicador(payload, spec, '2026-10-20');
+  assert.equal(points.length, 2);
+  assert.equal(points.at(-1).period, '2026-10-20');
+  assert.equal(points.at(-1).publishedAt, undefined);
+  assert.throws(() => normalizeMindicador({ ...payload, codigo: 'dolar' }, spec, '2026-10-20'), /inválida/);
+  assert.throws(() => normalizeMindicador({ ...payload, serie: [{ fecha: '2026-10-20T03:00:00Z', valor: 900000 }] }, spec, '2026-10-20'), /fuera de rango/);
+});
+
+test('records independent mirror revisions without relabeling them as official', () => {
+  const spec = INDICATORS.dolar, at = '2026-10-20T15:00:00.000Z';
+  const point = { period: '2026-10-19', observedFrom: '2026-10-19', observedTo: '2026-10-19', value: 981.65, sourceStatus: null };
+  const first = mergeProviderHistory(null, [point], spec, at, 'https://mindicador.cl/api/dolar');
+  assert.equal(first.series.sourceProvider, 'Mindicador');
+  assert.equal(first.series.officialCode, null);
+  assert.equal(first.series.observations[0].publishedAt, null);
+  const next = mergeProviderHistory(first.series, [{ ...point, value: 981.75 }], spec,
+    '2026-10-21T15:00:00.000Z', 'https://mindicador.cl/api/dolar');
+  assert.equal(next.revised, 1);
+  assert.equal(next.series.observations[0].revisions[0].previousValue, 981.65);
+  assert.equal(next.series.observations[0].value, 981.75);
+  assert.ok(next.sha256);
+});
+
+test('live contracts hide all demonstration figures and expose sourced cards', () => {
+  const official = mergeHistory(null, normalizeSimelRows(parseCsv(csv)), publications, checkedAt).series;
+  const spec = INDICATORS.dolar;
+  const snapshot = mergeProviderHistory(null,
+    [{ period: '2026-10-18', observedFrom: '2026-10-18', observedTo: '2026-10-18', value: 980.1, sourceStatus: null },
+     { period: '2026-10-19', observedFrom: '2026-10-19', observedTo: '2026-10-19', value: 981.65, sourceStatus: null }],
+    spec, checkedAt, 'https://mindicador.cl/api/dolar').series;
+  const baseline = {
+    metadata: { projectName: 'MotorCL', sources: { INE: { url: 'https://www.ine.gob.cl/' } },
+      ui: { es: {}, en: {} }, demoNotice: {} },
+    summaries: { cards: [{ id: 'actividad', dataStatus: 'demo' }, { id: 'empleo', main: {}, subIndicators: [], sources: [] }] },
+    charts: { charts: [{ id: 'actividad', dataStatus: 'demo' }, { id: 'empleo', data: [], series: [] }] },
+    timeline: { events: [{ id: 'ipc', status: 'published', date: '2026-10-08' }, { id: 'empleo-trim' }] },
+  };
+  const contracts = buildLiveContracts(baseline, official, [{ spec, series: snapshot }], checkedAt);
+  assert.equal(contracts.summaries.cards.length, 2);
+  assert.equal(contracts.summaries.cards[0].dataStatus, 'official');
+  assert.equal(contracts.summaries.cards[1].dataStatus, 'sourced');
+  assert.ok(contracts.charts.charts.every(x => x.dataStatus !== 'demo'));
+  assert.ok(contracts.timeline.events.every(x => x.dataStatus === 'official'));
+  assert.equal(contracts.metadata.isDemo, false);
 });
