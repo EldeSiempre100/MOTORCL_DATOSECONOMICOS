@@ -111,7 +111,7 @@ export function TopNavbar({
             category: card.category,
             value: sub.values.mensual,
             tone: sub.toneByVariation.mensual,
-            seriesId: card.seriesId,
+            seriesId: sub.seriesId,
             dataStatus: card.dataStatus,
           });
         }
