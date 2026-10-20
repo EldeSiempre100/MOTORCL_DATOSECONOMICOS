@@ -83,7 +83,7 @@ export function IndicatorDetail({ id }: { id: string }) {
     const p = observations.at(-1)?.period;
     if (!p) return [];
     const threshold = new Date(Date.UTC(Number(p.slice(0, 4)) - years, Number(p.slice(5, 7)) - 1, Number(p.slice(8, 10)) || 1)).toISOString().slice(0, 10);
-    return observations.filter(item => (item.period.length === 7 ? item.period + '-01' : item.period) >= threshold;
+    return observations.filter(item => (item.period.length === 7 ? item.period + '-01' : item.period) >= threshold);
   }, [observations, range]);
 
   const chartData = useMemo(() => {
