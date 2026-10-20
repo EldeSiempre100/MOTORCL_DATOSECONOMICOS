@@ -23,23 +23,23 @@ import { loadPublishedSeries, type PublishedSeries } from '../../services/dataSe
 
 type DetailTimeRange = '1A' | '2A' | '5A' | 'Todo';
 
-function number(value: number) {
+function number(value: number, unit = 'percent') {
   return new Intl.NumberFormat('es-CL', {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
+    minimumFractionDigits: unit === 'clp' ? 2 : 1,
+    maximumFractionDigits: unit === 'clp' ? 2 : 1,
   }).format(value);
 }
 
-function change(current: number, previous?: number) {
+function change(current: number, previous: number | undefined, unit: string) {
   if (previous === undefined) return 'No disponible';
   const difference = current - previous;
   const isZero = Math.abs(difference) < 0.001;
   const sign = isZero ? '' : difference > 0 ? '+' : '';
-  return `${sign}${number(difference)} pp`;
+  return unit === 'clp' ? sign + '$' + number(difference, unit) : sign + number(difference, unit) + ' pp';
 }
 
-function changeTone(current: number, previous?: number): 'positive' | 'negative' | 'neutral' {
-  if (previous === undefined) return 'neutral';
+function changeTone(current: number, previous: number | undefined, isUnemployment: boolean): 'positive' | 'negative' | 'neutral' {
+  if (!isUnemployment || previous === undefined) return 'neutral';
   const diff = current - previous;
   // For unemployment, an increase is unfavorable (negative tone) and decrease is favorable (positive tone)
   if (diff < -0.05) return 'positive';
@@ -97,7 +97,7 @@ export function IndicatorDetail({ id }: { id: string }) {
   function downloadCsv() {
     if (!series) return;
     const rows = [
-      'periodo,desde,hasta,tasa_porcentaje,publicado_at,fuente_estado',
+      ['periodo', 'desde', 'hasta', series.unit === 'clp' ? 'valor_clp' : 'tasa_porcentaje', 'publicado_at', 'fuente_estado'].join(','),
       ...series.observations.map((item) =>
         [
           item.period,
@@ -129,10 +129,12 @@ export function IndicatorDetail({ id }: { id: string }) {
   }
 
   const latestValue = latest?.value ?? 0;
-  const momChange = change(latestValue, prior?.value);
-  const momTone = changeTone(latestValue, prior?.value);
-  const yoyChange = change(latestValue, yearAgo?.value);
-  const yoyTone = changeTone(latestValue, yearAgo?.value);
+  const unit = series?.unit ?? 'percent';
+  const isOfficialIne = series?.organization === 'INE' && !series?.sourceProvider;
+  const momChange = change(latestValue, prior?.value, unit);
+  const momTone = changeTone(latestValue, prior?.value, isOfficialIne);
+  const yoyChange = change(latestValue, yearAgo?.value, unit);
+  const yoyTone = changeTone(latestValue, yearAgo?.value, isOfficialIne);
 
   return (
     <div className="app-frame">
@@ -144,7 +146,7 @@ export function IndicatorDetail({ id }: { id: string }) {
           <nav className="header-breadcrumbs" aria-label="Migas de pan">
             <a href="/" className="breadcrumb-link">Monitor</a>
             <span className="breadcrumb-separator">/</span>
-            <span className="breadcrumb-current">Empleo</span>
+            <span className="breadcrumb-current">{isOfficialIne ? 'Empleo' : series?.category === 'tasas' ? 'Tasas' : 'Dólar y UF'}</span>
             <span className="breadcrumb-separator">/</span>
             <span className="breadcrumb-current">{series?.name ?? 'Ficha'}</span>
           </nav>
@@ -166,17 +168,16 @@ export function IndicatorDetail({ id }: { id: string }) {
             <div className="indicator-hero">
               <div className="indicator-hero-header">
                 <div className="indicator-badges">
-                  <span className="status-badge status-badge--official">
+                  <span className={isOfficialIne ? 'status-badge status-badge--official' : 'status-badge'}>
                     <span className="status-dot status-dot--green" />
-                    Fuente Oficial · INE / SIMEL
+                    {isOfficialIne ? 'Fuente oficial · INE/SIMEL' : 'Datos intermediados · Mindicador'}
                   </span>
-                  <span className="freshness-badge">Vigente</span>
-                  <span className="official-code">Código: <code>{series.officialCode}</code></span>
+                  <span className="freshness-badge">Dato: {latest.period}</span>
+                  {series.officialCode ? <span className="official-code">Código: <code>{series.officialCode}</code></span> : null}
                 </div>
                 <h1 className="indicator-title">{series.name}</h1>
                 <p className="indicator-lead">
-                  Encuesta Nacional de Empleo (ENE) del Instituto Nacional de Estadísticas de Chile.
-                  Tasa desestacionalizada nacional por trimestre móvil.
+                  {isOfficialIne ? 'Encuesta Nacional de Empleo (ENE), INE. Tasa nacional por trimestre móvil, expresada como nivel.' : 'Serie diaria facilitada por Mindicador, intermediario que atribuye los datos al BCCh. Las fechas son de observación, no de publicación oficial.'}
                 </p>
               </div>
 
@@ -194,7 +195,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Metodología INE <ArrowUpRight size={13} />
+                  {isOfficialIne ? 'Metodología INE' : 'Banco Central de Chile'} <ArrowUpRight size={13} />
                 </a>
                 <a
                   className="boton boton-secundario"
@@ -202,7 +203,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  SIMEL SDMX <ArrowUpRight size={13} />
+                  {isOfficialIne ? 'SIMEL SDMX' : 'Mindicador API'} <ArrowUpRight size={13} />
                 </a>
               </div>
             </div>
@@ -210,29 +211,29 @@ export function IndicatorDetail({ id }: { id: string }) {
             {/* KPI Summary Grid */}
             <div className="indicator-facts-grid">
               <div className="indicator-fact-card indicator-fact-card--primary">
-                <span className="fact-label">Último nivel oficial</span>
-                <strong className="fact-value dato">{number(latest.value)}%</strong>
-                <span className="fact-sub">Trimestre móvil {latest.observedFrom.slice(0, 7)} a {latest.observedTo.slice(0, 7)}</span>
+                <span className="fact-label">Último nivel observado</span>
+                <strong className="fact-value dato">{unit === 'clp' ? '$' : ''}{number(latest.value, unit)}{unit === 'percent' ? '%' : ''}</strong>
+                <span className="fact-sub">{isOfficialIne ? 'Trimestre móvil ' : 'Fecha: '}{latest.observedFrom}{latest.observedFrom !== latest.observedTo ? ' a ' + latest.observedTo : ''}</span>
               </div>
 
               <div className="indicator-fact-card">
-                <span className="fact-label">Variación trimestre anterior</span>
+                <span className="fact-label">Variación período anterior</span>
                 <strong className={`fact-value dato tone-${momTone}`}>{momChange}</strong>
-                <span className="fact-sub">Respecto al trimestre móvil inmediato</span>
+                <span className="fact-sub">Respecto a la observación anterior</span>
               </div>
 
               <div className="indicator-fact-card">
-                <span className="fact-label">Variación 12 meses (interanual)</span>
+                <span className="fact-label">Diferencia frente a igual fecha del año anterior</span>
                 <strong className={`fact-value dato tone-${yoyTone}`}>{yoyChange}</strong>
                 <span className="fact-sub">Mismo trimestre del año anterior</span>
               </div>
 
               <div className="indicator-fact-card">
-                <span className="fact-label">Consulta y sincronización</span>
+                <span className="fact-label">Última ingesta exitosa</span>
                 <strong className="fact-value fact-value--small dato">
                   {series.lastSuccessfulRefresh.slice(0, 10)}
                 </strong>
-                <span className="fact-sub">Actualización automática vía SDMX</span>
+                <span className="fact-sub">Motor de datos {isOfficialIne ? 'INE/SIMEL' : 'Mindicador'}</span>
               </div>
             </div>
 
@@ -250,11 +251,11 @@ export function IndicatorDetail({ id }: { id: string }) {
               </div>
               <a
                 className="calendar-alert-link"
-                href="https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/ocupacion-y-desocupacion"
+                href={series.methodologyUrl}
                 target="_blank"
                 rel="noreferrer"
               >
-                Ver calendario INE <ArrowUpRight size={13} />
+                {isOfficialIne ? 'Calendario INE' : 'Ver fuente de origen'} <ArrowUpRight size={13} />
               </a>
             </div>
 
@@ -264,7 +265,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                 <div>
                   <h2 id="indicator-chart-heading">Serie histórica oficial</h2>
                   <p className="section-subtitle">
-                    Observaciones continuas del INE ({filteredObservations.length} trimestres móviles)
+                    {filteredObservations.length} observaciones ({series.frequency === 'daily' ? 'frecuencia diaria' : 'trimestres móviles'})
                   </p>
                 </div>
                 <div className="rangos" role="group" aria-label="Rango de gráfico">
@@ -302,12 +303,12 @@ export function IndicatorDetail({ id }: { id: string }) {
                     <YAxis
                       domain={['auto', 'auto']}
                       tick={{ fontSize: 11, fill: 'var(--text-muted)', fontFamily: 'var(--f-mono)' }}
-                      unit="%"
+                      unit={unit === 'clp' ? ' CLP' : '%'}
                       axisLine={false}
                       tickLine={false}
                       width={46}
                     />
-                    <ReferenceLine y={8.0} stroke="var(--border-strong)" strokeDasharray="3 3" />
+                    
                     <Tooltip
                       content={({ active, payload, label }) => {
                         if (!active || !payload?.length) return null;
@@ -317,8 +318,8 @@ export function IndicatorDetail({ id }: { id: string }) {
                             <span className="tooltip-period">Período {label}</span>
                             <div className="tooltip-row">
                               <span className="tooltip-dot" style={{ backgroundColor: 'var(--acento)' }} />
-                              <span className="tooltip-name">Tasa de desocupación</span>
-                              <strong className="tooltip-val dato">{number(Number(pt.value))}%</strong>
+                              <span className="tooltip-name">{series.name}</span>
+                              <strong className="tooltip-val dato">{unit === 'clp' ? '$' : ''}{number(Number(pt.value), unit)}{unit === 'percent' ? '%' : ''}</strong>
                             </div>
                           </div>
                         );
@@ -354,7 +355,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                 <div>
                   <h2 id="observations-heading">Registro de observaciones y revisiones</h2>
                   <p className="section-subtitle">
-                    Datos sin transformar obtenidos mediante el protocolo SDMX de SIMEL/INE
+                    Datos conservados del motor {isOfficialIne ? 'INE/SIMEL' : 'Mindicador'}, sin alterar observaciones
                   </p>
                 </div>
                 <span className="section-period">
@@ -369,7 +370,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                       <th>Período</th>
                       <th>Desde</th>
                       <th>Hasta</th>
-                      <th>Tasa de desocupación</th>
+                      <th>{series.name}</th>
                       <th>Publicado</th>
                       <th>Revisiones detectadas</th>
                     </tr>
@@ -381,7 +382,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                         <td className="dato">{item.observedFrom}</td>
                         <td className="dato">{item.observedTo}</td>
                         <td className="dato">
-                          <span className="table-rate-pill">{number(item.value)}%</span>
+                          <span className="table-rate-pill">{unit === 'clp' ? '$' : ''}{number(item.value, unit)}{unit === 'percent' ? '%' : ''}</span>
                         </td>
                         <td>{item.publishedAt ?? 'No informada en SDMX'}</td>
                         <td>
