@@ -209,7 +209,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
     ];
   }
   metadata.sources = Object.fromEntries(Object.entries(metadata.sources)
-    .filter(([id]) => ['INE','Mindicador','Indicadores.cl'].includes(id)));
+    .filter(([id]) => ['INE','Mindicador','Indicadores.cl','Economía Chile'].includes(id)));
 
   metadata.isDemo = false;
   metadata.status = 'live';
