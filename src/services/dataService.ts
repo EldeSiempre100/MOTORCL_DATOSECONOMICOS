@@ -30,7 +30,13 @@ export async function loadDashboardData(signal?: AbortSignal): Promise<Dashboard
     fetchJson<ChartsData>('charts_series.json', signal),
   ]);
 
-  return { metadata, timeline, summaries, charts };
+  // Defense in depth: no illustrative figures can be shown even before a data refresh.
+  return {
+    metadata,
+    timeline: { ...timeline, events: timeline.events.filter(item => item.dataStatus === 'official') },
+    summaries: { ...summaries, cards: summaries.cards.filter(item => item.dataStatus === 'official' || item.dataStatus === 'sourced') },
+    charts: { ...charts, charts: charts.charts.filter(item => item.dataStatus === 'official' || item.dataStatus === 'sourced') },
+  };
 }
 
 export interface SeriesObservation {
