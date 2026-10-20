@@ -53,7 +53,10 @@ export interface SeriesObservation {
 export interface PublishedSeries {
   id: string;
   organization: string;
-  officialCode: string;
+  officialCode: string | null;
+  sourceProvider?: string;
+  providerCode?: string | null;
+  category?: string;
   name: string;
   nameEn: string;
   unit: string;
