@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { fetchUnemployment, SERIES_ID } from './ine_engine/simel.mjs';
 import { mergeHistory, incrementalStart, readJson, writeJson } from './lib/history.mjs';
 import { fetchMindicador, INDICATORS } from './adapters/mindicador.mjs';
-import { fetchIndicadoresCl, SECONDARY_INDICATORS } from './adapters/indicadores-cl.mjs';
+import { fetchEconomiaCsv, ECONOMIA_SERIES } from './adapters/economia-chile-csv.mjs';
 import { mergeProviderHistory, contentHash } from './lib/multi-history.mjs';
 import { buildLiveContracts } from './lib/live-contracts.mjs';
 
@@ -71,12 +71,12 @@ async function main() {
   const providerEntries = [];
   const extraFiles = [];
   const sourceRuns = [];
-  const allSources = [...Object.values(INDICATORS), ...Object.values(SECONDARY_INDICATORS)];
+  const allSources = [...Object.values(INDICATORS), ...Object.values(ECONOMIA_SERIES)];
   async function ingest(spec) {
     const previous = await readJson(seriesPath(spec.id));
     try {
-      const incoming = spec.provider === 'Indicadores.cl'
-        ? await fetchIndicadoresCl(spec) : await fetchMindicador(spec, previous);
+      const incoming = spec.provider === 'Economía Chile'
+        ? await fetchEconomiaCsv(spec) : await fetchMindicador(spec, previous);
       const result = mergeProviderHistory(previous, incoming.observations, spec, checkedAt, incoming.endpoint);
       console.log('Source ready:', spec.code, result.series.observations.length, 'observations');
       return {
