@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "runId": "motorcl-20261020123417214",
-  "checkedAt": "2026-10-20T12:34:17.214Z",
-  "latestSuccessfulRefresh": "2026-10-20T12:34:17.214Z",
+  "runId": "motorcl-20261020162235850",
+  "checkedAt": "2026-10-20T16:22:35.850Z",
+  "latestSuccessfulRefresh": "2026-10-20T16:22:35.850Z",
   "result": "partial",
   "sources": [
     {
@@ -22,7 +22,7 @@
       "code": "dolar",
       "seriesId": "mindicador.dolar.observado",
       "state": "cached",
-      "message": "TimeoutError: The operation was aborted due to timeout",
+      "message": "TypeError: fetch failed",
       "ageDays": 0,
       "latestPeriod": "2026-10-20"
     },
@@ -55,7 +55,7 @@
       "revised": 0,
       "sha256": "103c865bb872c459c1f2358e789d1d4b8b034c99c48be9a3a6092f90cc3a34a2",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv",
-      "fetchedAt": "2026-10-20T12:35:10.325Z"
+      "fetchedAt": "2026-10-20T16:23:27.507Z"
     },
     {
       "source": "Economía Chile",
@@ -68,7 +68,7 @@
       "revised": 0,
       "sha256": "3888bf266111a95f2f09b4fd1b78678b9481ed27e41232875f581ddee33f967e",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/imacec.csv",
-      "fetchedAt": "2026-10-20T12:35:10.324Z"
+      "fetchedAt": "2026-10-20T16:23:27.506Z"
     },
     {
       "source": "Economía Chile",
@@ -81,7 +81,7 @@
       "revised": 0,
       "sha256": "120dd67cd41ce197c8bc5a57e2de86984f3624abaec2602c1450fb7211837b34",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipsa.csv",
-      "fetchedAt": "2026-10-20T12:35:10.325Z"
+      "fetchedAt": "2026-10-20T16:23:27.508Z"
     },
     {
       "source": "Economía Chile",
@@ -94,7 +94,7 @@
       "revised": 0,
       "sha256": "b8152eb2b8d9b9d44fa6e84a789a43a756fcc50f78fb1a32eb40c59e987f0f9b",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/remuneraciones.csv",
-      "fetchedAt": "2026-10-20T12:35:10.466Z"
+      "fetchedAt": "2026-10-20T16:23:27.926Z"
     }
   ],
   "errors": [
@@ -102,7 +102,7 @@
       "code": "dolar",
       "name": "Dólar observado",
       "source": "Mindicador",
-      "error": "The operation was aborted due to timeout",
+      "error": "fetch failed",
       "lastUpdate": "2026-10-20T12:08:15.878Z"
     },
     {
