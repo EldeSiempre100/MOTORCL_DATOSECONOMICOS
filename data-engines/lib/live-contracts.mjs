@@ -80,6 +80,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
 
   const currency = providerEntries.filter(entry => ['dolar', 'uf'].includes(entry.spec.code));
   const tpm = providerEntries.find(entry => entry.spec.code === 'tpm');
+  const currencyPrimary = currency.find(entry => entry.spec.code === 'dolar') ?? currency.find(entry => entry.spec.code === 'uf');
   for (const entry of providerEntries) {
     const { spec, series } = entry;
     latestRecord(series);
@@ -94,7 +95,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
     const isDolar = spec.code === 'dolar';
     const title = isTpm ? 'Tasa de Política Monetaria' : 'Dólar y UF';
     const titleEn = isTpm ? 'Monetary policy rate' : 'Dollar and UF';
-    if (!isTpm && !isDolar) continue;
+    if (!isTpm && currencyPrimary?.series.id !== series.id) continue;
     summaries.cards.push({
       id: isTpm ? 'tpm-vigente' : 'dolar-uf-vigente',
       category: spec.category,
@@ -105,11 +106,11 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
       sourceUrl: series.sourceUrl,
       main: {
         name: spec.name, nameEn: spec.nameEn,
-        description: isTpm ? 'Nivel vigente (%)' : 'Pesos chilenos por dólar observado',
-        descriptionEn: isTpm ? 'Current rate level (%)' : 'Chilean pesos per observed US dollar',
+        description: isTpm ? 'Nivel vigente (%)' : isDolar ? 'Pesos chilenos por dólar observado' : 'Pesos chilenos por Unidad de Fomento',
+        descriptionEn: isTpm ? 'Current rate level (%)' : isDolar ? 'Chilean pesos per observed US dollar' : 'Chilean pesos per UF',
         valuesByVariation: values(series, spec),
       },
-      subIndicators: !isTpm && currency.find(x => x.spec.code === 'uf') ? [
+      subIndicators: isDolar && currency.find(x => x.spec.code === 'uf') ? [
         {
           name: 'Unidad de Fomento (UF)', nameEn: 'UF',
           seriesId: currency.find(x => x.spec.code === 'uf').series.id,
