@@ -34,7 +34,10 @@ function change(current: number, previous: number | undefined, unit: string) {
   const difference = current - previous;
   const isZero = Math.abs(difference) < 0.001;
   const sign = isZero ? '' : difference > 0 ? '+' : '';
-  return unit === 'clp' ? sign + '$' + number(difference, unit) : sign + number(difference, unit) + ' pp';
+  return unit === 'clp' ? sign + '$' + number(difference, unit) :
+    unit === 'index' ? sign + number(difference, unit) + ' pts' :
+    unit === 'usd-lb' ? sign + 'US$' + number(difference, unit) :
+    sign + number(difference, unit) + ' pp';
 }
 
 function changeTone(current: number, previous: number | undefined, isUnemployment: boolean): 'positive' | 'negative' | 'neutral' {
@@ -132,6 +135,14 @@ export function IndicatorDetail({ id }: { id: string }) {
   const latestValue = latest?.value ?? 0;
   const unit = series?.unit ?? 'percent';
   const isOfficialIne = series?.organization === 'INE' && !series?.sourceProvider;
+  const providerName = series?.sourceProvider ?? 'INE/SIMEL';
+  const categoryName = series?.category === 'tasas' ? 'Tasas' :
+    series?.category === 'precios' ? 'Precios' :
+    series?.category === 'actividad' ? 'Actividad' :
+    series?.category === 'mercados' ? 'Mercados' :
+    series?.category === 'empleo' ? 'Empleo' : 'Dólar y UF';
+  const prefix = unit === 'clp' ? '$' : unit === 'usd-lb' ? 'US$' : '';
+  const suffix = unit === 'percent' || unit === 'percent-change' ? '%' : unit === 'index' ? ' pts' : '';
   const momChange = change(latestValue, prior?.value, unit);
   const momTone = changeTone(latestValue, prior?.value, isOfficialIne);
   const yoyChange = change(latestValue, yearAgo?.value, unit);
@@ -147,7 +158,7 @@ export function IndicatorDetail({ id }: { id: string }) {
           <nav className="header-breadcrumbs" aria-label="Migas de pan">
             <a href="/" className="breadcrumb-link">Monitor</a>
             <span className="breadcrumb-separator">/</span>
-            <span className="breadcrumb-current">{isOfficialIne ? 'Empleo' : series?.category === 'tasas' ? 'Tasas' : 'Dólar y UF'}</span>
+            <span className="breadcrumb-current">{categoryName}</span>
             <span className="breadcrumb-separator">/</span>
             <span className="breadcrumb-current">{series?.name ?? 'Ficha'}</span>
           </nav>
@@ -171,14 +182,14 @@ export function IndicatorDetail({ id }: { id: string }) {
                 <div className="indicator-badges">
                   <span className={isOfficialIne ? 'status-badge status-badge--official' : 'status-badge'}>
                     <span className={isOfficialIne ? 'status-dot status-dot--green' : 'status-dot status-dot--gray'} />
-                    {isOfficialIne ? 'Fuente oficial · INE/SIMEL' : 'Datos intermediados · Mindicador'}
+                    {isOfficialIne ? 'Fuente oficial · INE/SIMEL' : 'Datos intermediados · ' + providerName}
                   </span>
                   <span className="freshness-badge">Dato: {latest.period}</span>
                   {series.officialCode ? <span className="official-code">Código: <code>{series.officialCode}</code></span> : null}
                 </div>
                 <h1 className="indicator-title">{series.name}</h1>
                 <p className="indicator-lead">
-                  {isOfficialIne ? 'Encuesta Nacional de Empleo (ENE), INE. Tasa nacional por trimestre móvil, expresada como nivel.' : 'Serie diaria facilitada por Mindicador, intermediario que atribuye los datos al BCCh. Las fechas son de observación, no de publicación oficial.'}
+                  {isOfficialIne ? 'Encuesta Nacional de Empleo (ENE), INE. Tasa nacional por trimestre móvil, expresada como nivel.' : 'Serie intermediada por ' + providerName + '. ' + (series?.measure === 'mom' ? 'Variación mensual del IPC.' : series?.measure === 'yoy' ? 'Variación interanual del Imacec original.' : 'Nivel observado.') + ' Las fechas son períodos de referencia, no fechas de publicación.'}
                 </p>
               </div>
 
@@ -204,7 +215,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {isOfficialIne ? 'SIMEL SDMX' : 'Mindicador API'} <ArrowUpRight size={13} />
+                  {isOfficialIne ? 'SIMEL SDMX' : providerName + ' · API'} <ArrowUpRight size={13} />
                 </a>
               </div>
             </div>
@@ -213,7 +224,7 @@ export function IndicatorDetail({ id }: { id: string }) {
             <div className="indicator-facts-grid">
               <div className="indicator-fact-card indicator-fact-card--primary">
                 <span className="fact-label">Último nivel observado</span>
-                <strong className="fact-value dato">{unit === 'clp' ? '$' : ''}{number(latest.value, unit)}{unit === 'percent' ? '%' : ''}</strong>
+                <strong className="fact-value dato">{prefix}{number(latest.value, unit)}{suffix}</strong>
                 <span className="fact-sub">{isOfficialIne ? 'Trimestre móvil ' : 'Fecha: '}{latest.observedFrom}{latest.observedFrom !== latest.observedTo ? ' a ' + latest.observedTo : ''}</span>
               </div>
 
@@ -234,7 +245,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                 <strong className="fact-value fact-value--small dato">
                   {series.lastSuccessfulRefresh.slice(0, 10)}
                 </strong>
-                <span className="fact-sub">Motor de datos {isOfficialIne ? 'INE/SIMEL' : 'Mindicador'}</span>
+                <span className="fact-sub">Motor de datos {isOfficialIne ? 'INE/SIMEL' : providerName}</span>
               </div>
             </div>
 
@@ -246,7 +257,7 @@ export function IndicatorDetail({ id }: { id: string }) {
               <div className="calendar-alert-body">
                 <h3 className="calendar-alert-title">{isOfficialIne ? 'Calendario de publicación oficial' : 'Disponibilidad de la serie'}</h3>
                 <p className="calendar-alert-text">
-                  {isOfficialIne ? 'Consulte el calendario oficial INE para conocer la próxima publicación de la Encuesta Nacional de Empleo.' : 'Mindicador no proporciona fechas oficiales de publicación futura para esta serie. Consulte el organismo emisor.'}
+                  {isOfficialIne ? 'Consulte el calendario oficial INE para conocer la próxima publicación de la Encuesta Nacional de Empleo.' : 'Este proveedor no confirma fechas oficiales de próximas publicaciones. Consulte el organismo emisor.'}
                 </p>
               </div>
               <a
@@ -265,7 +276,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                 <div>
                   <h2 id="indicator-chart-heading">{isOfficialIne ? 'Serie histórica oficial' : 'Serie histórica con fuente identificada'}</h2>
                   <p className="section-subtitle">
-                    {filteredObservations.length} observaciones ({series.frequency === 'daily' ? 'frecuencia diaria' : 'trimestres móviles'})
+                    {filteredObservations.length} observaciones ({series.frequency === 'daily' ? 'frecuencia diaria' : series.frequency === 'monthly' ? 'frecuencia mensual' : 'trimestres móviles'})
                   </p>
                 </div>
                 <div className="rangos" role="group" aria-label="Rango de gráfico">
@@ -303,7 +314,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                     <YAxis
                       domain={['auto', 'auto']}
                       tick={{ fontSize: 11, fill: 'var(--text-muted)', fontFamily: 'var(--f-mono)' }}
-                      unit={unit === 'clp' ? ' CLP' : '%'}
+                      unit={unit === 'clp' ? ' CLP' : unit === 'index' ? ' puntos' : unit === 'usd-lb' ? ' US$/lb' : '%'}
                       axisLine={false}
                       tickLine={false}
                       width={46}
@@ -319,7 +330,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                             <div className="tooltip-row">
                               <span className="tooltip-dot" style={{ backgroundColor: 'var(--acento)' }} />
                               <span className="tooltip-name">{series.name}</span>
-                              <strong className="tooltip-val dato">{unit === 'clp' ? '$' : ''}{number(Number(pt.value), unit)}{unit === 'percent' ? '%' : ''}</strong>
+                              <strong className="tooltip-val dato">{prefix}{number(Number(pt.value), unit)}{suffix}</strong>
                             </div>
                           </div>
                         );
@@ -382,7 +393,7 @@ export function IndicatorDetail({ id }: { id: string }) {
                         <td className="dato">{item.observedFrom}</td>
                         <td className="dato">{item.observedTo}</td>
                         <td className="dato">
-                          <span className="table-rate-pill">{unit === 'clp' ? '$' : ''}{number(item.value, unit)}{unit === 'percent' ? '%' : ''}</span>
+                          <span className="table-rate-pill">{prefix}{number(item.value, unit)}{suffix}</span>
                         </td>
                         <td>{item.publishedAt ?? (isOfficialIne ? 'No informada en SDMX' : 'No informada por proveedor')}</td>
                         <td>
@@ -404,7 +415,7 @@ export function IndicatorDetail({ id }: { id: string }) {
               <div className="methodology-note">
                 <Info size={16} />
                 <p>
-                  {isOfficialIne ? 'Datos obtenidos directamente de INE/SIMEL. El registro conserva revisiones detectadas y no altera los valores originales.' : 'Datos intermediados por Mindicador y atribuidos al BCCh. Las revisiones registradas son cambios detectados por MotorCL, no notificaciones oficiales del Banco Central.'}
+                  {isOfficialIne ? 'Datos obtenidos directamente de INE/SIMEL. El registro conserva revisiones detectadas y no altera los valores originales.' : 'Datos intermediados por ' + providerName + ', con seguimiento de revisiones detectadas por MotorCL. Su disponibilidad no equivale a una publicación directa del organismo emisor.'}
                 </p>
               </div>
             </footer>

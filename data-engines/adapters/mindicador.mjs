@@ -33,16 +33,25 @@ function normalizeRecord(record, spec, today) {
   if (!record || typeof record.fecha !== 'string' || typeof record.valor !== 'number') {
     throw new Error('Estructura de observación inválida: ' + spec.code);
   }
-  const period = record.fecha.slice(0, 10);
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(period) || new Date(period).toISOString().slice(0, 10) !== period) {
+  const rawDate = record.fecha.slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(rawDate) ||
+      Number.isNaN(Date.parse(rawDate)) ||
+      new Date(rawDate).toISOString().slice(0, 10) !== rawDate) {
     throw new Error('Fecha inválida para ' + spec.code + ': ' + record.fecha);
   }
-  if (period > today) return null; // Do not present any projected or future-dated observations as current.
+  const monthly = spec.frequency === 'monthly';
+  if (monthly && !rawDate.endsWith('-01')) {
+    throw new Error('Un dato mensual debe corresponder al primer día del mes: ' + spec.code);
+  }
+  const period = monthly ? rawDate.slice(0, 7) : rawDate;
+  if (period > today.slice(0, monthly ? 7 : 10)) return null; // Exclude future periods.
   if (!Number.isFinite(record.valor) || record.valor < spec.min || record.valor > spec.max) {
     throw new Error('Valor fuera de rango para ' + spec.code + ' en ' + period);
   }
   return {
-    period, observedFrom: period, observedTo: period, value: record.valor,
+    period, observedFrom: monthly ? period + '-01' : period,
+    observedTo: monthly ? new Date(Date.UTC(Number(period.slice(0, 4)), Number(period.slice(5, 7)), 0)).toISOString().slice(0, 10) : period,
+    value: record.valor,
     sourceStatus: null,
   };
 }
@@ -53,7 +62,8 @@ export function normalizeMindicador(payload, spec, today = new Date().toISOStrin
     throw new Error('Respuesta Mindicador inválida para ' + spec.code);
   }
   if ((spec.unit === 'clp' && payload.unidad_medida !== 'Pesos') ||
-      (spec.unit === 'percent' && payload.unidad_medida !== 'Porcentaje')) {
+      (spec.unit === 'percent' && payload.unidad_medida !== 'Porcentaje') ||
+      (spec.unit === 'usd-lb' && payload.unidad_medida !== 'Dólar')) {
     throw new Error('Unidad Mindicador no reconocida para ' + spec.code);
   }
   const entries = new Map();
@@ -89,15 +99,19 @@ export async function fetchMindicador(spec, previous, fetcher = fetch, clock = n
   const records = new Map();
   let successful = 0;
   let latestEndpoint = MINDICADOR_BASE + '/' + spec.code;
-  for (const y of years) {
+  // Annual requests are independent; sequential calls multiplied the risk of
+  // hitting the Actions job timeout as the number of tracked series grew.
+  const annual = await Promise.allSettled(years.map(async (y) => {
     const url = MINDICADOR_BASE + '/' + spec.code + '/' + y;
-    try {
-      const payload = await getJson(url, fetcher);
-      for (const point of normalizeMindicador(payload, spec, today)) records.set(point.period, point);
+    const payload = await getJson(url, fetcher);
+    return { year: y, points: normalizeMindicador(payload, spec, today) };
+  }));
+  for (let i = 0; i < years.length; i += 1) {
+    if (annual[i].status === 'fulfilled') {
+      for (const point of annual[i].value.points) records.set(point.period, point);
       successful += 1;
-    } catch (error) {
-      // A yearly mirror can temporarily fail; the current series endpoint remains mandatory.
-      console.warn('Mindicador historical warning', spec.code, y, String(error));
+    } else {
+      console.warn('Mindicador historical warning', spec.code, years[i], String(annual[i].reason));
     }
   }
   const payload = await getJson(latestEndpoint, fetcher);

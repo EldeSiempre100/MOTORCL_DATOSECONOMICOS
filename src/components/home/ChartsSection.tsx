@@ -132,7 +132,7 @@ function ChartCard({
             <h3>{language === 'en' ? chart.titleEn : chart.title}</h3>
             <span className={`data-origin data-origin--${chart.dataStatus ?? 'demo'}`}>
               <span className={`status-dot status-dot--${isOfficial ? 'green' : 'gray'}`} />
-              {isOfficial ? 'INE · Oficial' : (chart.dataStatus === 'sourced' ? 'Mindicador · fuente externa' : '')}
+              {isOfficial ? 'INE · Oficial' : (chart.dataStatus === 'sourced' ? (chart.sourceIds[0] ?? 'Fuente identificada') + ' · fuente externa' : '')}
             </span>
           </div>
           <p>{language === 'en' ? chart.subtitleEn : chart.subtitle}</p>

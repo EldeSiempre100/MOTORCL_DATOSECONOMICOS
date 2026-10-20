@@ -137,3 +137,108 @@ test('live contracts hide all demonstration figures and expose sourced cards', (
   assert.ok(contracts.timeline.events.every(x => x.dataStatus === 'official'));
   assert.equal(contracts.metadata.isDemo, false);
 });
+
+
+test('Mindicador UTM monthly normalization and merging use YYYY-MM periods', () => {
+  const spec = { id:'test.utm', code:'utm', name:'UTM', nameEn:'Monthly tax unit', category:'dolar-uf', organization:'SII', provider:'Mindicador', unit:'clp', frequency:'monthly', min:10000, max:160000 };
+  const payload = { autor: 'mindicador.cl', codigo: 'utm', unidad_medida: 'Pesos',
+    serie: [
+      { fecha:'2026-10-01T03:00:00.000Z', valor:72151 },
+      { fecha:'2026-09-01T04:00:00.000Z', valor:71721 },
+    ] };
+  const points = normalizeMindicador(payload,spec,'2026-10-20');
+  assert.deepEqual(points.map(item => item.period), ['2026-09','2026-10']);
+  assert.equal(points[1].observedFrom,'2026-10-01');
+  assert.equal(points[1].observedTo,'2026-10-31');
+  const merged = mergeProviderHistory(null,points,spec,'2026-10-20T13:00:00.000Z','https://mindicador.cl/api/utm');
+  assert.equal(merged.series.observations.length,2);
+  assert.equal(merged.series.frequency,'monthly');
+});
+
+test('IPC adapter verifies monthly change definition and last published month', async () => {
+  const { normalizeIndicadoresCl, SECONDARY_INDICATORS } = await import('../adapters/indicadores-cl.mjs');
+  const spec = SECONDARY_INDICATORS.ipc;
+  const sample = { indicador:'ipc',unidad:'porcentaje',mes:'2026-09',variacionMensual:0.4,
+    meta:{api:'indicadores.cl'}, serie:[
+      {mes:'2026-07',variacionMensual:0.1},
+      {mes:'2026-08',variacionMensual:0.6},
+      {mes:'2026-09',variacionMensual:0.4},
+    ] };
+  const result = normalizeIndicadoresCl(sample,spec,'2026-10-20');
+  assert.equal(result.length,3);
+  assert.deepEqual(result.at(-1),{
+    period:'2026-09', observedFrom:'2026-09-01', observedTo:'2026-09-30',
+    value:0.4, sourceStatus:null,
+  });
+  assert.throws(()=>normalizeIndicadoresCl({...sample,mes:'2026-08'},spec,'2026-10-20'),/Resumen y serie/);
+  assert.throws(()=>normalizeIndicadoresCl({...sample,unidad:'Índice base'},spec,'2026-10-20'),/Unidad/);
+  const series = mergeProviderHistory(null,result,spec,'2026-10-20T13:00:00.000Z','https://indicadores.cl/api/v1/ipc.json');
+  assert.equal(series.series.measure,'mom');
+});
+
+test('Imacec adapter rejects mixing monthly variation with year-on-year growth', async () => {
+  const { normalizeIndicadoresCl, SECONDARY_INDICATORS } = await import('../adapters/indicadores-cl.mjs');
+  const spec=SECONDARY_INDICATORS.imacec;
+  const sample={ indicador:'imacec',unidad:'variación % respecto del mismo mes del año anterior',
+    mes:'2026-08',valor:-1,meta:{api:'indicadores.cl'},serie:[
+      {mes:'2026-06',valor:2},
+      {mes:'2026-07',valor:-1.5},
+      {mes:'2026-08',valor:-1},
+    ] };
+  const result=normalizeIndicadoresCl(sample,spec,'2026-10-20');
+  assert.equal(result.at(-1).value,-1);
+  assert.throws(()=>normalizeIndicadoresCl({...sample,unidad:'variación mensual desestacionalizada'},spec,'2026-10-20'),/Unidad/);
+});
+
+test('new sourced indicators create real dashboards without fake release calendar', async () => {
+  const { appendSupplementalContracts } = await import('../lib/supplemental-contracts.mjs');
+  const { SECONDARY_INDICATORS } = await import('../adapters/indicadores-cl.mjs');
+  const spec=SECONDARY_INDICATORS.ipc;
+  const merged=mergeProviderHistory(null,[
+    {period:'2026-08',observedFrom:'2026-08-01',observedTo:'2026-08-31',value:0.6,sourceStatus:null},
+    {period:'2026-09',observedFrom:'2026-09-01',observedTo:'2026-09-30',value:0.4,sourceStatus:null},
+  ], spec, '2026-10-20T13:00:00.000Z', 'https://indicadores.cl/api/v1/ipc.json');
+  const baseline={metadata:{sources:{}},summaries:{cards:[]},charts:{charts:[]}};
+  const output=appendSupplementalContracts(baseline,[{spec,series:merged.series}]);
+  assert.equal(output.summaries.cards[0].dataStatus,'sourced');
+  assert.equal(output.summaries.cards[0].main.valuesByVariation.mensual.ultimo.value,'+0,4%');
+  assert.equal(output.charts.charts[0].series[0].type,'bar');
+  assert.equal(output.charts.charts[0].data.at(-1).v,0.4);
+  assert.ok(!('timeline' in output));
+});
+
+
+test('economic CSV parser validates original economic indices and their lineage', async () => {
+  const { ECONOMIA_SERIES, parseEconomiaCsv } = await import('../adapters/economia-chile-csv.mjs');
+  const spec=ECONOMIA_SERIES.ipc_indice;
+  const dates=Array.from({length:12},(_,i)=>{
+    const date=new Date(Date.UTC(2025,9+i,1));
+    const year=date.getUTCFullYear(), month=date.getUTCMonth()+1;
+    return {year,month,period: year+'-'+String(month).padStart(2,'0'),
+      value:i===11?'113,59':String(104+i).replace('.',',')};
+  });
+  const rows=dates.map((date,index)=>
+    '"' + (index+1) + '";"' + spec.rowName + '";"' + date.year + '-' + date.month + '-1";' +
+    date.value+';'+date.year+';'+date.month+';2026-10-19'
+  );
+  const sample='"";"serie";"fecha";"valor";"año";"mes";"fecha_scraping"\n'+rows.join('\n');
+  const out=parseEconomiaCsv(sample,spec,'2026-10-20');
+  assert.equal(out.length,12);
+  assert.equal(out.at(-1).period,'2026-09');
+  assert.equal(out.at(-1).value,113.59);
+  assert.throws(()=>parseEconomiaCsv('<<<<<<< HEAD\n'+sample,spec,'2026-10-20'),/corrupto/);
+  assert.throws(()=>parseEconomiaCsv(sample.replace('113,59','900,00'),spec,'2026-10-20'),/fuera de rango|referencia/);
+  const result=mergeProviderHistory(null,out,spec,'2026-10-20T13:00:00.000Z',
+    'https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv');
+  assert.equal(result.series.unit,'index');
+  assert.equal(result.series.measure,'level');
+  assert.equal(result.series.sourceProvider,'Economía Chile');
+});
+
+
+test('detail component is not accidentally duplicated during source edits', async () => {
+  const source=await readFile(new URL('../../src/components/home/IndicatorDetail.tsx',import.meta.url),'utf8');
+  const declarations=(source.match(/export function IndicatorDetail/g)??[]).length;
+  assert.equal(declarations,1);
+  assert.ok(source.length<30000,'The detail source unexpectedly grew from duplicate code');
+});

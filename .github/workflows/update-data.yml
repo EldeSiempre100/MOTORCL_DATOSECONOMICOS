@@ -8,6 +8,7 @@ on:
     branches:
       - main
       - feat/motorcl-motores-fuentes-reales
+      - feat/motorcl-coverage-economica-v4
     paths:
       - 'data-engines/**'
       - '.github/workflows/update-data.yml'
@@ -19,7 +20,7 @@ permissions:
 
 concurrency:
   group: motorcl-data-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   update:
@@ -37,6 +38,22 @@ jobs:
         run: npm ci
       - name: Refresh keyless official and sourced data
         run: npm run update:data
+      - name: Validate required provider coverage
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const status=JSON.parse(fs.readFileSync('data/ingestion-status.json','utf8'));
+          const required=['dolar','uf','tpm','ipc_indice','imacec_indice','ipsa_mensual','remuneracion_real'];
+          const incomplete=required.filter(code => !status.sources.some(s => s.code===code &&
+            (s.state==='ok' || (['dolar','uf','tpm'].includes(code) && s.state==='cached' &&
+              Number.isFinite(s.ageDays) && s.ageDays <=
+              ({dolar:12,uf:6,tpm:40})[code]))));
+          if(incomplete.length) {
+            console.error('Data freshness gate failed:',incomplete.join(', '));
+            console.error(JSON.stringify(status.errors,null,2));
+            process.exitCode=1;
+          }
+          NODE
       - name: Validate statistical transformations
         run: npm run test:data
       - name: Validate React build

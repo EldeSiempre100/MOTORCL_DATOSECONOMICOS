@@ -1,4 +1,5 @@
 import { buildContracts } from './contracts.mjs';
+import { appendSupplementalContracts } from './supplemental-contracts.mjs';
 
 const es = new Intl.NumberFormat('es-CL', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
 const money = new Intl.NumberFormat('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -81,7 +82,7 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
   const currency = providerEntries.filter(entry => ['dolar', 'uf'].includes(entry.spec.code));
   const tpm = providerEntries.find(entry => entry.spec.code === 'tpm');
   const currencyPrimary = currency.find(entry => entry.spec.code === 'dolar') ?? currency.find(entry => entry.spec.code === 'uf');
-  for (const entry of providerEntries) {
+  for (const entry of providerEntries.filter(x => ['dolar','uf','tpm'].includes(x.spec.code))) {
     const { spec, series } = entry;
     latestRecord(series);
     metadata.sources[sourceLabel(series)] = {
@@ -191,11 +192,24 @@ export function buildLiveContracts(baseline, ineSeries, providerEntries, checked
     });
   }
 
+  appendSupplementalContracts(result, providerEntries.filter(x => !['dolar','uf','tpm'].includes(x.spec.code)));
   const activeCategories = new Set(summaries.cards.map(c => c.category));
-  for (const lang of ['es', 'en']) {
-    metadata.ui[lang].categories = (metadata.ui[lang].categories ?? []).filter(c => c.id === 'vision-general' || activeCategories.has(c.id));
+  const orderedCategories = ['vision-general','actividad','precios','dolar-uf','tasas','mercados','empleo'];
+  const names = {
+    'vision-general':['Visión general','Overview'], actividad:['Actividad','Activity'],
+    precios:['Precios','Prices'], 'dolar-uf':['Dólar y UF','FX & UF'],
+    tasas:['Tasas','Rates'], mercados:['Mercados','Markets'], empleo:['Empleo','Employment'],
+  };
+  for (const lang of ['es','en']) {
+    metadata.ui[lang].categories = orderedCategories.filter(id=>id==='vision-general'||activeCategories.has(id))
+      .map(id=>({id,label:names[id][lang==='es'?0:1]}));
+    metadata.ui[lang].variations = [
+      {id:'mensual',label:lang==='es'?'Medición actual':'Current measure'},
+      {id:'interanual',label:lang==='es'?'Referencia anual':'Annual comparison'},
+    ];
   }
-  metadata.sources = Object.fromEntries(Object.entries(metadata.sources).filter(([id]) => ['INE', 'Mindicador'].includes(id)));
+  metadata.sources = Object.fromEntries(Object.entries(metadata.sources)
+    .filter(([id]) => ['INE','Mindicador','Indicadores.cl','Economía Chile'].includes(id)));
 
   metadata.isDemo = false;
   metadata.status = 'live';

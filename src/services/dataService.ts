@@ -57,6 +57,7 @@ export interface PublishedSeries {
   sourceProvider?: string;
   providerCode?: string | null;
   category?: string;
+  measure?: 'level' | 'mom' | 'yoy';
   name: string;
   nameEn: string;
   unit: string;

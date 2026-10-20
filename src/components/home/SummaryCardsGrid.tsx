@@ -115,7 +115,7 @@ export function SummaryCardsGrid({
                   </button>
                   <span className={`data-origin data-origin--${card.dataStatus ?? 'demo'}`}>
                     <span className={`status-dot status-dot--${isOfficial ? 'green' : 'gray'}`} />
-                    {isOfficial ? 'INE · Oficial' : (card.dataStatus === 'sourced' ? 'Mindicador · fuente externa' : '')}
+                    {isOfficial ? 'INE · Oficial' : (card.dataStatus === 'sourced' ? (card.sources[0] ?? 'Fuente identificada') + ' · fuente externa' : '')}
                   </span>
                 </div>
 
