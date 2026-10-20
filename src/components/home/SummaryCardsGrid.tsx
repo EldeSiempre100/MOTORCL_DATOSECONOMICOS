@@ -80,8 +80,10 @@ export function SummaryCardsGrid({ cards, charts, from, to, metadata, language, 
                 <div className="sub-indicators">
                   {card.subIndicators.map((subIndicator) => (
                     <div className="sub-indicator" key={subIndicator.name}>
-                      <span className="sub-name">{language === 'en' ? subIndicator.nameEn : subIndicator.name}</span>
-                      <span className="sub-period">{language === 'en' ? subIndicator.periodEn : subIndicator.period}</span>
+                      <span className="sub-copy">
+                        <span className="sub-name">{language === 'en' ? subIndicator.nameEn : subIndicator.name}</span>
+                        <span className="sub-period">{language === 'en' ? subIndicator.periodEn : subIndicator.period}</span>
+                      </span>
                       <span className={`sub-value ${toneClass(subIndicator.toneByVariation[variation])}`}>{subIndicator.values[variation]}</span>
                     </div>
                   ))}
