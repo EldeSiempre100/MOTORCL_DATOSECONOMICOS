@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "projectName": "Monitor Chile",
-  "status": "mixed",
-  "updatedAt": "2026-10-19T23:27:39.298Z",
-  "asOfLabel": "INE consultado 2026-10-19",
-  "latestCompleteMonth": "según serie",
-  "isDemo": true,
+  "status": "live",
+  "updatedAt": "2026-10-20T03:15:40.936Z",
+  "asOfLabel": "Consulta de motores: 2026-10-20",
+  "latestCompleteMonth": "según última observación de cada serie",
+  "isDemo": false,
   "demoNotice": {
-    "es": "La tasa de desocupación se obtiene de INE/SIMEL. Las demás cifras, fechas y expectativas de esta vista siguen siendo ejemplos no verificados.",
-    "en": "The unemployment rate comes from INE/SIMEL. Other figures, dates and expectations in this view remain unverified examples."
+    "es": "",
+    "en": ""
   },
   "delayedSeriesCount": 0,
   "delayedSeries": [],
@@ -37,6 +37,11 @@
       "url": "https://www.spensiones.cl/",
       "displayName": "Superintendencia de Pensiones",
       "displayNameEn": "Pension Regulator"
+    },
+    "Mindicador": {
+      "url": "https://mindicador.cl/api/tpm",
+      "displayName": "Mindicador (intermediario, datos de origen BCCh)",
+      "displayNameEn": "Mindicador (third-party mirror, underlying BCCh data)"
     }
   },
   "ui": {
@@ -51,11 +56,11 @@
       "languageLabel": "Cambiar idioma",
       "themeToDark": "Activar modo oscuro",
       "themeToLight": "Activar modo claro",
-      "demoTag": "MOCK · NO OFICIAL",
-      "cutLabel": "CORTE DEMOSTRATIVO",
+      "demoTag": "",
+      "cutLabel": "",
       "delayedPrefix": "series demoradas",
       "delayedTitle": "Series demoradas",
-      "delayedIntro": "Indicadores cuyo próximo dato aún no está disponible en esta maqueta.",
+      "delayedIntro": "Fuentes con actualización fallida o valores no vigentes, sin reemplazo ficticio.",
       "close": "Cerrar",
       "filtersLabel": "Filtros del monitor",
       "categoryLabel": "Categoría",
@@ -154,10 +159,10 @@
       "sourceData": "Fuente y metodología",
       "periodContext": "Período",
       "seriesLabel": "Serie",
-      "noCategoryCards": "No hay tarjetas principales para esta categoría en la maqueta.",
-      "noCategoryCharts": "No hay series de gráfico asociadas a esta categoría en esta maqueta.",
+      "noCategoryCards": "Aún no hay series verificadas disponibles en esta categoría.",
+      "noCategoryCharts": "Aún no hay historia verificable disponible en esta categoría.",
       "noSearchResults": "No encontramos indicadores con ese término.",
-      "noTimelineResults": "No hay publicaciones verificadas para esta selección.",
+      "noTimelineResults": "Sin publicaciones con fecha verificada.",
       "marketExpected": "esperado",
       "releasedOn": "salió el",
       "indicator": "Indicador",
@@ -169,7 +174,7 @@
       "footerAbout": "Una lectura ordenada de indicadores públicos de Chile, con el período y la fuente a la vista.",
       "footerSourcesTitle": "Fuentes y referencias",
       "footerMethodTitle": "Datos y metodología",
-      "footerMethod": "La tasa de desocupación usa la serie oficial INE/SIMEL. Los demás indicadores siguen señalados como ejemplos hasta conectar y verificar sus fuentes.",
+      "footerMethod": "Cada indicador conserva su período, fuente y método de adquisición. Las series intermediadas se identifican expresamente.",
       "footerCredits": "Diseño editorial para lectura y seguimiento de datos.",
       "noData": "Sin dato para esta selección",
       "monthNames": [
@@ -185,7 +190,8 @@
         "oct",
         "nov",
         "dic"
-      ]
+      ],
+      "mockSnapshot": ""
     },
     "en": {
       "brandTagline": "The economy, with the date behind every number.",
@@ -198,11 +204,11 @@
       "languageLabel": "Change language",
       "themeToDark": "Enable dark mode",
       "themeToLight": "Enable light mode",
-      "demoTag": "MOCK · UNVERIFIED",
-      "cutLabel": "DEMO SNAPSHOT",
+      "demoTag": "",
+      "cutLabel": "",
       "delayedPrefix": "delayed series",
       "delayedTitle": "Delayed series",
-      "delayedIntro": "Indicators whose next release is not yet available in this mockup.",
+      "delayedIntro": "Sources with failed refresh or stale observations, without synthetic fallback.",
       "close": "Close",
       "filtersLabel": "Monitor filters",
       "categoryLabel": "Category",
@@ -301,10 +307,10 @@
       "sourceData": "Source & method",
       "periodContext": "Period",
       "seriesLabel": "Series",
-      "noCategoryCards": "No headline cards are available for this category in the mockup.",
-      "noCategoryCharts": "No chart series are associated with this category in this mockup.",
+      "noCategoryCards": "No sourced series are currently available in this category.",
+      "noCategoryCharts": "No verifiable history is available in this category.",
       "noSearchResults": "No indicators matched that search.",
-      "noTimelineResults": "No verified releases for this selection.",
+      "noTimelineResults": "No releases with a verified publication date.",
       "marketExpected": "expected",
       "releasedOn": "released",
       "indicator": "Indicator",
@@ -316,7 +322,7 @@
       "footerAbout": "A clear reading of public Chilean indicators, with their period and source in view.",
       "footerSourcesTitle": "Sources and references",
       "footerMethodTitle": "Data & method",
-      "footerMethod": "The unemployment rate uses the official INE/SIMEL series. Other indicators remain labelled as examples until their sources are connected and verified.",
+      "footerMethod": "Every indicator has a reference period, source and acquisition method. Third-party mirror data is explicitly identified.",
       "footerCredits": "Editorial design for reading and tracking economic data.",
       "noData": "No data for this selection",
       "monthNames": [
@@ -332,9 +338,10 @@
         "Oct",
         "Nov",
         "Dec"
-      ]
+      ],
+      "mockSnapshot": ""
     }
   },
-  "asOfLabelEn": "INE checked 2026-10-19",
-  "latestCompleteMonthEn": "by series"
+  "asOfLabelEn": "Data retrieval: 2026-10-20",
+  "latestCompleteMonthEn": "latest observation by series"
 }
