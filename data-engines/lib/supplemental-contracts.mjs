@@ -14,6 +14,7 @@ function periodLabel(period) {
 function valueFormat(value, spec) {
   if (spec.unit === 'clp') return '$' + cash.format(value);
   if (spec.unit === 'usd-lb') return 'US$' + cash.format(value);
+  if (spec.unit === 'index') return fmt.format(value) + ' pts';
   return (value > 0 && spec.unit === 'percent-change' ? '+' : '') + fmt.format(value) + '%';
 }
 function difference(current, previous, spec) {
@@ -22,9 +23,11 @@ function difference(current, previous, spec) {
   const prefix = delta > 0 ? '+' : '';
   if (spec.unit === 'clp') return prefix + '$' + cash.format(delta);
   if (spec.unit === 'usd-lb') return prefix + 'US$' + cash.format(delta);
+  if (spec.unit === 'index') return prefix + fmt.format(delta) + ' pts';
   return prefix + fmt.format(delta) + ' pp';
 }
 function description(spec) {
+  if (spec.unit === 'index') return 'Nivel del índice, no variación porcentual';
   if (spec.measure === 'mom') return 'Variación mensual del IPC, sin desestacionalizar';
   if (spec.measure === 'yoy') return 'Variación frente al mismo mes del año anterior, serie original';
   if (spec.unit === 'usd-lb') return 'Precio observado · dólares estadounidenses por libra';
@@ -78,7 +81,7 @@ function makeChart(series,spec) {
     period:row.period,label:periodLabel(row.period),labelEn:row.period,
     [key]:row.value,
   }));
-  const label = spec.unit === 'clp' ? 'CLP' : spec.unit === 'usd-lb' ? 'US$/libra' :
+  const label = spec.unit === 'clp' ? 'CLP' : spec.unit === 'index' ? 'Puntos de índice' : spec.unit === 'usd-lb' ? 'US$/libra' :
     spec.unit === 'percent-change' ? 'Variación (%)' : 'Porcentaje (%)';
   const historical = spec.measure === 'mom' ? 'Cada punto representa variación mensual del IPC' :
     spec.measure === 'yoy' ? 'Cada punto representa variación interanual del Imacec original' :
@@ -106,7 +109,7 @@ export function appendSupplementalContracts(result,entries) {
     result.summaries.cards.push(makeCard(series,spec));
     result.charts.charts.push(makeChart(series,spec));
     result.metadata.sources[spec.provider] = {
-      url: spec.provider === 'Indicadores.cl' ? 'https://indicadores.cl/api/' : 'https://mindicador.cl/',
+      url: spec.provider === 'Economía Chile' ? 'https://github.com/bastianolea/economia_chile' : spec.provider === 'Indicadores.cl' ? 'https://indicadores.cl/api/' : 'https://mindicador.cl/',
       displayName: spec.provider + ' · intermediario de datos',
       displayNameEn: spec.provider + ' · third-party data intermediary',
     };
