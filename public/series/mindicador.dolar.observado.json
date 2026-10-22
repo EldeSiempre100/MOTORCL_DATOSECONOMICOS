@@ -13,7 +13,7 @@
   "unit": "clp",
   "sourceUrl": "https://mindicador.cl/api/dolar",
   "methodologyUrl": "https://www.bcentral.cl/",
-  "lastSuccessfulRefresh": "2026-10-20T12:08:15.878Z",
+  "lastSuccessfulRefresh": "2026-10-22T16:39:36.100Z",
   "observations": [
     {
       "period": "2024-01-02",
@@ -8377,6 +8377,30 @@
       "documentUrl": null,
       "firstSeenAt": "2026-10-20T03:15:40.936Z",
       "lastChangedAt": "2026-10-20T03:15:40.936Z",
+      "revisions": []
+    },
+    {
+      "period": "2026-10-21",
+      "observedFrom": "2026-10-21",
+      "observedTo": "2026-10-21",
+      "value": 978.56,
+      "sourceStatus": null,
+      "publishedAt": null,
+      "documentUrl": null,
+      "firstSeenAt": "2026-10-22T16:39:36.100Z",
+      "lastChangedAt": "2026-10-22T16:39:36.100Z",
+      "revisions": []
+    },
+    {
+      "period": "2026-10-22",
+      "observedFrom": "2026-10-22",
+      "observedTo": "2026-10-22",
+      "value": 976.82,
+      "sourceStatus": null,
+      "publishedAt": null,
+      "documentUrl": null,
+      "firstSeenAt": "2026-10-22T16:39:36.100Z",
+      "lastChangedAt": "2026-10-22T16:39:36.100Z",
       "revisions": []
     }
   ]
