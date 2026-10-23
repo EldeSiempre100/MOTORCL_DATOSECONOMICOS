@@ -2,16 +2,34 @@
   "schemaVersion": 1,
   "projectName": "Monitor Chile",
   "status": "live",
-  "updatedAt": "2026-10-22T16:39:36.100Z",
-  "asOfLabel": "Consulta de motores: 2026-10-22",
+  "updatedAt": "2026-10-23T16:29:30.467Z",
+  "asOfLabel": "Consulta de motores: 2026-10-23",
   "latestCompleteMonth": "según última observación de cada serie",
   "isDemo": false,
   "demoNotice": {
     "es": "",
     "en": ""
   },
-  "delayedSeriesCount": 1,
+  "delayedSeriesCount": 3,
   "delayedSeries": [
+    {
+      "id": "dolar",
+      "name": "Dólar observado",
+      "nameEn": "Dólar observado",
+      "source": "Mindicador",
+      "lastUpdate": "2026-10-22T16:39:36.100Z",
+      "reason": "fetch failed",
+      "reasonEn": "fetch failed"
+    },
+    {
+      "id": "uf",
+      "name": "Unidad de Fomento (UF)",
+      "nameEn": "Unidad de Fomento (UF)",
+      "source": "Mindicador",
+      "lastUpdate": "2026-10-22T16:39:36.100Z",
+      "reason": "Mindicador HTTP 500: https://mindicador.cl/api/uf",
+      "reasonEn": "Mindicador HTTP 500: https://mindicador.cl/api/uf"
+    },
     {
       "id": "tpm",
       "name": "Tasa de Política Monetaria (TPM)",
@@ -321,6 +339,6 @@
       "mockSnapshot": ""
     }
   },
-  "asOfLabelEn": "Data retrieval: 2026-10-22",
+  "asOfLabelEn": "Data retrieval: 2026-10-23",
   "latestCompleteMonthEn": "latest observation by series"
 }

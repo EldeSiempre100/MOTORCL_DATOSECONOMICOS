@@ -13,7 +13,7 @@
   "unit": "index",
   "sourceUrl": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/imacec.csv",
   "methodologyUrl": "https://www.bcentral.cl/areas/estadisticas/imacec",
-  "lastSuccessfulRefresh": "2026-10-22T16:39:36.100Z",
+  "lastSuccessfulRefresh": "2026-10-23T16:29:30.467Z",
   "observations": [
     {
       "period": "2013-01",
