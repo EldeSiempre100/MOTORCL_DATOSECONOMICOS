@@ -154,36 +154,36 @@
         "valuesByVariation": {
           "mensual": {
             "ultimo": {
-              "value": "$976,82",
+              "value": "$986,58",
               "tone": "neutral",
-              "diagnosis": "$-1,74",
-              "diagnosisEn": "$-1,74",
-              "context": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2026-10-21: $-1,74 · vía Mindicador",
-              "contextEn": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2026-10-21: $-1,74 · vía Mindicador"
+              "diagnosis": "+$9,76",
+              "diagnosisEn": "+$9,76",
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-10-22: +$9,76 · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-10-22: +$9,76 · vía Mindicador"
             },
             "ultimo-mes": {
-              "value": "$976,82",
+              "value": "$986,58",
               "tone": "neutral",
-              "diagnosis": "$-1,74",
-              "diagnosisEn": "$-1,74",
-              "context": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2026-10-21: $-1,74 · vía Mindicador",
-              "contextEn": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2026-10-21: $-1,74 · vía Mindicador"
+              "diagnosis": "+$9,76",
+              "diagnosisEn": "+$9,76",
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-10-22: +$9,76 · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-10-22: +$9,76 · vía Mindicador"
             },
             "anio": {
-              "value": "$976,82",
+              "value": "$986,58",
               "tone": "neutral",
-              "diagnosis": "+$69,69",
-              "diagnosisEn": "+$69,69",
-              "context": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2026-01-02: +$69,69 · vía Mindicador",
-              "contextEn": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2026-01-02: +$69,69 · vía Mindicador"
+              "diagnosis": "+$79,45",
+              "diagnosisEn": "+$79,45",
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-01-02: +$79,45 · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-01-02: +$79,45 · vía Mindicador"
             },
             "12-meses": {
-              "value": "$976,82",
+              "value": "$986,58",
               "tone": "neutral",
-              "diagnosis": "+$25,04",
-              "diagnosisEn": "+$25,04",
-              "context": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2025-10-22: +$25,04 · vía Mindicador",
-              "contextEn": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2025-10-22: +$25,04 · vía Mindicador"
+              "diagnosis": "+$36,12",
+              "diagnosisEn": "+$36,12",
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: +$36,12 · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: +$36,12 · vía Mindicador"
             },
             "personalizado": {
               "value": "—",
@@ -196,36 +196,36 @@
           },
           "interanual": {
             "ultimo": {
-              "value": "$976,82",
+              "value": "$986,58",
               "tone": "neutral",
-              "diagnosis": "+$25,04",
-              "diagnosisEn": "+$25,04",
-              "context": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2025-10-22: +$25,04 · vía Mindicador",
-              "contextEn": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2025-10-22: +$25,04 · vía Mindicador"
+              "diagnosis": "+$36,12",
+              "diagnosisEn": "+$36,12",
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: +$36,12 · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: +$36,12 · vía Mindicador"
             },
             "ultimo-mes": {
-              "value": "$976,82",
+              "value": "$986,58",
               "tone": "neutral",
-              "diagnosis": "+$25,04",
-              "diagnosisEn": "+$25,04",
-              "context": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2025-10-22: +$25,04 · vía Mindicador",
-              "contextEn": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2025-10-22: +$25,04 · vía Mindicador"
+              "diagnosis": "+$36,12",
+              "diagnosisEn": "+$36,12",
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: +$36,12 · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: +$36,12 · vía Mindicador"
             },
             "anio": {
-              "value": "$976,82",
+              "value": "$986,58",
               "tone": "neutral",
-              "diagnosis": "+$69,69",
-              "diagnosisEn": "+$69,69",
-              "context": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2026-01-02: +$69,69 · vía Mindicador",
-              "contextEn": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2026-01-02: +$69,69 · vía Mindicador"
+              "diagnosis": "+$79,45",
+              "diagnosisEn": "+$79,45",
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-01-02: +$79,45 · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-01-02: +$79,45 · vía Mindicador"
             },
             "12-meses": {
-              "value": "$976,82",
+              "value": "$986,58",
               "tone": "neutral",
-              "diagnosis": "+$25,04",
-              "diagnosisEn": "+$25,04",
-              "context": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2025-10-22: +$25,04 · vía Mindicador",
-              "contextEn": "22 oct 2026 · dato del 2026-10-22 · variación desde el 2025-10-22: +$25,04 · vía Mindicador"
+              "diagnosis": "+$36,12",
+              "diagnosisEn": "+$36,12",
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: +$36,12 · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: +$36,12 · vía Mindicador"
             },
             "personalizado": {
               "value": "—",
@@ -243,11 +243,11 @@
           "name": "Unidad de Fomento (UF)",
           "nameEn": "UF",
           "seriesId": "mindicador.uf",
-          "period": "22 oct 2026",
-          "periodEn": "2026-10-22",
+          "period": "24 oct 2026",
+          "periodEn": "2026-10-24",
           "values": {
-            "mensual": "$41.199,85",
-            "interanual": "$41.199,85"
+            "mensual": "$41.210,47",
+            "interanual": "$41.210,47"
           },
           "toneByVariation": {
             "mensual": "neutral",
@@ -280,32 +280,32 @@
               "tone": "neutral",
               "diagnosis": "0,0 pp",
               "diagnosisEn": "0,0 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: 0,0 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: 0,0 pp · vía Mindicador"
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-10-22: 0,0 pp · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-10-22: 0,0 pp · vía Mindicador"
             },
             "ultimo-mes": {
               "value": "4,5%",
               "tone": "neutral",
               "diagnosis": "0,0 pp",
               "diagnosisEn": "0,0 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: 0,0 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-10-19: 0,0 pp · vía Mindicador"
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-10-22: 0,0 pp · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-10-22: 0,0 pp · vía Mindicador"
             },
             "anio": {
               "value": "4,5%",
               "tone": "neutral",
               "diagnosis": "0,0 pp",
               "diagnosisEn": "0,0 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-01-02: 0,0 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-01-02: 0,0 pp · vía Mindicador"
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-01-02: 0,0 pp · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-01-02: 0,0 pp · vía Mindicador"
             },
             "12-meses": {
               "value": "4,5%",
               "tone": "neutral",
               "diagnosis": "-0,25 pp",
               "diagnosisEn": "-0,25 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador"
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: -0,25 pp · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: -0,25 pp · vía Mindicador"
             },
             "personalizado": {
               "value": "—",
@@ -322,32 +322,32 @@
               "tone": "neutral",
               "diagnosis": "-0,25 pp",
               "diagnosisEn": "-0,25 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador"
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: -0,25 pp · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: -0,25 pp · vía Mindicador"
             },
             "ultimo-mes": {
               "value": "4,5%",
               "tone": "neutral",
               "diagnosis": "-0,25 pp",
               "diagnosisEn": "-0,25 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador"
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: -0,25 pp · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: -0,25 pp · vía Mindicador"
             },
             "anio": {
               "value": "4,5%",
               "tone": "neutral",
               "diagnosis": "0,0 pp",
               "diagnosisEn": "0,0 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-01-02: 0,0 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2026-01-02: 0,0 pp · vía Mindicador"
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-01-02: 0,0 pp · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2026-01-02: 0,0 pp · vía Mindicador"
             },
             "12-meses": {
               "value": "4,5%",
               "tone": "neutral",
               "diagnosis": "-0,25 pp",
               "diagnosisEn": "-0,25 pp",
-              "context": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador",
-              "contextEn": "20 oct 2026 · dato del 2026-10-20 · variación desde el 2025-10-20: -0,25 pp · vía Mindicador"
+              "context": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: -0,25 pp · vía Mindicador",
+              "contextEn": "23 oct 2026 · dato del 2026-10-23 · variación desde el 2025-10-23: -0,25 pp · vía Mindicador"
             },
             "personalizado": {
               "value": "—",

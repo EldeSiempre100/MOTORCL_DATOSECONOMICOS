@@ -2,44 +2,16 @@
   "schemaVersion": 1,
   "projectName": "Monitor Chile",
   "status": "live",
-  "updatedAt": "2026-10-23T16:29:30.467Z",
-  "asOfLabel": "Consulta de motores: 2026-10-23",
+  "updatedAt": "2026-10-24T15:24:36.141Z",
+  "asOfLabel": "Consulta de motores: 2026-10-24",
   "latestCompleteMonth": "según última observación de cada serie",
   "isDemo": false,
   "demoNotice": {
     "es": "",
     "en": ""
   },
-  "delayedSeriesCount": 3,
-  "delayedSeries": [
-    {
-      "id": "dolar",
-      "name": "Dólar observado",
-      "nameEn": "Dólar observado",
-      "source": "Mindicador",
-      "lastUpdate": "2026-10-22T16:39:36.100Z",
-      "reason": "fetch failed",
-      "reasonEn": "fetch failed"
-    },
-    {
-      "id": "uf",
-      "name": "Unidad de Fomento (UF)",
-      "nameEn": "Unidad de Fomento (UF)",
-      "source": "Mindicador",
-      "lastUpdate": "2026-10-22T16:39:36.100Z",
-      "reason": "Mindicador HTTP 500: https://mindicador.cl/api/uf",
-      "reasonEn": "Mindicador HTTP 500: https://mindicador.cl/api/uf"
-    },
-    {
-      "id": "tpm",
-      "name": "Tasa de Política Monetaria (TPM)",
-      "nameEn": "Tasa de Política Monetaria (TPM)",
-      "source": "Mindicador",
-      "lastUpdate": "2026-10-20T12:25:52.995Z",
-      "reason": "The operation was aborted due to timeout",
-      "reasonEn": "The operation was aborted due to timeout"
-    }
-  ],
+  "delayedSeriesCount": 0,
+  "delayedSeries": [],
   "sources": {
     "INE": {
       "url": "https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/ocupacion-y-desocupacion",
@@ -339,6 +311,6 @@
       "mockSnapshot": ""
     }
   },
-  "asOfLabelEn": "Data retrieval: 2026-10-23",
+  "asOfLabelEn": "Data retrieval: 2026-10-24",
   "latestCompleteMonthEn": "latest observation by series"
 }

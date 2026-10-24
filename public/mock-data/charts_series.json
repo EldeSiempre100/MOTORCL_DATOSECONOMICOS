@@ -273,8 +273,8 @@
       "sourceIds": [
         "Mindicador"
       ],
-      "reference": "02 ene 2024 — 22 oct 2026",
-      "referenceEn": "2024-01-02 — 2026-10-22",
+      "reference": "02 ene 2024 — 23 oct 2026",
+      "referenceEn": "2024-01-02 — 2026-10-23",
       "footnote": "Mindicador es un intermediario de datos con origen atribuido al BCCh; no es el endpoint oficial. Sin fechas de publicación inferidas.",
       "footnoteEn": "Mindicador is a third-party mirror attributing BCCh data; it is not an official endpoint. Release dates are not inferred.",
       "axes": {
@@ -310,20 +310,6 @@
         }
       ],
       "data": [
-        {
-          "period": "2025-10-23",
-          "label": "23 oct 2025",
-          "labelEn": "2025-10-23",
-          "dolarClp": 950.46,
-          "ufClp": 39556.9
-        },
-        {
-          "period": "2025-10-24",
-          "label": "24 oct 2025",
-          "labelEn": "2025-10-24",
-          "dolarClp": 945.34,
-          "ufClp": 39562
-        },
         {
           "period": "2025-10-25",
           "label": "25 oct 2025",
@@ -2748,6 +2734,19 @@
           "labelEn": "2026-10-22",
           "dolarClp": 976.82,
           "ufClp": 41199.85
+        },
+        {
+          "period": "2026-10-23",
+          "label": "23 oct 2026",
+          "labelEn": "2026-10-23",
+          "dolarClp": 986.58,
+          "ufClp": 41205.16
+        },
+        {
+          "period": "2026-10-24",
+          "label": "24 oct 2026",
+          "labelEn": "2026-10-24",
+          "ufClp": 41210.47
         }
       ]
     },
@@ -2765,8 +2764,8 @@
       "sourceIds": [
         "Mindicador"
       ],
-      "reference": "02 ene 2024 — 20 oct 2026",
-      "referenceEn": "2024-01-02 — 2026-10-20",
+      "reference": "02 ene 2024 — 23 oct 2026",
+      "referenceEn": "2024-01-02 — 2026-10-23",
       "footnote": "Serie de niveles; no es variación mensual ni interanual. Fuente intermediaria Mindicador.",
       "footnoteEn": "Rate levels, not monthly or annual percent changes. Source: Mindicador.",
       "axes": {
@@ -2790,24 +2789,6 @@
         }
       ],
       "data": [
-        {
-          "period": "2025-05-05",
-          "label": "05 may 2025",
-          "labelEn": "2025-05-05",
-          "tpmRate": 5
-        },
-        {
-          "period": "2025-05-06",
-          "label": "06 may 2025",
-          "labelEn": "2025-05-06",
-          "tpmRate": 5
-        },
-        {
-          "period": "2025-05-07",
-          "label": "07 may 2025",
-          "labelEn": "2025-05-07",
-          "tpmRate": 5
-        },
         {
           "period": "2025-05-08",
           "label": "08 may 2025",
@@ -4978,6 +4959,24 @@
           "period": "2026-10-20",
           "label": "20 oct 2026",
           "labelEn": "2026-10-20",
+          "tpmRate": 4.5
+        },
+        {
+          "period": "2026-10-21",
+          "label": "21 oct 2026",
+          "labelEn": "2026-10-21",
+          "tpmRate": 4.5
+        },
+        {
+          "period": "2026-10-22",
+          "label": "22 oct 2026",
+          "labelEn": "2026-10-22",
+          "tpmRate": 4.5
+        },
+        {
+          "period": "2026-10-23",
+          "label": "23 oct 2026",
+          "labelEn": "2026-10-23",
           "tpmRate": 4.5
         }
       ]
