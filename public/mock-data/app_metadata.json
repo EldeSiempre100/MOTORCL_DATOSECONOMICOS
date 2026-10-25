@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "projectName": "Monitor Chile",
   "status": "live",
-  "updatedAt": "2026-10-24T15:24:36.141Z",
-  "asOfLabel": "Consulta de motores: 2026-10-24",
+  "updatedAt": "2026-10-25T12:14:17.431Z",
+  "asOfLabel": "Consulta de motores: 2026-10-25",
   "latestCompleteMonth": "según última observación de cada serie",
   "isDemo": false,
   "demoNotice": {
@@ -311,6 +311,6 @@
       "mockSnapshot": ""
     }
   },
-  "asOfLabelEn": "Data retrieval: 2026-10-24",
+  "asOfLabelEn": "Data retrieval: 2026-10-25",
   "latestCompleteMonthEn": "latest observation by series"
 }
