@@ -2,16 +2,44 @@
   "schemaVersion": 1,
   "projectName": "Monitor Chile",
   "status": "live",
-  "updatedAt": "2026-10-25T12:14:17.431Z",
-  "asOfLabel": "Consulta de motores: 2026-10-25",
+  "updatedAt": "2026-10-26T13:39:45.645Z",
+  "asOfLabel": "Consulta de motores: 2026-10-26",
   "latestCompleteMonth": "según última observación de cada serie",
   "isDemo": false,
   "demoNotice": {
     "es": "",
     "en": ""
   },
-  "delayedSeriesCount": 0,
-  "delayedSeries": [],
+  "delayedSeriesCount": 3,
+  "delayedSeries": [
+    {
+      "id": "dolar",
+      "name": "Dólar observado",
+      "nameEn": "Dólar observado",
+      "source": "Mindicador",
+      "lastUpdate": "2026-10-25T12:14:17.431Z",
+      "reason": "fetch failed",
+      "reasonEn": "fetch failed"
+    },
+    {
+      "id": "uf",
+      "name": "Unidad de Fomento (UF)",
+      "nameEn": "Unidad de Fomento (UF)",
+      "source": "Mindicador",
+      "lastUpdate": "2026-10-25T12:14:17.431Z",
+      "reason": "fetch failed",
+      "reasonEn": "fetch failed"
+    },
+    {
+      "id": "tpm",
+      "name": "Tasa de Política Monetaria (TPM)",
+      "nameEn": "Tasa de Política Monetaria (TPM)",
+      "source": "Mindicador",
+      "lastUpdate": "2026-10-25T12:14:17.431Z",
+      "reason": "fetch failed",
+      "reasonEn": "fetch failed"
+    }
+  ],
   "sources": {
     "INE": {
       "url": "https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/ocupacion-y-desocupacion",
@@ -311,6 +339,6 @@
       "mockSnapshot": ""
     }
   },
-  "asOfLabelEn": "Data retrieval: 2026-10-25",
+  "asOfLabelEn": "Data retrieval: 2026-10-26",
   "latestCompleteMonthEn": "latest observation by series"
 }

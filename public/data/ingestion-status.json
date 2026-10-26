@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "runId": "motorcl-20261025121417431",
-  "checkedAt": "2026-10-25T12:14:17.431Z",
-  "latestSuccessfulRefresh": "2026-10-25T12:14:17.431Z",
-  "result": "ok",
+  "runId": "motorcl-20261026133945645",
+  "checkedAt": "2026-10-26T13:39:45.645Z",
+  "latestSuccessfulRefresh": "2026-10-26T13:39:45.645Z",
+  "result": "partial",
   "sources": [
     {
       "source": "INE/SIMEL",
@@ -21,40 +21,28 @@
       "source": "Mindicador",
       "code": "dolar",
       "seriesId": "mindicador.dolar.observado",
-      "state": "ok",
-      "latestPeriod": "2026-10-23",
-      "observations": 700,
-      "added": 0,
-      "revised": 0,
-      "sha256": "732cf9c7f851dbda09a9bbcc62d04536950270ef26bad874c6c2c9405c66b185",
-      "endpoint": "https://mindicador.cl/api/dolar",
-      "fetchedAt": "2026-10-25T12:14:19.333Z"
+      "state": "cached",
+      "message": "TypeError: fetch failed",
+      "ageDays": 3,
+      "latestPeriod": "2026-10-23"
     },
     {
       "source": "Mindicador",
       "code": "uf",
       "seriesId": "mindicador.uf",
-      "state": "ok",
-      "latestPeriod": "2026-10-25",
-      "observations": 1029,
-      "added": 1,
-      "revised": 0,
-      "sha256": "fe75a95ab1d59e72a77ea367c8d72dd2043b85beeb7e26c52aecb3ddb372d813",
-      "endpoint": "https://mindicador.cl/api/uf",
-      "fetchedAt": "2026-10-25T12:14:19.339Z"
+      "state": "cached",
+      "message": "TypeError: fetch failed",
+      "ageDays": 1,
+      "latestPeriod": "2026-10-25"
     },
     {
       "source": "Mindicador",
       "code": "tpm",
       "seriesId": "mindicador.tpm",
-      "state": "ok",
-      "latestPeriod": "2026-10-23",
-      "observations": 701,
-      "added": 0,
-      "revised": 0,
-      "sha256": "c611693592e9f3d0dbc22a0d8fb0c3da4c5f07d6ccb050d1b05a4c5badf00b89",
-      "endpoint": "https://mindicador.cl/api/tpm",
-      "fetchedAt": "2026-10-25T12:14:19.335Z"
+      "state": "cached",
+      "message": "TypeError: fetch failed",
+      "ageDays": 3,
+      "latestPeriod": "2026-10-23"
     },
     {
       "source": "Economía Chile",
@@ -67,7 +55,7 @@
       "revised": 0,
       "sha256": "103c865bb872c459c1f2358e789d1d4b8b034c99c48be9a3a6092f90cc3a34a2",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv",
-      "fetchedAt": "2026-10-25T12:14:21.401Z"
+      "fetchedAt": "2026-10-26T13:40:15.586Z"
     },
     {
       "source": "Economía Chile",
@@ -80,7 +68,7 @@
       "revised": 0,
       "sha256": "3888bf266111a95f2f09b4fd1b78678b9481ed27e41232875f581ddee33f967e",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/imacec.csv",
-      "fetchedAt": "2026-10-25T12:14:21.403Z"
+      "fetchedAt": "2026-10-26T13:40:15.588Z"
     },
     {
       "source": "Economía Chile",
@@ -93,7 +81,7 @@
       "revised": 0,
       "sha256": "120dd67cd41ce197c8bc5a57e2de86984f3624abaec2602c1450fb7211837b34",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipsa.csv",
-      "fetchedAt": "2026-10-25T12:14:21.404Z"
+      "fetchedAt": "2026-10-26T13:40:15.587Z"
     },
     {
       "source": "Economía Chile",
@@ -106,9 +94,31 @@
       "revised": 0,
       "sha256": "b8152eb2b8d9b9d44fa6e84a789a43a756fcc50f78fb1a32eb40c59e987f0f9b",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/remuneraciones.csv",
-      "fetchedAt": "2026-10-25T12:14:21.569Z"
+      "fetchedAt": "2026-10-26T13:40:16.027Z"
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "code": "dolar",
+      "name": "Dólar observado",
+      "source": "Mindicador",
+      "error": "fetch failed",
+      "lastUpdate": "2026-10-25T12:14:17.431Z"
+    },
+    {
+      "code": "uf",
+      "name": "Unidad de Fomento (UF)",
+      "source": "Mindicador",
+      "error": "fetch failed",
+      "lastUpdate": "2026-10-25T12:14:17.431Z"
+    },
+    {
+      "code": "tpm",
+      "name": "Tasa de Política Monetaria (TPM)",
+      "source": "Mindicador",
+      "error": "fetch failed",
+      "lastUpdate": "2026-10-25T12:14:17.431Z"
+    }
+  ],
   "publishedSeries": 8
 }
