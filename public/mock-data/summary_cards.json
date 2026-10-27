@@ -243,11 +243,11 @@
           "name": "Unidad de Fomento (UF)",
           "nameEn": "UF",
           "seriesId": "mindicador.uf",
-          "period": "25 oct 2026",
-          "periodEn": "2026-10-25",
+          "period": "27 oct 2026",
+          "periodEn": "2026-10-27",
           "values": {
-            "mensual": "$41.215,77",
-            "interanual": "$41.215,77"
+            "mensual": "$41.226,39",
+            "interanual": "$41.226,39"
           },
           "toneByVariation": {
             "mensual": "neutral",

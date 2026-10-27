@@ -13,7 +13,7 @@
   "unit": "index",
   "sourceUrl": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv",
   "methodologyUrl": "https://www.ine.gob.cl/estadisticas-por-tema/precios-e-inflacion/indice-de-precios-al-consumidor",
-  "lastSuccessfulRefresh": "2026-10-26T13:39:45.645Z",
+  "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
   "observations": [
     {
       "period": "2009-12",

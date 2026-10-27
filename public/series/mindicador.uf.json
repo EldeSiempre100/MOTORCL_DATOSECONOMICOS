@@ -13,7 +13,7 @@
   "unit": "clp",
   "sourceUrl": "https://mindicador.cl/api/uf",
   "methodologyUrl": "https://www.bcentral.cl/",
-  "lastSuccessfulRefresh": "2026-10-25T12:14:17.431Z",
+  "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
   "observations": [
     {
       "period": "2024-01-01",
@@ -12361,6 +12361,30 @@
       "documentUrl": null,
       "firstSeenAt": "2026-10-25T12:14:17.431Z",
       "lastChangedAt": "2026-10-25T12:14:17.431Z",
+      "revisions": []
+    },
+    {
+      "period": "2026-10-26",
+      "observedFrom": "2026-10-26",
+      "observedTo": "2026-10-26",
+      "value": 41221.08,
+      "sourceStatus": null,
+      "publishedAt": null,
+      "documentUrl": null,
+      "firstSeenAt": "2026-10-27T12:17:25.339Z",
+      "lastChangedAt": "2026-10-27T12:17:25.339Z",
+      "revisions": []
+    },
+    {
+      "period": "2026-10-27",
+      "observedFrom": "2026-10-27",
+      "observedTo": "2026-10-27",
+      "value": 41226.39,
+      "sourceStatus": null,
+      "publishedAt": null,
+      "documentUrl": null,
+      "firstSeenAt": "2026-10-27T12:17:25.339Z",
+      "lastChangedAt": "2026-10-27T12:17:25.339Z",
       "revisions": []
     }
   ]
