@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "runId": "motorcl-20261027121725339",
-  "checkedAt": "2026-10-27T12:17:25.339Z",
-  "latestSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
+  "runId": "motorcl-20261028121258596",
+  "checkedAt": "2026-10-28T12:12:58.596Z",
+  "latestSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
   "result": "partial",
   "sources": [
     {
@@ -23,30 +23,30 @@
       "seriesId": "mindicador.dolar.observado",
       "state": "cached",
       "message": "TimeoutError: The operation was aborted due to timeout",
-      "ageDays": 4,
+      "ageDays": 5,
       "latestPeriod": "2026-10-23"
     },
     {
       "source": "Mindicador",
       "code": "uf",
       "seriesId": "mindicador.uf",
-      "state": "ok",
-      "latestPeriod": "2026-10-27",
-      "observations": 1031,
-      "added": 2,
-      "revised": 0,
-      "sha256": "a85db5736ff3b123b9a6b2bef90ef87b22b2be121c7e75fa8b07f896f40f1464",
-      "endpoint": "https://mindicador.cl/api/uf",
-      "fetchedAt": "2026-10-27T12:17:28.958Z"
+      "state": "cached",
+      "message": "TimeoutError: The operation was aborted due to timeout",
+      "ageDays": 1,
+      "latestPeriod": "2026-10-27"
     },
     {
       "source": "Mindicador",
       "code": "tpm",
       "seriesId": "mindicador.tpm",
-      "state": "cached",
-      "message": "TimeoutError: The operation was aborted due to timeout",
-      "ageDays": 4,
-      "latestPeriod": "2026-10-23"
+      "state": "ok",
+      "latestPeriod": "2026-10-28",
+      "observations": 704,
+      "added": 3,
+      "revised": 0,
+      "sha256": "b11a953276e72e61062036384845fa7b00bc2182bca6a2c5bfb00baee7349234",
+      "endpoint": "https://mindicador.cl/api/tpm",
+      "fetchedAt": "2026-10-28T12:13:02.453Z"
     },
     {
       "source": "Economía Chile",
@@ -59,7 +59,7 @@
       "revised": 0,
       "sha256": "103c865bb872c459c1f2358e789d1d4b8b034c99c48be9a3a6092f90cc3a34a2",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv",
-      "fetchedAt": "2026-10-27T12:18:18.959Z"
+      "fetchedAt": "2026-10-28T12:13:52.460Z"
     },
     {
       "source": "Economía Chile",
@@ -72,7 +72,7 @@
       "revised": 0,
       "sha256": "3888bf266111a95f2f09b4fd1b78678b9481ed27e41232875f581ddee33f967e",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/imacec.csv",
-      "fetchedAt": "2026-10-27T12:18:18.960Z"
+      "fetchedAt": "2026-10-28T12:13:52.461Z"
     },
     {
       "source": "Economía Chile",
@@ -85,7 +85,7 @@
       "revised": 0,
       "sha256": "120dd67cd41ce197c8bc5a57e2de86984f3624abaec2602c1450fb7211837b34",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipsa.csv",
-      "fetchedAt": "2026-10-27T12:18:18.961Z"
+      "fetchedAt": "2026-10-28T12:13:52.461Z"
     },
     {
       "source": "Economía Chile",
@@ -98,7 +98,7 @@
       "revised": 0,
       "sha256": "b8152eb2b8d9b9d44fa6e84a789a43a756fcc50f78fb1a32eb40c59e987f0f9b",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/remuneraciones.csv",
-      "fetchedAt": "2026-10-27T12:18:19.165Z"
+      "fetchedAt": "2026-10-28T12:13:52.762Z"
     }
   ],
   "errors": [
@@ -110,11 +110,11 @@
       "lastUpdate": "2026-10-25T12:14:17.431Z"
     },
     {
-      "code": "tpm",
-      "name": "Tasa de Política Monetaria (TPM)",
+      "code": "uf",
+      "name": "Unidad de Fomento (UF)",
       "source": "Mindicador",
       "error": "The operation was aborted due to timeout",
-      "lastUpdate": "2026-10-25T12:14:17.431Z"
+      "lastUpdate": "2026-10-27T12:17:25.339Z"
     }
   ],
   "publishedSeries": 8

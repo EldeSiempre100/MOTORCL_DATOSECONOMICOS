@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "runId": "motorcl-20261027121725339",
-  "generatedAt": "2026-10-27T12:17:25.339Z",
+  "runId": "motorcl-20261028121258596",
+  "generatedAt": "2026-10-28T12:12:58.596Z",
   "series": [
     {
       "id": "ine.ene.tdes.nacional.total",
@@ -16,7 +16,7 @@
       "unit": "percent",
       "endpoint": "https://sdmx.ine.gob.cl/rest/data/CL01,DF_TDES_SEXO,1.0/M.TDES._T.AS?format=csv",
       "latestPeriod": "2026-08",
-      "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
+      "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
       "sha256": "8b6b37da4690f53bac3f079376766d7a5eff12ad721cd53b9cdeb1a2469bbcfb",
       "available": true,
       "stale": false
@@ -55,7 +55,7 @@
       "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
       "sha256": "a85db5736ff3b123b9a6b2bef90ef87b22b2be121c7e75fa8b07f896f40f1464",
       "available": true,
-      "stale": false
+      "stale": true
     },
     {
       "id": "mindicador.tpm",
@@ -69,11 +69,11 @@
       "frequency": "daily",
       "unit": "percent",
       "endpoint": "https://mindicador.cl/api/tpm",
-      "latestPeriod": "2026-10-23",
-      "lastSuccessfulRefresh": "2026-10-25T12:14:17.431Z",
-      "sha256": "c611693592e9f3d0dbc22a0d8fb0c3da4c5f07d6ccb050d1b05a4c5badf00b89",
+      "latestPeriod": "2026-10-28",
+      "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
+      "sha256": "b11a953276e72e61062036384845fa7b00bc2182bca6a2c5bfb00baee7349234",
       "available": true,
-      "stale": true
+      "stale": false
     },
     {
       "id": "economiachile.ipc.indice.2023",
@@ -88,7 +88,7 @@
       "unit": "index",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipc.csv",
       "latestPeriod": "2026-09",
-      "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
+      "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
       "sha256": "103c865bb872c459c1f2358e789d1d4b8b034c99c48be9a3a6092f90cc3a34a2",
       "available": true,
       "stale": false
@@ -106,7 +106,7 @@
       "unit": "index",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/imacec.csv",
       "latestPeriod": "2026-08",
-      "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
+      "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
       "sha256": "3888bf266111a95f2f09b4fd1b78678b9481ed27e41232875f581ddee33f967e",
       "available": true,
       "stale": false
@@ -124,7 +124,7 @@
       "unit": "index",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipsa.csv",
       "latestPeriod": "2026-09",
-      "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
+      "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
       "sha256": "120dd67cd41ce197c8bc5a57e2de86984f3624abaec2602c1450fb7211837b34",
       "available": true,
       "stale": false
@@ -142,7 +142,7 @@
       "unit": "index",
       "endpoint": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/remuneraciones.csv",
       "latestPeriod": "2026-08",
-      "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
+      "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
       "sha256": "b8152eb2b8d9b9d44fa6e84a789a43a756fcc50f78fb1a32eb40c59e987f0f9b",
       "available": true,
       "stale": false

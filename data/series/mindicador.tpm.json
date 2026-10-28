@@ -13,7 +13,7 @@
   "unit": "percent",
   "sourceUrl": "https://mindicador.cl/api/tpm",
   "methodologyUrl": "https://www.bcentral.cl/",
-  "lastSuccessfulRefresh": "2026-10-25T12:14:17.431Z",
+  "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
   "observations": [
     {
       "period": "2024-01-02",
@@ -8425,6 +8425,42 @@
       "documentUrl": null,
       "firstSeenAt": "2026-10-24T15:24:36.141Z",
       "lastChangedAt": "2026-10-24T15:24:36.141Z",
+      "revisions": []
+    },
+    {
+      "period": "2026-10-26",
+      "observedFrom": "2026-10-26",
+      "observedTo": "2026-10-26",
+      "value": 4.5,
+      "sourceStatus": null,
+      "publishedAt": null,
+      "documentUrl": null,
+      "firstSeenAt": "2026-10-28T12:12:58.596Z",
+      "lastChangedAt": "2026-10-28T12:12:58.596Z",
+      "revisions": []
+    },
+    {
+      "period": "2026-10-27",
+      "observedFrom": "2026-10-27",
+      "observedTo": "2026-10-27",
+      "value": 4.5,
+      "sourceStatus": null,
+      "publishedAt": null,
+      "documentUrl": null,
+      "firstSeenAt": "2026-10-28T12:12:58.596Z",
+      "lastChangedAt": "2026-10-28T12:12:58.596Z",
+      "revisions": []
+    },
+    {
+      "period": "2026-10-28",
+      "observedFrom": "2026-10-28",
+      "observedTo": "2026-10-28",
+      "value": 4.5,
+      "sourceStatus": null,
+      "publishedAt": null,
+      "documentUrl": null,
+      "firstSeenAt": "2026-10-28T12:12:58.596Z",
+      "lastChangedAt": "2026-10-28T12:12:58.596Z",
       "revisions": []
     }
   ]

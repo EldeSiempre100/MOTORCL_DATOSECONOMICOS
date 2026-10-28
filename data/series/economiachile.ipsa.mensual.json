@@ -13,7 +13,7 @@
   "unit": "index",
   "sourceUrl": "https://raw.githubusercontent.com/bastianolea/economia_chile/main/app/datos/ipsa.csv",
   "methodologyUrl": "https://si3.bcentral.cl/siete",
-  "lastSuccessfulRefresh": "2026-10-27T12:17:25.339Z",
+  "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
   "observations": [
     {
       "period": "2010-01",
