@@ -2,25 +2,16 @@
   "schemaVersion": 1,
   "projectName": "Monitor Chile",
   "status": "live",
-  "updatedAt": "2026-10-28T12:12:58.596Z",
-  "asOfLabel": "Consulta de motores: 2026-10-28",
+  "updatedAt": "2026-10-29T12:13:13.890Z",
+  "asOfLabel": "Consulta de motores: 2026-10-29",
   "latestCompleteMonth": "según última observación de cada serie",
   "isDemo": false,
   "demoNotice": {
     "es": "",
     "en": ""
   },
-  "delayedSeriesCount": 2,
+  "delayedSeriesCount": 1,
   "delayedSeries": [
-    {
-      "id": "dolar",
-      "name": "Dólar observado",
-      "nameEn": "Dólar observado",
-      "source": "Mindicador",
-      "lastUpdate": "2026-10-25T12:14:17.431Z",
-      "reason": "The operation was aborted due to timeout",
-      "reasonEn": "The operation was aborted due to timeout"
-    },
     {
       "id": "uf",
       "name": "Unidad de Fomento (UF)",
@@ -330,6 +321,6 @@
       "mockSnapshot": ""
     }
   },
-  "asOfLabelEn": "Data retrieval: 2026-10-28",
+  "asOfLabelEn": "Data retrieval: 2026-10-29",
   "latestCompleteMonthEn": "latest observation by series"
 }

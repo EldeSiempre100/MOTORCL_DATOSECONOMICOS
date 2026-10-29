@@ -13,7 +13,7 @@
   "unit": "percent",
   "sourceUrl": "https://mindicador.cl/api/tpm",
   "methodologyUrl": "https://www.bcentral.cl/",
-  "lastSuccessfulRefresh": "2026-10-28T12:12:58.596Z",
+  "lastSuccessfulRefresh": "2026-10-29T12:13:13.890Z",
   "observations": [
     {
       "period": "2024-01-02",
@@ -8461,6 +8461,18 @@
       "documentUrl": null,
       "firstSeenAt": "2026-10-28T12:12:58.596Z",
       "lastChangedAt": "2026-10-28T12:12:58.596Z",
+      "revisions": []
+    },
+    {
+      "period": "2026-10-29",
+      "observedFrom": "2026-10-29",
+      "observedTo": "2026-10-29",
+      "value": 4.5,
+      "sourceStatus": null,
+      "publishedAt": null,
+      "documentUrl": null,
+      "firstSeenAt": "2026-10-29T12:13:13.890Z",
+      "lastChangedAt": "2026-10-29T12:13:13.890Z",
       "revisions": []
     }
   ]
